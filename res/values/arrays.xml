@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Task frequency -->
+  <string-array name="aiLevelNames">
+    <item>Beginner</item>
+    <item>Intermediate</item>
+    <item>Expert</item>
+  </string-array>
+  <string-array name="aiLevelValues">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+</resources>
+  
