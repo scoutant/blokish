@@ -76,6 +76,7 @@ public class TabsView extends FrameLayout {
 			super(context);
 			setText("0");
 			setTextColor(Color.BLACK);
+			setTextSize( 16);
 			Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 			int w = display.getWidth();
 			LayoutParams params = new FrameLayout.LayoutParams( w/6, 35, Gravity.BOTTOM);

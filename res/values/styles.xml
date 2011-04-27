@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--  to be used as Theme, from AndroidManifest : <application android:theme="@style/Orange" -->
+	<style name="scoutant">
+		<item name="android:textSize">16dp</item>
+		<item name="android:textColor">@color/grey</item>
+		<item name="android:paddingBottom">2dp</item>
+	</style>
+
+	<style name="padding" parent="@scoutant">
+		<item name="android:paddingTop">2dp</item>
+		<item name="android:paddingBottom">2dp</item>
+		<item name="android:paddingLeft">5dp</item>
+		<item name="android:paddingRight">5dp</item>
+	</style>
+
+	<style name="h1" parent="@scoutant">
+		<item name="android:textSize">18dp</item>
+		<item name="android:textColor">@color/orange</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+
+</resources>

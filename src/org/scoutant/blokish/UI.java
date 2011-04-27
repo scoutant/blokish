@@ -75,7 +75,7 @@ public class UI extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		super.onOptionsItemSelected(item);
 		if (item.getItemId() == MENU_ITEM_HELP) {
-			
+			startActivity( new Intent(this, Help.class));			
 		}
 		if (item.getItemId() == MENU_ITEM_PREFERENCES) {
 			startActivity( new Intent(this, Settings.class));
