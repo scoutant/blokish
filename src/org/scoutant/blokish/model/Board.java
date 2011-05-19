@@ -148,7 +148,7 @@ public class Board {
 	}
 	
 	public boolean fits( int color, Piece piece, int i, int j) {
-		if (i<0 || i>= size || j<0 || j>=size) return false; 
+		if (i<-1 || i> size || j<-1 || j>size) return false; 
 		return ! overlaps( color, piece, i, j);
 	}
 	
