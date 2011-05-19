@@ -63,6 +63,7 @@ public class GameView extends FrameLayout  {
 	/** true if red has acknowlegde no more moves for her */
 	public boolean redOver=false;
 	public SharedPreferences prefs;
+	public boolean thinking=false;
 	
 	public GameView(Context context) {
 		super(context);
@@ -73,6 +74,7 @@ public class GameView extends FrameLayout  {
 		paint.setStrokeWidth(1.0f);
 		paint.setColor(Color.WHITE);
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+		// TODO consider display that do not meet proportion : (20+12) / 20
 		size = display.getWidth()/20;
 		Log.d(tag, "size " + size);
 		for (Board board : game.boards) {

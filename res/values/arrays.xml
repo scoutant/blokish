@@ -2,14 +2,16 @@
 <resources>
   <!-- Task frequency -->
   <string-array name="aiLevelNames">
-    <item>Beginner</item>
-    <item>Intermediate</item>
-    <item>Expert</item>
+    <item>level 1</item>
+    <item>level 2</item>
+    <item>level 3</item>
+    <item>level 4</item>
   </string-array>
   <string-array name="aiLevelValues">
     <item>0</item>
     <item>1</item>
     <item>2</item>
+    <item>3</item>
   </string-array>
 </resources>
   

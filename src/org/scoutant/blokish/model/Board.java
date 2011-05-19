@@ -118,6 +118,9 @@ public class Board {
 	}
 
 	int[][] ab = new int [20][20];
+	/**
+	 * @return # of seeds if actually adding @param piece at @param i, @param j.
+	 */
 	public int scoreSeedsIfAdding(Piece piece, int i, int j) {
 		int result=0;
 		for (int b=0; b<20; b++) for (int a=0; a<20; a++) ab[a][b] = ij[a][b];

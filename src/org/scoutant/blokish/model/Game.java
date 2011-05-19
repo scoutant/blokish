@@ -103,4 +103,35 @@ public class Game {
 	// TODO 	public int scoreSeedsIfAdding(Piece piece, int i, int j) {
 	// counting scoring my new seeds and substrating the other's seeds...
 
+	int[][] ab = new int [20][20];
+	/**
+	 * @return # of seeds if actually adding enemy @param piece at @param i, @param j on board @param board.
+	 */
+	private int scoreEnemySeedsIfAdding(Board board, Piece piece, int i, int j) {
+		// how many of the board's seeds hapen to be under piece?
+		int result=0;
+		// TODO another way to reset?
+		for (int b=0; b<20; b++) for (int a=0; a<20; a++) ab[a][b] = 0;
+		for(Square s : board.seeds()) {
+			try { ab[s.i][s.j] = 1; } catch (Exception e) {}
+		}
+		for(Square s : piece.squares()) {
+			try { ab[i+s.i][j+s.j] = 0; } catch (Exception e) {}
+		}
+		for (int b=0; b<20; b++) for (int a=0; a<20; a++) if (ab[a][b]==1) result++;
+//		Log.d(tag, "scoreEnemySeedsIfAdding : " + result + ". color : " + board.color);
+		return result;
+	}
+	
+	public int scoreEnemySeedsIfAdding(int color, Piece piece, int i, int j) {
+		int result =0;
+		for (int c=0; c<4; c++) {
+			if (c!=color) {
+				result += scoreEnemySeedsIfAdding( boards.get(c), piece, i, j );
+			}
+		}
+//		Log.d(tag, "scoreEnemySeedsIfAdding : " + result + ", for color :" + color);
+		return result;
+	}
+	
 }

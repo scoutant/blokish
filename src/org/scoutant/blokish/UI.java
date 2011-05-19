@@ -135,6 +135,7 @@ public class UI extends Activity {
 	private class AITask extends AsyncTask<Integer, Void, Move> {
 		@Override
 		protected Move doInBackground(Integer... params) {
+			game.thinking=true;
 			return game.ai.think(params[0], findLevel());
 		}
 		@Override
@@ -156,6 +157,9 @@ public class UI extends Activity {
 			UI.this.game.play( move);
 			turn++;
 			if (turn<4) new AITask().execute(turn);
+			if (turn==4 && !game.redOver ) {
+				game.thinking=false;
+			}
 			if (turn==4 && game.redOver ) {
 				turn = 1;
 				new AITask().execute(turn);
@@ -168,7 +172,7 @@ public class UI extends Activity {
 	private class CheckTask extends AsyncTask<Void, Void, Boolean> {
 		@Override
 		protected Boolean doInBackground(Void... params) {
-			return (game.ai.think(0, 0)==null);
+			return !game.ai.hasMove(0);
 		}
 		@Override
 		protected void onPostExecute(Boolean finished) {
