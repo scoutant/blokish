@@ -100,9 +100,6 @@ public class Game {
 		return msg;
 	}
 	
-	// TODO 	public int scoreSeedsIfAdding(Piece piece, int i, int j) {
-	// counting scoring my new seeds and substrating the other's seeds...
-
 	int[][] ab = new int [20][20];
 	/**
 	 * @return # of seeds if actually adding enemy @param piece at @param i, @param j on board @param board.
@@ -110,7 +107,6 @@ public class Game {
 	private int scoreEnemySeedsIfAdding(Board board, Piece piece, int i, int j) {
 		// how many of the board's seeds hapen to be under piece?
 		int result=0;
-		// TODO another way to reset?
 		for (int b=0; b<20; b++) for (int a=0; a<20; a++) ab[a][b] = 0;
 		for(Square s : board.seeds()) {
 			try { ab[s.i][s.j] = 1; } catch (Exception e) {}

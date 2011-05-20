@@ -64,6 +64,7 @@ public class GameView extends FrameLayout  {
 	public boolean redOver=false;
 	public SharedPreferences prefs;
 	public boolean thinking=false;
+	public boolean singleline=false;
 	
 	public GameView(Context context) {
 		super(context);
@@ -74,9 +75,9 @@ public class GameView extends FrameLayout  {
 		paint.setStrokeWidth(1.0f);
 		paint.setColor(Color.WHITE);
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-		// TODO consider display that do not meet proportion : (20+12) / 20
 		size = display.getWidth()/20;
 		Log.d(tag, "size " + size);
+		if ( display.getHeight()/32 < display.getWidth()/20) singleline = true; 
 		for (Board board : game.boards) {
 			int i=2;
 			for (Piece piece : board.pieces) {	
@@ -127,7 +128,6 @@ public class GameView extends FrameLayout  {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		int size = canvas.getWidth() / 20;
 		for (int i = 0; i < 20; i++) {
 			canvas.drawLine(i*size, 0, i*size, 20*size, paint);
 		}
@@ -197,16 +197,26 @@ public class GameView extends FrameLayout  {
 		Collections.reverse(pieces);
 		for (int p=0; p<pieces.size(); p++) {
 			PieceUI piece = pieces.get(p);
-			piece.j0 = 22 + ((p%2) > 0 ? 5 : 0 ) ;
-			if (p<2) {
-				if (piece.piece.type.equals("I5")) piece.i0 = 1;
-				else piece.i0 = 2;
+			if (singleline) {
+				piece.j0 = 22;
+				if (p<1) {
+					if (piece.piece.type.equals("I5")) piece.i0 = 1;
+					else piece.i0 = 2;
+				} else {
+					piece.i0 = pieces.get(p-1).i0 + pieces.get(p-1).piece.size+1;
+				}
 			} else {
-				piece.i0 = pieces.get(p-2).i0 + pieces.get(p-2).piece.size+1;
+				piece.j0 = 22 + ((p%2) > 0 ? 5 : 0 ) ;
+				if (p<2) {
+					if (piece.piece.type.equals("I5")) piece.i0 = 1;
+					else piece.i0 = 2;
+				} else {
+					piece.i0 = pieces.get(p-2).i0 + pieces.get(p-2).piece.size+1;
+				}
 			}
 			piece.replace();
 		}
-}
+	}
 
 	private List<PieceUI> piecesInStore(){
 		List<PieceUI> list = new ArrayList<PieceUI>(); 

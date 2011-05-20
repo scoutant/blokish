@@ -112,7 +112,6 @@ public class AI  {
 								}
 								int seedsIfAdding = board.scoreSeedsIfAdding(piece, i, j);
 								score += SEEDS_WEIGHT * seedsIfAdding ;
-								// TODO process score including enemy seeds feature...
 								int enemyscore = game.scoreEnemySeedsIfAdding(board.color, piece, i, j);
 								score -= ENEMY_SEEDS_WEIGHT * enemyscore;
 								move.score = score;

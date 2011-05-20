@@ -85,7 +85,6 @@ public class Piece {
 		return this;
 	}
 
-	// TODO remplacer méthode par propriété, gain de temps?
 	private int[][] v() {
 		return ( actual ? a : b);
 	}
@@ -156,19 +155,16 @@ public class Piece {
 		
 	}
 	
-	// TODO remove test when consistent
 	public boolean touches(int x, int y) {
 		if (isValue(x, y)) return false;
 		return ( isValue(x-1, y) || isValue(x, y-1) || isValue(x+1, y) || isValue(x, y+1));
 	}
-	// TODO remove test when consistent
 	public boolean crosses(int x, int y) {
 		if (isValue(x, y)) return false;
 		if (touches(x, y)) return false;
 		return ( isValue(x-1, y-1) || isValue(x+1, y-1) || isValue(x+1, y+1) || isValue(x-1, y+1));
 	}
 
-	// TODO method on board!
 	public boolean overlaps(Piece that, int X, int Y) {
 		if ( Math.abs( X ) > (this.size + that.size)/2 ) return false;  
 		if ( Math.abs( Y ) > (this.size + that.size)/2 ) return false;  

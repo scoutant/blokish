@@ -82,10 +82,8 @@ public class TabsView extends FrameLayout {
 			LayoutParams params = new FrameLayout.LayoutParams( w/6, 35, Gravity.BOTTOM);
 			params.leftMargin = position * w/4 + 20;
 			setLayoutParams( params);
-			setPadding(25, 0, 25, 0);
+			setPadding(15, 0, 15, 0);
 		}
 		
 	}
-	
-	
 }

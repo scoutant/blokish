@@ -284,8 +284,6 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     		} else {
     			game.buttons.setVisibility( VISIBLE);
     			game.buttons.bringToFront();
-    			// TODO valid and AI finished thinking!
-//    			game.buttons.setOkState( game.game.valid(piece, i, j));
     			game.buttons.setOkState( game.game.valid(piece, i, j) && !game.thinking);
     		}
     	}
