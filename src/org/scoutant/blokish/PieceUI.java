@@ -23,6 +23,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.view.Display;
 import android.view.Gravity;
@@ -79,6 +80,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	// origin offset
 	private int oo;
 	private Context context;
+	private Vibrator vibrator; 
 	
 	public PieceUI(Context context, Piece piece) {
 		super(context);
@@ -98,6 +100,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 		square = resources.getDrawable( icons[piece.color]);
 		paint.setColor(0x99999999);
 		resetLocalXY();
+		vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 	}
 
 	public PieceUI( Context context, Piece piece, int i, int j){
@@ -293,7 +296,9 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     		} else {
     			game.buttons.setVisibility( VISIBLE);
     			game.buttons.bringToFront();
-    			game.buttons.setOkState( game.game.valid(piece, i, j) && !game.thinking);
+    			boolean okState = game.game.valid(piece, i, j) && !game.thinking;
+    			game.buttons.setOkState( okState);
+    			if (okState && vibrator!=null) vibrator.vibrate(20);
     		}
     	}
     	invalidate();
