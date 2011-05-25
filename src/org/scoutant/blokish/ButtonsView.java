@@ -17,6 +17,7 @@ import org.scoutant.blokish.model.Move;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -98,7 +99,13 @@ public class ButtonsView extends FrameLayout {
 				ButtonsView.this.game.game.play( move);
 				((GameView)getParent()).tabs.putLabel(move.piece.color, ""+game.game.boards.get(move.piece.color).score);
 				game.selected = null;
-				game.ui.think(1);
+				game.ui.turn = (piece.piece.color+1)%4;
+				if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("ai", true)) {
+					game.ui.think(game.ui.turn);
+				} else {
+					game.showPieces(game.ui.turn);
+					game.invalidate();
+				}
 			}
 		}
 	};

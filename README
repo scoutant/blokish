@@ -2,10 +2,42 @@ Blokish.
 
 Android game. Open-source implementation of the popular board game Blokus.
 
-v0.5
+v1.1
 
 May install directly from Android Market, searching for 'blokish'.
 
 Source available at : https://github.com/scoutant/blokish
 
 Under licence LGP v3.
+
+A board with 20 * 20 squares.	
+4 players having each 21 pieces : 1 single-square, 1 domino, 2 triominos, 5 tetraminos and 12 pentaminos	 		
+"As player, I shall place on the board most of my pieces." 	 		
+"For first round, I must place a piece so that it touches one of the corners of the board."	 		
+Next, a piece must be placed so that it touches a corner of one of my own pieces. It may touch several corners, but never any side of my pieces!"	 		
+
+"If a cannot place any more piece I pass my turn."	 		
+The end of the game is reached when every player passes.	 		
+"My score is : cumulation of the squares of the pieces I placed"	 		
+		
+How to play with Blokish Android app :
+
+Scroll through your remaining piece with you finger from left to right	 		
+Select an drag a piece onto the board. You can now drag it around easily putting the finger on the grey circle	 		
+Rotate the piece using one the handles	 		
+You can flip the piece to its mirror position : with a long press on the piece
+You can cancel with the red button. It will replace the piece in your store.	 		
+When the move is valid a green 'ok' button appears. You can commit the move by clicking it!
+
+Changelog :
+
+1.1, 2011/05 :
+- Added ability to disconnect AI, for human play only. AI can be enable/disabled at any time during the game.
+
+1.0, 2011/05 : 
+- Added additional AI level
+- Fix for small screens : gracefully adapting the bottom pieces stores to be single-line
+- Fix bug : I2 and I4 moves happened not to be displayed as valid at the very border (according to orientation). 
+
+0.5, 2011/05
+First release

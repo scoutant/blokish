@@ -47,6 +47,7 @@ public class AI  {
 							int i = seed.i - s.i;
 							int j = seed.j - s.j;
 							if ( !board.outside(s, i, j) && game.fits(piece, i, j)) {
+								Log.d(tag, "possible move : " + new Move(piece, i, j));
 								return true;
 							}
 						}
@@ -54,6 +55,7 @@ public class AI  {
 				}
 			}
 		}
+		game.boards.get(color).over = true;
 		return false;
 	}
 	
@@ -88,9 +90,9 @@ public class AI  {
 		if (nbSeeds==0) return moves;
 		for (Square seed : board.seeds()) {
 			int movesAgainstSeed=0;
-			Log.d(tag, "---- seed : " + seed);
+//			Log.d(tag, "---- seed : " + seed);
 			int maxMovesAgainstSeed = maxMoves[level] / nbSeeds;
-			Log.d(tag, "considering # of moves : " + maxMovesAgainstSeed );
+//			Log.d(tag, "considering # of moves : " + maxMovesAgainstSeed );
 			for (int p=0; p<board.pieces.size() && movesAgainstSeed<maxMovesAgainstSeed; p++) {
 				Piece piece = board.pieces.get(p);
 				for (int r=0; r<piece.rotations; r++, piece.rotate(1)) {

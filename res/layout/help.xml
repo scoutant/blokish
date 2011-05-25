@@ -17,24 +17,24 @@
 		<TextView android:text="- A board with 20 * 20 squares." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="- 4 players having each 21 pieces : 1 single-square, 1 domino, 2 triominos, 5 tetraminos and 12 pentaminos" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="- As player, I shall place on the board most of my pieces. " android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
-		<TextView android:text="- For first round, I must place a piece so that it touches one of the corners of the board" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="- For first round, I must place a piece so that it touches one of the corners of the board." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="- Next, a piece must be placed so that it touches a corner of one of my own pieces. It may touch several corners, but never any side of my pieces!" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<ImageView android:src="@drawable/blokish_2_pieces" 
 			android:layout_width="242px" android:layout_height="191px"
 			android:layout_marginTop="10px" android:layout_marginBottom="10px" android:layout_gravity="center_horizontal" />
 		<TextView android:text="- If a cannot place any more piece I pass my turn." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="- The end of the game is reached when every player passes." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
-		<TextView android:text="- My score is : cumulation of the squares of the pieces I placed" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="- My score is : cumulation of the squares of the pieces I placed." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 
 		<TextView android:text="How to play with Blokish Android app"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:layout_marginTop="16px" style="@style/h1" />
-		<TextView android:text="- Schroll through your remaining piece with you finger from left to right" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="- Scroll through your remaining piece with you finger from left to right." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<ImageView android:src="@drawable/blokish_scroll" 
 			android:layout_width="500px" android:layout_height="250px"
 			android:layout_marginTop="10px" android:layout_marginBottom="10px" android:layout_gravity="center_horizontal" />
-		<TextView android:text="- Select an drag a piece onto the board. You can now drag it arround easily putting the finger on the grey circle" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="- Select an drag a piece onto the board. You can now drag it around easily putting the finger on the grey circle" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<ImageView android:src="@drawable/blokish_dragging" 
 			android:layout_width="500px" android:layout_height="250px"
 			android:layout_marginTop="10px" android:layout_marginBottom="10px" android:layout_gravity="center_horizontal" />
@@ -51,7 +51,9 @@
 
 		<TextView android:text="http://blokish.scoutant.org" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 			
-		<TextView android:text="Blokish is an Free/Libre open-source app, licence GPL. Fell free to use the code you can get att http://github.com/scoutant/blokish." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="Blokish is an Free/Libre open-source app, licence GPL." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="Fell free to use the code you can get att http://github.com/scoutant/blokish." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="Stephane Coutant" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 			
 	</LinearLayout>
 </ScrollView> 

@@ -72,7 +72,7 @@ public class GameView extends FrameLayout  {
 		ui = (UI) context;
 		setWillNotDraw(false);
 		setLayoutParams( new FrameLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT, Gravity.TOP));
-		paint.setStrokeWidth(1.0f);
+		paint.setStrokeWidth(1.3f);
 		paint.setColor(Color.WHITE);
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		size = display.getWidth()/20;

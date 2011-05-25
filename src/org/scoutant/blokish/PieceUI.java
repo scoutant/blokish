@@ -23,6 +23,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -77,9 +78,11 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	private float rawY;
 	// origin offset
 	private int oo;
+	private Context context;
 	
 	public PieceUI(Context context, Piece piece) {
 		super(context);
+		this.context = context;
 		setWillNotDraw(false);
 		setOnLongClickListener(this);
 		setOnTouchListener(this);
@@ -220,6 +223,12 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	public boolean onTouch(View v, MotionEvent event) {
 		GameView game = (GameView) getParent();
 		int action = event.getAction();
+		
+		if (game.selected==null && !PreferenceManager.getDefaultSharedPreferences(context).getBoolean("ai", true) && piece.color!=game.ui.turn) {
+			game.doTouch(event);
+			return false;
+		}
+		
 		if (game.selected==null) {
 	    	if (action==MotionEvent.ACTION_DOWN) {
 	    		rawX=event.getRawX();

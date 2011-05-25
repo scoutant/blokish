@@ -141,17 +141,18 @@ public class UI extends Activity {
 		@Override
 		protected void onPostExecute(Move move) {
 			if (game.game.over()) {
-				Log.d(tag, "game over !");
-				int winner = game.game.winner();
-				new AlertDialog.Builder(UI.this)
-				.setMessage("Game over, player " + game.game.colors[winner] + " wins with : " + game.game.boards.get(winner).score)
-				.setCancelable(false)
-				.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						}
-					})
-				.create()
-				.show();				
+//				Log.d(tag, "game over !");
+//				int winner = game.game.winner();
+//				new AlertDialog.Builder(UI.this)
+//				.setMessage("Game over, player " + game.game.colors[winner] + " wins with : " + game.game.boards.get(winner).score)
+//				.setCancelable(false)
+//				.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//					public void onClick(DialogInterface dialog, int which) {
+//						}
+//					})
+//				.create()
+//				.show();
+				displayWinnerDialog();
 				return;
 			}
 			UI.this.game.play( move);
@@ -159,15 +160,34 @@ public class UI extends Activity {
 			if (turn<4) new AITask().execute(turn);
 			if (turn==4 && !game.redOver ) {
 				game.thinking=false;
+				turn=0;
+				game.showPieces(0);
+				new CheckTask().execute();
 			}
 			if (turn==4 && game.redOver ) {
-				turn = 1;
-				new AITask().execute(turn);
+				Log.d(tag, "RED is DEAD. game.over ? " + game.game.over());
+				if (game.game.over()) {
+					displayWinnerDialog();					
+				} else {
+					turn = 1;
+					new AITask().execute(turn);
+				}
 			}
-			if (!game.redOver && turn==4) new CheckTask().execute();
+		}
+		private void displayWinnerDialog() {
+			Log.d(tag, "game over !");
+			int winner = game.game.winner();
+			new AlertDialog.Builder(UI.this)
+			.setMessage("Game over, player " + game.game.colors[winner] + " wins with : " + game.game.boards.get(winner).score)
+			.setCancelable(false)
+			.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					}
+				})
+			.create()
+			.show();				
 		}
 	}
-
 	
 	private class CheckTask extends AsyncTask<Void, Void, Boolean> {
 		@Override
