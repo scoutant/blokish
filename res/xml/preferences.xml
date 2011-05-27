@@ -6,6 +6,6 @@
 	<ListPreference 
 		android:key="aiLevel" android:title="Level" android:summary="Customize the level according to your experience"
 		android:entries="@array/aiLevelNames" android:entryValues="@array/aiLevelValues" 
-		android:dialogTitle="Select level" android:defaultValue="1" 
+		android:dialogTitle="Select level" android:defaultValue="0" 
 		/>
 </PreferenceScreen>

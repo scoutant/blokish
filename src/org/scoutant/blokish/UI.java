@@ -39,6 +39,7 @@ public class UI extends Activity {
 	private static final int MENU_ITEM_THINK=10;
 	private static final int MENU_ITEM_PREFERENCES=-1;
 	private static final int MENU_ITEM_HELP = 9;
+	private static final int MENU_ITEM_PASS_TURN = 12;
 	
 	private static String tag = "activity";
 	public GameView game;
@@ -68,6 +69,10 @@ public class UI extends Activity {
 			menu.add(Menu.NONE, MENU_ITEM_THINK, Menu.NONE, "AI").setIcon(android.R.drawable.ic_menu_manage);
 			menu.add(Menu.NONE, MENU_ITEM_HISTORY, Menu.NONE, "hist").setIcon(android.R.drawable.ic_menu_recent_history);
 		}
+		if (!prefs.getBoolean("ai", true)) {
+			menu.add(Menu.NONE, MENU_ITEM_PASS_TURN, Menu.NONE, "I pass my turn").setIcon(android.R.drawable.ic_menu_slideshow);			
+		}
+		
 		return true;
 	}
 	
@@ -114,6 +119,11 @@ public class UI extends Activity {
 		if (item.getItemId() == MENU_ITEM_THINK) {
 			think(0);
 		}
+		if (item.getItemId() == MENU_ITEM_PASS_TURN) {
+			turn = (turn+1)%4;
+			game.showPieces(turn);
+			game.invalidate();
+		}
 		return false;
 	}
 
@@ -127,7 +137,7 @@ public class UI extends Activity {
 	
 	
 	private int findLevel() {
-		String level = prefs.getString("aiLevel", "1");
+		String level = prefs.getString("aiLevel", "0");
 		int l = new Integer(level);
 		if (l<0 || l>3) l = 1;
 		return Math.min(l, game.ai.adaptedLevel);
