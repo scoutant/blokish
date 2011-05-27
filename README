@@ -33,7 +33,7 @@ Changelog :
 
 1.1, 2011/05 :
 - Added ability to disconnect AI, for human play only. AI can be enable/disabled at any time during the game.
-- Added haptic feaback when dropping piece that is valid
+- Added haptic feedback when dropping piece that is valid
 - Gracefully adapting AI level to CPU capabilities.
 - Refactored AI with initial seeds sort before looping around the best seeds. 
 
