@@ -13,7 +13,7 @@
 
 package org.scoutant.blokish.model;
 
-public class Square {
+public class Square implements Comparable<Square> {
 	
 	public int i;
 	public int j;
@@ -30,6 +30,15 @@ public class Square {
 	
 	public String toString() {
 		return "("+i+", "+j+") ";
+	}
+
+	// TODO add criteria including max distance from origin corner : strategy is encouraging invading other's camp before filling one's own area
+	/** So as to order square against center proximity */
+	public int compareTo(Square that) {
+		return this.distance()-that.distance();
+	}
+	private int distance() {
+		return (i-10)*(i-10)+(j-10)*(j-10);
 	}
 	
 }

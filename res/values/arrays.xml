@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <!-- Task frequency -->
   <string-array name="aiLevelNames">
     <item>level 1</item>
     <item>level 2</item>
     <item>level 3</item>
     <item>level 4</item>
   </string-array>
+  <!-- caution! Do check UI.findLevel(). If value out of scope it is hardcoded -->
   <string-array name="aiLevelValues">
     <item>0</item>
     <item>1</item>

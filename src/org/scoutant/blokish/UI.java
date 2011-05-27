@@ -125,9 +125,12 @@ public class UI extends Activity {
 		new AITask().execute(player);
 	}
 	
+	
 	private int findLevel() {
 		String level = prefs.getString("aiLevel", "1");
-		return new Integer(level);
+		int l = new Integer(level);
+		if (l<0 || l>3) l = 1;
+		return Math.min(l, game.ai.adaptedLevel);
 	}
 	
 	public int turn = 0;
@@ -141,17 +144,6 @@ public class UI extends Activity {
 		@Override
 		protected void onPostExecute(Move move) {
 			if (game.game.over()) {
-//				Log.d(tag, "game over !");
-//				int winner = game.game.winner();
-//				new AlertDialog.Builder(UI.this)
-//				.setMessage("Game over, player " + game.game.colors[winner] + " wins with : " + game.game.boards.get(winner).score)
-//				.setCancelable(false)
-//				.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-//					public void onClick(DialogInterface dialog, int which) {
-//						}
-//					})
-//				.create()
-//				.show();
 				displayWinnerDialog();
 				return;
 			}
@@ -178,7 +170,7 @@ public class UI extends Activity {
 			Log.d(tag, "game over !");
 			int winner = game.game.winner();
 			new AlertDialog.Builder(UI.this)
-			.setMessage("Game over, player " + game.game.colors[winner] + " wins with : " + game.game.boards.get(winner).score)
+			.setMessage("Game over, player " + game.game.colors[winner] + " wins by : " + game.game.boards.get(winner).score)
 			.setCancelable(false)
 			.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {

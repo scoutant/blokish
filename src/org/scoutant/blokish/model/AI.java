@@ -15,6 +15,7 @@ package org.scoutant.blokish.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -30,8 +31,10 @@ public class AI  {
 	public Game game;
 	private Random random = new Random();
 	
-	private int[] maxMoves = { 50, 150, 300, 10000 };
-	
+	private int[] maxMoves = { 40, 100, 250, 10000 };
+
+	public int adaptedLevel = 3;
+
 	public AI(Game game) {
 		this.game = game;
 	}
@@ -65,6 +68,9 @@ public class AI  {
 			return null;
 		}
 		Log.d(tag, "--------------------------------------------------------------------------------");
+		level = Math.min(level, adaptedLevel);
+		// reinforce player 2 compared to player 1 and 3
+		if (level>1 && color!=2 ) level--;
 		Log.d(tag, "thinking for player : " + color + ", upto # moves : " + maxMoves[level]);
 		List<Move> moves = thinkUpToNMoves(color, level);
 		Log.d(tag, "# moves : " + moves.size());
@@ -88,9 +94,15 @@ public class AI  {
 		int nbSeeds = board.seeds().size();
 		Log.d(tag, "# of seeds : " + nbSeeds);
 		if (nbSeeds==0) return moves;
-		for (Square seed : board.seeds()) {
+		long startedAt = new Date().getTime();
+		List<Square> seeds = board.seeds();
+		Collections.sort(seeds);
+		if (board.pieces.size()> board.nbPieces - 4) {
+			seeds = seeds.subList(0, Math.min(seeds.size(), 2));
+		}
+		for (Square seed : seeds) {
 			int movesAgainstSeed=0;
-//			Log.d(tag, "---- seed : " + seed);
+			Log.d(tag, "---- seed : " + seed);
 			int maxMovesAgainstSeed = maxMoves[level] / nbSeeds;
 //			Log.d(tag, "considering # of moves : " + maxMovesAgainstSeed );
 			for (int p=0; p<board.pieces.size() && movesAgainstSeed<maxMovesAgainstSeed; p++) {
@@ -106,7 +118,7 @@ public class AI  {
 									Log.e(tag, "Inconsistant ! "+move);
 								}
 								int score = SIZE_WEIGHT * piece.count;
-								if (board.pieces.size()> board.nbPieces - 4) {
+								if (board.pieces.size()> board.nbPieces - 5) {
 									// encourage moving to the center
 									int io = game.size/2 - i;
 									int jo = game.size/2 - j;
@@ -120,13 +132,26 @@ public class AI  {
 								Log.d(tag, ""+move);
 								moves.add(move);
 								movesAgainstSeed++;
-								if (moves.size()>= maxMoves[level]) return moves;
+								if (moves.size()>= maxMoves[level]) {
+									autoAdaptLevel(startedAt);
+									return moves;
+								}
 							}
 						}
 					}
 				}
 			}
 		}
+		autoAdaptLevel(startedAt);
 		return moves;
+	}
+	
+	private void autoAdaptLevel(long startedAt) {
+		long duration = new Date().getTime()- startedAt;
+		Log.d(tag, "lasted : " + duration );
+		if (duration > 1500 && adaptedLevel>0) {
+			Log.i(tag, "Decreasing AI level!!----------------");
+			adaptedLevel --;
+		}
 	}
 }

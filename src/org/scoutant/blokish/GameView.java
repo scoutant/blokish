@@ -181,7 +181,7 @@ public class GameView extends FrameLayout  {
 	
 	public void mayReorderPieces() {
 		gone++;
-		if (gone>=9) {
+		if (gone>=8) {
 			gone = 0;
 			reorderPieces();
 		}

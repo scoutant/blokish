@@ -18,7 +18,7 @@ Next, a piece must be placed so that it touches a corner of one of my own pieces
 
 "If a cannot place any more piece I pass my turn."	 		
 The end of the game is reached when every player passes.	 		
-"My score is : cumulation of the squares of the pieces I placed"	 		
+"My score is : addition of all the squares of the pieces I placed"	 		
 		
 How to play with Blokish Android app :
 
@@ -33,6 +33,9 @@ Changelog :
 
 1.1, 2011/05 :
 - Added ability to disconnect AI, for human play only. AI can be enable/disabled at any time during the game.
+- Added haptic feaback when dropping piece that is valid
+- Gracefully adapting AI level to CPU capabilities.
+- Refactored AI with initial seeds sort before looping around the best seeds. 
 
 1.0, 2011/05 : 
 - Added additional AI level

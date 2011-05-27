@@ -7,7 +7,7 @@
 		android:layout_gravity="center_horizontal"
 		/>
 	<ImageView android:src="@drawable/blokish_title" 
-		android:layout_width="431px" android:layout_height="96px"
+		android:layout_width="250px" android:layout_height="60px"
 		android:layout_marginTop="20px"  
 		android:layout_gravity="center_horizontal"
 		/>
