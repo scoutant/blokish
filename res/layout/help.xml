@@ -43,7 +43,8 @@
 		<ImageView android:src="@drawable/blokish_rotating" 
 			android:layout_width="500px" android:layout_height="250px"
 			android:layout_marginTop="10px" android:layout_marginBottom="10px" android:layout_gravity="center_horizontal" />
-		<TextView android:text="- You can flip the piece to its mirror position : with a long press on the piece" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>
+		<TextView android:text="- You can flip the piece to its mirror position : with a long press on the piece." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>
+		<TextView android:text="Flip a piece can only be done using the menu, specially usefull for tablets." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>
 		<TextView android:text="- You can cancel with the red button. It will replace the piece in your store." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="- When the move is valid a green 'ok' button appears. You can commit the move by clicking it!" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<ImageView android:src="@drawable/blokish_21_1" 

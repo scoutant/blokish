@@ -31,8 +31,12 @@ When the move is valid a green 'ok' button appears. You can commit the move by c
 
 Changelog :
 
+1.2, 2011/06 :
+- Added capability to flip a piece to it's mirror position using the menu. As before, can also be done with a long-press gesture directly onto the piece.
+The menu alternative may be useful for large devices like tablets where long-press may conflict with DnD gesture... 
+
 1.1, 2011/05 :
-- Added ability to disconnect AI, for human play only. AI can be enable/disabled at any time during the game.
+- Added capability to disconnect AI, for human play only. AI can be enable/disabled at any time during the game.
 - Added haptic feedback when dropping piece that is valid
 - Gracefully adapting AI level to CPU capabilities.
 - Refactored AI with initial seeds sort before looping around the best seeds. 

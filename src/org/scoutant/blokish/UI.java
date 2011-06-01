@@ -40,6 +40,7 @@ public class UI extends Activity {
 	private static final int MENU_ITEM_PREFERENCES=-1;
 	private static final int MENU_ITEM_HELP = 9;
 	private static final int MENU_ITEM_PASS_TURN = 12;
+	private static final int MENU_ITEM_FLIP = 15;
 	
 	private static String tag = "activity";
 	public GameView game;
@@ -61,6 +62,10 @@ public class UI extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
+		// TODO only if selected
+		if (game.selected!=null) {
+			menu.add(Menu.NONE, MENU_ITEM_FLIP, Menu.NONE, "Flip piece").setIcon(android.R.drawable.ic_menu_set_as);
+		}
 		menu.add(Menu.NONE, MENU_ITEM_BACK, Menu.NONE, "back").setIcon(android.R.drawable.ic_menu_revert);
 		menu.add(Menu.NONE, MENU_ITEM_NEW, Menu.NONE, "new game").setIcon(android.R.drawable.ic_menu_rotate);
 		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, "preferences").setIcon(android.R.drawable.ic_menu_preferences);
@@ -72,7 +77,6 @@ public class UI extends Activity {
 		if (!prefs.getBoolean("ai", true)) {
 			menu.add(Menu.NONE, MENU_ITEM_PASS_TURN, Menu.NONE, "I pass my turn").setIcon(android.R.drawable.ic_menu_slideshow);			
 		}
-		
 		return true;
 	}
 	
@@ -123,6 +127,10 @@ public class UI extends Activity {
 			turn = (turn+1)%4;
 			game.showPieces(turn);
 			game.invalidate();
+		}
+		if (item.getItemId() == MENU_ITEM_FLIP) {
+			PieceUI piece = game.selected;
+			if (piece!=null) piece.flip();
 		}
 		return false;
 	}
