@@ -66,7 +66,7 @@ public class UI extends Activity {
 		if (game.selected!=null) {
 			menu.add(Menu.NONE, MENU_ITEM_FLIP, Menu.NONE, "Flip piece").setIcon(android.R.drawable.ic_menu_set_as);
 		}
-		menu.add(Menu.NONE, MENU_ITEM_BACK, Menu.NONE, "back").setIcon(android.R.drawable.ic_menu_revert);
+		menu.add(Menu.NONE, MENU_ITEM_BACK, Menu.NONE, "back one move").setIcon(android.R.drawable.ic_menu_revert);
 		menu.add(Menu.NONE, MENU_ITEM_NEW, Menu.NONE, "new game").setIcon(android.R.drawable.ic_menu_rotate);
 		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, "preferences").setIcon(android.R.drawable.ic_menu_preferences);
 		menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, "help").setIcon(android.R.drawable.ic_menu_help);
@@ -98,9 +98,13 @@ public class UI extends Activity {
 		}
 		if (item.getItemId() == MENU_ITEM_BACK) {
 			List<Move> moves = game.game.moves;
-			moves = moves.subList(0, moves.size()-4);
+			int length = moves.size();
+			if (length>=4) {
+				length -= 4;
+			}
+			moves = moves.subList(0, length);
 			newgame();
-			Log.d(tag, "replay # moves : " + moves.size());
+			Log.i(tag, "replay # moves : " + length);
 			game.replay( moves);			
 		}
 		if (item.getItemId() == MENU_ITEM_NEW) {
