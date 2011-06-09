@@ -191,8 +191,17 @@ public class UI extends Activity {
 		private void displayWinnerDialog() {
 			Log.d(tag, "game over !");
 			int winner = game.game.winner();
+			int score = game.game.boards.get(winner).score;
+			String message = "";
+			if (winner==0 && prefs.getBoolean("ai", true)) {
+				 message += "Congratulations, you win with score : " + score +".";
+				 if (findLevel()<4-1) message += "\nTry next level...";
+			} else {
+				message += "Player " + game.game.colors[winner] + " wins with score : " + score;
+			}
 			new AlertDialog.Builder(UI.this)
-			.setMessage("Game over, player " + game.game.colors[winner] + " wins by : " + game.game.boards.get(winner).score)
+			.setMessage(message)
+//			.setMessage("Game over, player " + game.game.colors[winner] + " wins by : " + game.game.boards.get(winner).score)
 			.setCancelable(false)
 			.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
