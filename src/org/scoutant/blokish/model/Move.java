@@ -13,6 +13,7 @@
 
 package org.scoutant.blokish.model;
 
+
 public class Move implements Comparable<Move>{
 	
 	public Piece piece;
@@ -39,5 +40,10 @@ public class Move implements Comparable<Move>{
 
 	public int compareTo(Move that) {
 		return this.score - that.score;
+	}
+
+	/** @return a represention of the piece, like this sample : 18:16:2:I3:0,-1:0,0:0,1 */
+	public static String serialize(Move move) {
+		return String.format( "%s:%s:%s", move.i, move.j, Piece.serialize( move.piece));
 	}
 }

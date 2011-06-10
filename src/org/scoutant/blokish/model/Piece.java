@@ -47,7 +47,7 @@ public class Piece {
 		odd = (size % 2) == 1; 
 		reset();
 	}
-	private void reset() {
+	public void reset() {
 		r=0;
 		f=0;
 		a = new int[size][size];
@@ -222,6 +222,16 @@ public class Piece {
 			}
 		}
 		return list;
+	}
+	
+	/** @return a represention of the piece, like this sample : 2:I3:0,-1:0,0:0,1 */
+	public static String serialize(Piece piece) {
+		String msg = "" + piece.color;
+		msg += ":"+piece.type;
+		for (Square s : piece.squares()) {
+			msg+=":"+s.i+","+s.j;
+		}
+		return msg;
 	}
 	
 }

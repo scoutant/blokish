@@ -13,12 +13,24 @@
 
 package org.scoutant.blokish;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.scoutant.blokish.model.Move;
+import org.scoutant.blokish.model.Piece;
+import org.scoutant.blokish.model.Square;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -44,7 +56,9 @@ public class UI extends Activity {
 	
 	private static String tag = "activity";
 	public GameView game;
-	public boolean devmode=false;
+	// TODO 
+//	public boolean devmode=false;
+	public boolean devmode=true;
 	private SharedPreferences prefs;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +76,6 @@ public class UI extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
-		// TODO only if selected
 		if (game.selected!=null) {
 			menu.add(Menu.NONE, MENU_ITEM_FLIP, Menu.NONE, "Flip piece").setIcon(android.R.drawable.ic_menu_set_as);
 		}
@@ -89,7 +102,9 @@ public class UI extends Activity {
 		if (item.getItemId() == MENU_ITEM_PREFERENCES) {
 			startActivity( new Intent(this, Settings.class));
 		}
-		if (item.getItemId() == MENU_ITEM_HISTORY) Log.d(tag, ""+game.game); 
+		if (item.getItemId() == MENU_ITEM_HISTORY) {
+			Log.d(tag, ""+game.game);
+		}
 		if (item.getItemId() == MENU_ITEM_REPLAY) {
 			GameView old = game;
 			newgame();
@@ -261,5 +276,62 @@ public class UI extends Activity {
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+	
+	private void save(){
+		FileOutputStream fos;
+		try {
+			fos = openFileOutput("moves.txt", Context.MODE_PRIVATE);
+			fos.write( game.game.toString().getBytes());
+			fos.close();
+		} catch (FileNotFoundException e) {
+			Log.e(tag, "not found...", e);
+		} catch (IOException e) {
+			Log.e(tag, "io...", e);
+		}
+	}
+	/** sources a list of representions like this sample : 18|16|2|I3|0,-1|0,0|0,1 */
+	private void source() {
+		List<Move> list = new ArrayList<Move>();
+		try {
+			FileInputStream fis = openFileInput("moves.txt");
+			BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
+			String line;
+			reader.readLine(); // first line give the # of moves...
+			while ((line = reader.readLine()) != null)   {
+				String[] data = line.split(":");
+				int i = new Integer(data[0]);
+				int j = new Integer(data[1]);
+				int color = new Integer(data[2]);
+				Piece piece = game.game.boards.get(color).findPieceByType(data[3] );
+				piece.reset();
+				for (int q = 4; q<data.length; q++) {
+					String[] position = data[q].split(",");
+					int x = new Integer( position[0]);
+					int y = new Integer( position[1]);
+					piece.add( new Square(x, y ));
+				}
+				Move move = new Move(piece, i, j);
+				Log.d(tag, "created move : " + move);
+				list.add(move);
+			}
+			fis.close();
+			newgame();
+			game.replay( list);
+			game.reorderPieces();
+		} catch (Exception e) {
+			Log.e(tag, "yep error is :", e);
+		}
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		source();
+	}
+	@Override
+	protected void onStop() {
+		save();
+		super.onStop();
 	}
 }

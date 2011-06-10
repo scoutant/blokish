@@ -13,8 +13,12 @@
 
 package org.scoutant.blokish.model;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.prefs.Preferences;
+
+import android.content.Context;
 import android.util.Log;
 
 public class Game {
@@ -95,10 +99,17 @@ public class Game {
 	public String toString() {
 		String msg = "# moves : " + moves.size();
 		for (Move move: moves) {
-			msg += "\n" + move;
+			msg += "\n" + Move.serialize(move);
 		}
 		return msg;
 	}
+
+	public List<Move> deserialize(String msg) {
+		List<Move> list = new ArrayList<Move>();
+		// TODO
+		return list;
+	}
+	
 	
 	int[][] ab = new int [20][20];
 	/**
