@@ -32,7 +32,9 @@ When the move is valid a green 'ok' button appears. You can commit the move by c
 Changelog :
 
 1.3, 2011/06 :
-- Some tunings of the AI scoring function 
+- Added feature : save game on exit and load it on next start. Splashscreen vanish more quickly when game loaded.
+- Added preference 'Exit popup'. Enabling/disable the popup confirmation when exiting.
+With those 2 features, you can have a one click close and a quick reload. Suitable in busy situations.
 - Minor bug fix : menu option 'back one move' now ok even for fresh new game.
 
 1.2, 2011/06 :

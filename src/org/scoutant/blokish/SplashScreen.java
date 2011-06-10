@@ -1,5 +1,9 @@
 package org.scoutant.blokish;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +19,17 @@ public class SplashScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splashscreen);
-		handler.sendEmptyMessageDelayed(0, DELAY);
+		long delai = DELAY;
+		try {
+			FileInputStream fis;
+			fis = openFileInput("moves.txt");
+			BufferedReader reader = new BufferedReader( new InputStreamReader(fis));
+			if (reader.readLine()!=null && reader.readLine()!=null) {
+				delai = DELAY / 3;
+			}
+		} catch (Exception e) {
+		}
+		handler.sendEmptyMessageDelayed(0, delai);
 	}
 
 	private Handler handler = new Handler() {

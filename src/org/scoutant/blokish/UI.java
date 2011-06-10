@@ -258,7 +258,11 @@ public class UI extends Activity {
 			devmode = !devmode;
 			return true;
 		}
+		
 		if ( keyCode == KeyEvent.KEYCODE_BACK) {
+			if (!prefs.getBoolean("popupOnExit", true)) {
+				UI.this.finish();
+			} else {
 			new AlertDialog.Builder(this)
 			.setMessage("Quit game ?")
 			.setCancelable(false)
@@ -274,6 +278,7 @@ public class UI extends Activity {
 			.create()
 			.show();
 			return true;
+			}
 		}
 		return super.onKeyDown(keyCode, event);
 	}
@@ -315,7 +320,6 @@ public class UI extends Activity {
 				Log.d(tag, "created move : " + move);
 				list.add(move);
 			}
-			fis.close();
 			newgame();
 			game.replay( list);
 			game.reorderPieces();
