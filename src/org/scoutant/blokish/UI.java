@@ -20,9 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import org.scoutant.blokish.model.Move;
 import org.scoutant.blokish.model.Piece;
@@ -56,9 +54,7 @@ public class UI extends Activity {
 	
 	private static String tag = "activity";
 	public GameView game;
-	// TODO 
-//	public boolean devmode=false;
-	public boolean devmode=true;
+	public boolean devmode=false;
 	private SharedPreferences prefs;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -216,7 +212,6 @@ public class UI extends Activity {
 			}
 			new AlertDialog.Builder(UI.this)
 			.setMessage(message)
-//			.setMessage("Game over, player " + game.game.colors[winner] + " wins by : " + game.game.boards.get(winner).score)
 			.setCancelable(false)
 			.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
@@ -287,7 +282,9 @@ public class UI extends Activity {
 		FileOutputStream fos;
 		try {
 			fos = openFileOutput("moves.txt", Context.MODE_PRIVATE);
-			fos.write( game.game.toString().getBytes());
+			if (!game.game.over()) {
+				fos.write( game.game.toString().getBytes());
+			} // if gave is over we do not save it, so as to open a blank game next time
 			fos.close();
 		} catch (FileNotFoundException e) {
 			Log.e(tag, "not found...", e);
