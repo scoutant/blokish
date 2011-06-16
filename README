@@ -1,14 +1,8 @@
-Blokish.
-
-Android game. Open-source implementation of the popular board game Blokus.
-
-v1.1
+Board game Bokus. Blokish is a free/open-source Android implementation.
 
 May install directly from Android Market, searching for 'blokish'.
 
-Source available at : https://github.com/scoutant/blokish
-
-Under licence LGP v3.
+Source available at : https://github.com/scoutant/blokish. Under licence LGP v3.
 
 A board with 20 * 20 squares.	
 4 players having each 21 pieces : 1 single-square, 1 domino, 2 triominos, 5 tetraminos and 12 pentaminos	 		

@@ -118,8 +118,8 @@ public class AI  {
 									Log.e(tag, "Inconsistant ! "+move);
 								}
 								int score = SIZE_WEIGHT * piece.count;
-								if (board.pieces.size()> board.nbPieces - 5) {
-									// encourage moving to the center
+								if (board.pieces.size()> board.nbPieces-5) {
+									// encourage moving to the center, this extra bonus only for pentaminos
 									int io = game.size/2 - i;
 									int jo = game.size/2 - j;
 									score -= CENTER_WEIGHT * (io*io + jo*jo);
@@ -130,7 +130,10 @@ public class AI  {
 								score -= ENEMY_SEEDS_WEIGHT * enemyscore;
 								move.score = score;
 								Log.d(tag, ""+move);
-								moves.add(move);
+								// TODO OK?
+								if (board.pieces.size()<= board.nbPieces-5 || piece.count>=5) {
+									moves.add(move);
+								}
 								movesAgainstSeed++;
 								if (moves.size()>= maxMoves[level]) {
 									autoAdaptLevel(startedAt);

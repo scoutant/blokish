@@ -75,10 +75,10 @@ public class UI extends Activity {
 		if (game.selected!=null) {
 			menu.add(Menu.NONE, MENU_ITEM_FLIP, Menu.NONE, "Flip piece").setIcon(android.R.drawable.ic_menu_set_as);
 		}
-		menu.add(Menu.NONE, MENU_ITEM_BACK, Menu.NONE, "back one move").setIcon(android.R.drawable.ic_menu_revert);
-		menu.add(Menu.NONE, MENU_ITEM_NEW, Menu.NONE, "new game").setIcon(android.R.drawable.ic_menu_rotate);
-		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, "preferences").setIcon(android.R.drawable.ic_menu_preferences);
-		menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, "help").setIcon(android.R.drawable.ic_menu_help);
+		menu.add(Menu.NONE, MENU_ITEM_BACK, Menu.NONE, "Undo").setIcon(android.R.drawable.ic_menu_revert);
+		menu.add(Menu.NONE, MENU_ITEM_NEW, Menu.NONE, "New game").setIcon(android.R.drawable.ic_menu_rotate);
+		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, "Preferences").setIcon(android.R.drawable.ic_menu_preferences);
+		menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, "Help").setIcon(android.R.drawable.ic_menu_help);
 		if (devmode) {
 			menu.add(Menu.NONE, MENU_ITEM_THINK, Menu.NONE, "AI").setIcon(android.R.drawable.ic_menu_manage);
 			menu.add(Menu.NONE, MENU_ITEM_HISTORY, Menu.NONE, "hist").setIcon(android.R.drawable.ic_menu_recent_history);
@@ -314,7 +314,7 @@ public class UI extends Activity {
 					piece.add( new Square(x, y ));
 				}
 				Move move = new Move(piece, i, j);
-				Log.d(tag, "created move : " + move);
+//				Log.d(tag, "created move : " + move);
 				list.add(move);
 			}
 			newgame();
@@ -335,4 +335,5 @@ public class UI extends Activity {
 		save();
 		super.onStop();
 	}
+	
 }

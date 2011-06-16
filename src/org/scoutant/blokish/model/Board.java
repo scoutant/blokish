@@ -52,7 +52,6 @@ public class Board {
 	public List<Piece> pieces = new ArrayList<Piece>();
 	public int nbPieces;
 	public int score;
-	// game over for that player?
 	public boolean over=false;
 	
 	public Board(int color) {

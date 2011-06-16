@@ -70,7 +70,6 @@ public class Piece {
 	}
 	
 	public Piece add(Square s) {
-		count++;
 		return add(s.i, s.j);
 	}
 
