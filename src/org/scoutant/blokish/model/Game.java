@@ -13,12 +13,9 @@
 
 package org.scoutant.blokish.model;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.Preferences;
 
-import android.content.Context;
 import android.util.Log;
 
 public class Game {

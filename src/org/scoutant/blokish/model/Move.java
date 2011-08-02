@@ -13,7 +13,6 @@
 
 package org.scoutant.blokish.model;
 
-
 public class Move implements Comparable<Move>{
 	
 	public Piece piece;
