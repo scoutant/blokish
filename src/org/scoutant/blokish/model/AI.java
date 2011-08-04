@@ -134,6 +134,11 @@ public class AI  {
 								if (board.pieces.size()<= board.nbPieces-5 || piece.count>=5) {
 									moves.add(move);
 								}
+								// Endgame deep thinking
+								if (board.pieces.size() < 15) {
+									int chainValue = doesChain(color, move);
+								}
+								
 								movesAgainstSeed++;
 								if (moves.size()>= maxMoves[level]) {
 									autoAdaptLevel(startedAt);
@@ -148,6 +153,69 @@ public class AI  {
 		autoAdaptLevel(startedAt);
 		return moves;
 	}
+
+	private int[][] ij = new int [20][20];
+	
+	/**
+	 * Considering we play given @param move. 
+	 * @return true if we may place a piece on newly created seeds.
+	 */
+	protected int doesChain(int color, Move move) {
+		Board board = game.boards.get(color);
+		Piece played = move.piece;
+		List<Piece> pieces = new ArrayList<Piece>();
+		for (Piece piece : board.pieces) {
+			if (!piece.equals(played)) {
+				pieces.add( piece.clone());
+			}
+		}
+		
+		for (int j=0;j<20;j++) {
+			for (int i=0;i<20;i++) {
+				ij[i][j] = board.ij[i][j];
+			}
+		}
+		// let's place 'played' onto board.
+		for(Square s : played.squares(color)) {
+			int I = move.i+s.i;
+			int J = move.j+s.j;
+			if (I>=0 && I<20 && J>=0 && J<20) ij[I][J] = s.value;
+		}
+		
+		Log.d(tag, "considering # of pieces : " + pieces.size());
+		for (Square seed : played.seeds()) {
+			for (Piece piece : pieces) {
+				for (int r=0; r<piece.rotations; r++, piece.rotate(1)) {
+					for( int f=0; f<piece.flips; f++, piece.flip()) {
+						for (Square s : piece.squares()) {
+							int i = move.i + seed.i - s.i;
+							int j = move.j + seed.j - s.j;
+							boolean overlaps = overlaps(color, piece, i, j);
+							boolean outside = board.outside(s, i, j); 
+							boolean fits =  game.fits(piece, i, j);
+							// TODO and does not overlap nor touch 'played' neither!
+							if ( !overlaps && !outside && fits ){
+								Move next = new Move(piece, i, j);
+								Log.d(tag, "doesChain with : " + next);
+								return 1;
+							}
+						}
+					}
+				}
+			}
+		}
+		return 0;
+	}
+	
+	public boolean overlaps( int color, Piece piece, int i, int j) {
+		for(Square s : piece.squares()) {
+			int I = i+s.i;
+			int J = j+s.j;
+			if ( I>=0&&I<20&&J>=0&&J<20 &&  ij[I][J] > 1 ) return true;
+		}
+		return false;
+	}
+
 	
 	private void autoAdaptLevel(long startedAt) {
 		long duration = new Date().getTime()- startedAt;

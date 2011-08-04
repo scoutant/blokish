@@ -104,7 +104,11 @@ public class Board {
 	
 	public void add( Piece piece, int i, int j) {
 		for(Square s : piece.squares(this.color)) {
-			try { ij[i+s.i][j+s.j] = s.value; } catch (Exception e) {}
+			// TODO refactor without try / catch
+//			try { ij[i+s.i][j+s.j] = s.value; } catch (Exception e) {}
+			int I = i+s.i;
+			int J = j+s.j;
+			if (I>=0 && I<size && J>=0 && J<size) ij[I][J] = s.value;
 		}
 		
 		if (piece.color == this.color) {
