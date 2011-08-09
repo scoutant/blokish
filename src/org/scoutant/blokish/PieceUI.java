@@ -281,6 +281,12 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	    		i=newi;
 	    		j=newj;
 	    		moving = true;
+	    		
+//	    		LayoutParams l = (LayoutParams) getLayoutParams();
+//	    		Log.d(tag, "DnD moving : " + i + ", " + j+ ". visible : " + this.getVisibility() + ", " + l.leftMargin );
+	    		
+	    		// v1.4 fix for large screens
+	    		doLayout();
     		}
     	}
     	if (action==MotionEvent.ACTION_UP) {

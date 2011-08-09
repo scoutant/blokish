@@ -206,7 +206,7 @@ public class UI extends Activity {
 			String message = "";
 			if (winner==0 && prefs.getBoolean("ai", true)) {
 				 message += "Congratulations, you win with score : " + score +".";
-				 if (findLevel()<4-1) message += "\nTry next level...";
+				 if (findLevel()<(4-1)) message += "\nTry next level...";
 			} else {
 				message += "Player " + game.game.colors[winner] + " wins with score : " + score;
 			}

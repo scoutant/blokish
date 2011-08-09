@@ -26,8 +26,9 @@ public class AI  {
 	public static final String tag = "sc";
 	private static final int SIZE_WEIGHT = 5;
 	private static final int CENTER_WEIGHT = 1;
-	private static final int SEEDS_WEIGHT = 4;
+	private static final int SEEDS_WEIGHT = 3;
 	private static final int ENEMY_SEEDS_WEIGHT = 1;
+	private static final int CHAINING_WEIGHT = 3;
 	public Game game;
 	private Random random = new Random();
 	
@@ -81,8 +82,19 @@ public class AI  {
 		Collections.sort(moves);
 		Collections.reverse(moves);
 		Move move = moves.get( 0);
-		if (moves.size()>10) {
-			move = moves.get( random.nextInt(4));
+		Log.d(tag, "best move actually is : " + move);
+		// TODO may be many moves with O1 and I2. But only 1 or 2 nice moves!!
+		if (moves.size()>20) {
+			// let's prune trivial moves
+			for (int k=moves.size()-1; k>=2; k--) {
+				if (moves.get(k).piece.count<=2) moves.remove(k);
+			}
+			// Now if we do have a significant # of moves, lets randomized among the very best ones.
+			if (moves.size()> 10) {
+				move = moves.get( random.nextInt(3));
+			} else {
+				Log.d(tag, "keeping best move!");
+			}
 		}
 		move.piece.reset(move.ghost);
 		return move;
@@ -128,15 +140,16 @@ public class AI  {
 								score += SEEDS_WEIGHT * seedsIfAdding ;
 								int enemyscore = game.scoreEnemySeedsIfAdding(board.color, piece, i, j);
 								score -= ENEMY_SEEDS_WEIGHT * enemyscore;
+								// Endgame deep thinking
+								if (board.pieces.size() < 9) {
+									score += CHAINING_WEIGHT*chainingScore(color, move);
+								}
 								move.score = score;
 								Log.d(tag, ""+move);
 								// TODO OK?
-								if (board.pieces.size()<= board.nbPieces-5 || piece.count>=5) {
+//								if (board.pieces.size()<= board.nbPieces-5 || piece.count>=5) {
+								if (board.pieces.size()<= board.nbPieces-4 || piece.count>=5) {
 									moves.add(move);
-								}
-								// Endgame deep thinking
-								if (board.pieces.size() < 15) {
-									int chainValue = doesChain(color, move);
 								}
 								
 								movesAgainstSeed++;
@@ -160,7 +173,7 @@ public class AI  {
 	 * Considering we play given @param move. 
 	 * @return true if we may place a piece on newly created seeds.
 	 */
-	protected int doesChain(int color, Move move) {
+	protected int chainingScore(int color, Move move) {
 		Board board = game.boards.get(color);
 		Piece played = move.piece;
 		List<Piece> pieces = new ArrayList<Piece>();
@@ -181,7 +194,9 @@ public class AI  {
 			int J = move.j+s.j;
 			if (I>=0 && I<20 && J>=0 && J<20) ij[I][J] = s.value;
 		}
-		
+
+		int score = 0;
+		Move second = null;
 		Log.d(tag, "considering # of pieces : " + pieces.size());
 		for (Square seed : played.seeds()) {
 			for (Piece piece : pieces) {
@@ -193,18 +208,20 @@ public class AI  {
 							boolean overlaps = overlaps(color, piece, i, j);
 							boolean outside = board.outside(s, i, j); 
 							boolean fits =  game.fits(piece, i, j);
-							// TODO and does not overlap nor touch 'played' neither!
 							if ( !overlaps && !outside && fits ){
-								Move next = new Move(piece, i, j);
-								Log.d(tag, "doesChain with : " + next);
-								return 1;
+								if (piece.count > score) {
+									second = new Move(piece, i, j);
+									score = piece.count;
+								}
+								// TODO also include # of promissing seeds?
 							}
 						}
 					}
 				}
 			}
 		}
-		return 0;
+		if (score>1) Log.d(tag, "may CHAIN with : " + second);
+		return score;
 	}
 	
 	public boolean overlaps( int color, Piece piece, int i, int j) {

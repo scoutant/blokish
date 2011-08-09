@@ -113,7 +113,7 @@ public class Game {
 	 * @return # of seeds if actually adding enemy @param piece at @param i, @param j on board @param board.
 	 */
 	private int scoreEnemySeedsIfAdding(Board board, Piece piece, int i, int j) {
-		// how many of the board's seeds hapen to be under piece?
+		// how many of the board's seeds happen to be under piece?
 		int result=0;
 		for (int b=0; b<20; b++) for (int a=0; a<20; a++) ab[a][b] = 0;
 		for(Square s : board.seeds()) {
@@ -129,12 +129,13 @@ public class Game {
 	
 	public int scoreEnemySeedsIfAdding(int color, Piece piece, int i, int j) {
 		int result =0;
-		for (int c=0; c<4; c++) {
-			if (c!=color) {
-				result += scoreEnemySeedsIfAdding( boards.get(c), piece, i, j );
-			}
-		}
-//		Log.d(tag, "scoreEnemySeedsIfAdding : " + result + ", for color :" + color);
+//		for (int c=0; c<4; c++) {
+//			if (c!=color) {
+//				result += scoreEnemySeedsIfAdding( boards.get(c), piece, i, j );
+//			}
+//		}
+		// try consider only Red as enemy, for machine to compete with human!
+		result += scoreEnemySeedsIfAdding( boards.get(0), piece, i, j );
 		return result;
 	}
 	

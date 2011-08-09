@@ -6,8 +6,8 @@
 		android:layout_width="fill_parent" android:layout_height="fill_parent" 
 		android:orientation="vertical" 
 		>
-		<ImageView android:src="@drawable/blokish_title" 
-			android:layout_width="431px" android:layout_height="48px"
+		<ImageView android:src="@drawable/blokish2" 
+			android:layout_width="96px" android:layout_height="96px"
 			android:layout_marginTop="20px"  
 			android:layout_gravity="center_horizontal"
 			/>
@@ -31,11 +31,11 @@
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:layout_marginTop="16px" style="@style/h1" />
 		<TextView android:text="Do notice the smooth Drag&amp;Drop and swipe gestures to place the pieces :" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
-		<TextView android:text="- Scroll through your remaining piece with you finger from left to right." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="- Scroll through your remaining pieces with you finger from left to right." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<ImageView android:src="@drawable/blokish_scroll" 
 			android:layout_width="500px" android:layout_height="250px"
 			android:layout_marginTop="10px" android:layout_marginBottom="10px" android:layout_gravity="center_horizontal" />
-		<TextView android:text="- Select an drag a piece onto the board. You can now drag it around easily putting the finger on the grey circle" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="- Select an drag a piece onto the board. You can now drag it around easily putting the finger on the large grey circle" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<ImageView android:src="@drawable/blokish_dragging" 
 			android:layout_width="500px" android:layout_height="250px"
 			android:layout_marginTop="10px" android:layout_marginBottom="10px" android:layout_gravity="center_horizontal" />
@@ -50,11 +50,13 @@
 		<ImageView android:src="@drawable/blokish_21_1" 
 			android:layout_width="fill_parent" android:layout_height="800px"
 			android:layout_gravity="center_horizontal" />
+		<TextView android:text="- Att any time you can see you oponent remaining pieces : just select tab of corresponding color at the bottom." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="- When you win against the machine, you can select a harder level : Menu &gt; Preferences." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 
-		<TextView android:text="http://blokish.scoutant.org" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="http://scoutant.org" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 			
 		<TextView android:text="Blokish is an Free/Libre open-source app, licence GPL." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
-		<TextView android:text="Fell free to use the code you can get att http://github.com/scoutant/blokish." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="Fell free to use the code you can get att http://github.com/scoutant. Release 1.4, 2011/08" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="Stephane Coutant" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 			
 	</LinearLayout>
