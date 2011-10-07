@@ -172,6 +172,7 @@ public class UI extends Activity {
 		@Override
 		protected Move doInBackground(Integer... params) {
 			game.thinking=true;
+			game.indicator.show();
 			return game.ai.think(params[0], findLevel());
 		}
 		@Override
@@ -183,6 +184,7 @@ public class UI extends Activity {
 			UI.this.game.play( move);
 			turn++;
 			if (turn<4) new AITask().execute(turn);
+			if (turn==4) game.indicator.hide();
 			if (turn==4 && !game.redOver ) {
 				game.thinking=false;
 				turn=0;

@@ -42,6 +42,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	
 	private Resources resources;
 	private Drawable square;
+	private Drawable square_bold;
 	private Canvas canvas;
 	/** square size in pixel */
 	private int size;
@@ -61,6 +62,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	private int localY=0;
 	
 	public static int[] icons = { R.drawable.red, R.drawable.green, R.drawable.blue, R.drawable.orange };
+	public static int[] icons_bold = { R.drawable.red_bold, R.drawable.green_bold, R.drawable.blue_bold, R.drawable.orange_bold };
 	
 	public boolean movable=true;
 	public boolean moving=false;
@@ -98,6 +100,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 		if (footprint==5) oo = 2;
 		radius = PADDING*size + footprint*size/2;
 		square = resources.getDrawable( icons[piece.color]);
+		square_bold = resources.getDrawable( icons_bold[piece.color]);
 		paint.setColor(0x99999999);
 		resetLocalXY();
 		vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
@@ -202,6 +205,12 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 		this.canvas = canvas;
 	}
 	private PieceUI add(int i, int j){
+		GameView game = (GameView) this.getParent();
+		if (game.lasts[piece.color] == this && this.j<=20) {
+			square_bold.setBounds( new Rect((i+PADDING+oo)*size, (j+PADDING+oo)*size, (i+PADDING+oo+1)*size+1, (j+PADDING+oo+1)*size+1));
+			square_bold.draw(canvas);
+			return this;
+		}
 		if (this.j<=20) {
 			square.setBounds( new Rect((i+PADDING+oo)*size+1, (j+PADDING+oo)*size+1, (i+PADDING+oo+1)*size, (j+PADDING+oo+1)*size));				
 		} else {

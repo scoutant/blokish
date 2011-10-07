@@ -1,29 +1,51 @@
-Board game Bokus. Blokish is a free/open-source Android implementation.
+Open-source Android implementation of the popular board game Blokus. With very smooth Drag & Drop user interface.
 
-May install directly from Android Market, searching for 'blokish'.
+A family game involving four players and a board with 20 x 20 squares. Like chess or checkers, it's a game for which at any time you can see your opponent's pieces.
 
-Source available at : https://github.com/scoutant/blokish. Under licence LGP v3.
+Each player starts with 21 pieces : 1 monomino, 1 domono, 2 triominos, 5 tetraminos and 12 pentaminos. It may recall you the Tetris polyominos...
 
-A board with 20 * 20 squares.	
-4 players having each 21 pieces : 1 single-square, 1 domino, 2 triominos, 5 tetraminos and 12 pentaminos	 		
-"As player, I shall place on the board most of my pieces." 	 		
-"For first round, I must place a piece so that it touches one of the corners of the board."	 		
-Next, a piece must be placed so that it touches a corner of one of my own pieces. It may touch several corners, but never any side of my pieces!"	 		
+"For first round, I must place a piece so that it touches one of the corners of the board"
 
-"If a cannot place any more piece I pass my turn."	 		
-The end of the game is reached when every player passes.	 		
-"My score is : addition of all the squares of the pieces I placed"	 		
-		
-How to play with Blokish Android app :
+"Next, a piece must be placed so that it touches a corner of one of my own pieces.
+It may touch several corners, but never any side/edge of my pieces!" Look at screenshots.
 
-Scroll through your remaining piece with you finger from left to right	 		
-Select an drag a piece onto the board. You can now drag it around easily putting the finger on the grey circle	 		
-Rotate the piece using one the handles	 		
-You can flip the piece to its mirror position : with a long press on the piece
-You can cancel with the red button. It will replace the piece in your store.	 		
-When the move is valid a green 'ok' button appears. You can commit the move by clicking it!
+The game has a nice and natural User Interface : just Drag & Drop the piece with the finger. Rotate a piece likewise. And return a piece with a long press.
+
+"If a cannot place any more piece I pass my turn."
+
+The end of the game is reached when every player passes.
+"My score is : addition of the squares of the pieces I placed".
+
+Refer to 'Menu > Help' inside the app. With several screenshots.
+
+You can safely quit at any time : your current game will be restored on next startup.
+
+
+You play against the machine. You can configure the level of corresponding Artificial Intelligence : 4 levels. Refer to Menu > Preferences
+
+You can disable AI for a human play only. Refer to Menu > Preferences.
+
+The software has no unobtrusive banner advertising.
+Once installed, you can play off-line.
+
+The game is free. And even more : the code is open-source. 
+You can access it at http://github.com/scoutant.
+You can reuse and adapt it according to GPL v3 license.
+
+You may post issues at http://github.com/scoutant/blokish/issues
+
+Stephane Coutant, http://scoutant.org
+
+-----------
 
 Changelog :
+
+1.5, 2011/10 :
+* Added wheel animation to illustrated AI in progress 
+
+1.4, 2011/08 : 
+* Advanced AI with multi-turn processing better mimicking human strategy.
+* Drag & Drop fix for large screens and new app icon.
 
 1.3, 2011/06 :
 - Added feature : save game on exit and load it on next start. Splashscreen vanish more quickly when game loaded.

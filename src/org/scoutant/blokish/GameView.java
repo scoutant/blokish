@@ -65,6 +65,8 @@ public class GameView extends FrameLayout  {
 	public SharedPreferences prefs;
 	public boolean thinking=false;
 	public boolean singleline=false;
+	public BusyIndicator indicator;
+	public PieceUI lasts[] = new PieceUI[4];
 	
 	public GameView(Context context) {
 		super(context);
@@ -95,6 +97,11 @@ public class GameView extends FrameLayout  {
 			dots[color] = context.getResources().getDrawable(icons[color]);
 			dots[color].setAlpha(191);
 		}
+		// progress indicator
+		View iView = new View(context);
+		iView.setLayoutParams(new FrameLayout.LayoutParams(180, 180, Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL));
+		addView(iView);
+		indicator = new BusyIndicator(context, iView);
 	}
 	
 	public float downX;
@@ -106,7 +113,6 @@ public class GameView extends FrameLayout  {
 		doTouch(event);
 		return true;
 	}
-
 	
 	public void doTouch(MotionEvent event) {
 		int action = event.getAction(); 
@@ -163,7 +169,10 @@ public class GameView extends FrameLayout  {
 		if (move==null) return;
 		PieceUI ui = findPiece( move.piece);
 		boolean done = game.play(move);
-		if (done) ui.place(move.i, move.j);
+		if (done) {
+			lasts[ui.piece.color] = ui;
+			ui.place(move.i, move.j);
+		}
 		tabs.putLabel(move.piece.color, ""+game.boards.get(move.piece.color).score);
 		mayReorderPieces();
 		invalidate();

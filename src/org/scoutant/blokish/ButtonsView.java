@@ -94,6 +94,7 @@ public class ButtonsView extends FrameLayout {
 				piece.movable=false;
 				piece.setLongClickable(false);
 				piece.setClickable(false);
+				game.lasts[piece.piece.color] = piece;
 				piece.invalidate();
 				ButtonsView.this.setVisibility(INVISIBLE);
 				ButtonsView.this.game.game.play( move);
