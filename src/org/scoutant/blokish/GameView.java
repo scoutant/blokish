@@ -99,7 +99,7 @@ public class GameView extends FrameLayout  {
 		}
 		// progress indicator
 		View iView = new View(context);
-		iView.setLayoutParams(new FrameLayout.LayoutParams(180, 180, Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL));
+		iView.setLayoutParams(new FrameLayout.LayoutParams(150, 150, Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL));
 		addView(iView);
 		indicator = new BusyIndicator(context, iView);
 	}

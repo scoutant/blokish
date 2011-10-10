@@ -22,6 +22,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.crypto.NullCipher;
+
 import org.scoutant.blokish.model.Move;
 import org.scoutant.blokish.model.Piece;
 import org.scoutant.blokish.model.Square;
@@ -34,6 +36,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -56,12 +59,16 @@ public class UI extends Activity {
 	public GameView game;
 	public boolean devmode=false;
 	private SharedPreferences prefs;
+	private Vibrator vibrator; 
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 		newgame();
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		source();
 	}
 
 	private void newgame() {
@@ -158,6 +165,10 @@ public class UI extends Activity {
 		new AITask().execute(player);
 	}
 	
+	private int findRequestedLevel() {
+		String level = prefs.getString("aiLevel", "0");
+		return new Integer(level);
+	}
 	
 	private int findLevel() {
 		String level = prefs.getString("aiLevel", "0");
@@ -167,16 +178,19 @@ public class UI extends Activity {
 	}
 	
 	public int turn = 0;
+	private AITask task = null;
 	
 	private class AITask extends AsyncTask<Integer, Void, Move> {
 		@Override
 		protected Move doInBackground(Integer... params) {
+			task = this;
 			game.thinking=true;
 			game.indicator.show();
 			return game.ai.think(params[0], findLevel());
 		}
 		@Override
 		protected void onPostExecute(Move move) {
+			if (vibrator!=null && !game.redOver) vibrator.vibrate(15);
 			if (game.game.over()) {
 				displayWinnerDialog();
 				return;
@@ -192,7 +206,7 @@ public class UI extends Activity {
 				new CheckTask().execute();
 			}
 			if (turn==4 && game.redOver ) {
-				Log.d(tag, "RED is DEAD. game.over ? " + game.game.over());
+				Log.d(tag, "Red is dead. game.over ? " + game.game.over());
 				if (game.game.over()) {
 					displayWinnerDialog();					
 				} else {
@@ -202,13 +216,15 @@ public class UI extends Activity {
 			}
 		}
 		private void displayWinnerDialog() {
+			game.indicator.hide();
 			Log.d(tag, "game over !");
 			int winner = game.game.winner();
 			int score = game.game.boards.get(winner).score;
 			String message = "";
 			if (winner==0 && prefs.getBoolean("ai", true)) {
 				 message += "Congratulations, you win with score : " + score +".";
-				 if (findLevel()<(4-1)) message += "\nTry next level...";
+//				 if (findLevel()<(4-1)) message += "\nTry next level...";
+				 if (findRequestedLevel()<(4-1)) message += "\nTry next level...";
 			} else {
 				message += "Player " + game.game.colors[winner] + " wins with score : " + score;
 			}
@@ -232,6 +248,7 @@ public class UI extends Activity {
 		@Override
 		protected void onPostExecute(Boolean finished) {
 			if (finished) {
+				game.indicator.hide();
 				Log.d(tag, "red over!");
 				new AlertDialog.Builder(UI.this)
 				.setMessage("Red has no more moves...")
@@ -239,6 +256,7 @@ public class UI extends Activity {
 				.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						game.redOver = true;
+						game.game.boards.get(0).over = true;
 						Log.d(tag, "ok!");
 						think(1);
 						}
@@ -327,13 +345,13 @@ public class UI extends Activity {
 		}
 	}
 
-	@Override
-	protected void onStart() {
-		super.onStart();
-		source();
-	}
+	// TODO should be enough onDestroy ?
 	@Override
 	protected void onStop() {
+		if (task!=null) {
+			task.cancel(true);
+			Log.d(tag, "leaving AI, as activity is brough to background");
+		}
 		save();
 		super.onStop();
 	}

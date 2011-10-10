@@ -103,7 +103,6 @@ public class Game {
 
 	public List<Move> deserialize(String msg) {
 		List<Move> list = new ArrayList<Move>();
-		// TODO
 		return list;
 	}
 	

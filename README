@@ -20,6 +20,7 @@ Refer to 'Menu > Help' inside the app. With several screenshots.
 
 You can safely quit at any time : your current game will be restored on next startup.
 
+Last piece played is displayed both enlarged and with higher contrast. 
 
 You play against the machine. You can configure the level of corresponding Artificial Intelligence : 4 levels. Refer to Menu > Preferences
 
@@ -40,8 +41,11 @@ Stephane Coutant, http://scoutant.org
 
 Changelog :
 
-1.5, 2011/10 :
-* Added wheel animation to illustrated AI in progress 
+1.5, 2011/10 : UI feedbacks
+* Added wheel animation to illustrated AI in progress
+* Last piece for each player is displayed both enlarged and with higher contrasts 
+* vibration feedback whenever AI plays a move
+Thanks to those feedbacks, AI thinking duration is set to be longer, resulting in a global higher level.  
 
 1.4, 2011/08 : 
 * Advanced AI with multi-turn processing better mimicking human strategy.

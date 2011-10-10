@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" android:orientation="vertical">
-	<!-- 
-	<ImageView android:src="@drawable/blokish2" 
-		android:layout_width="96px" android:layout_height="96px"
-		android:layout_marginTop="10px"  
-		android:layout_gravity="center_horizontal"
-		/>
-	 -->
-	<ImageView android:src="@drawable/blokish_title" 
-		android:layout_width="250px" android:layout_height="60px"
-		android:layout_marginTop="20px"  
-		android:layout_gravity="center_horizontal"
-		/>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	>
 	<ImageView android:src="@drawable/blokish_21_1" 
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:layout_marginTop="20px"  
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:layout_gravity="center_horizontal"
 		/>
-</LinearLayout>
+	<ImageView android:src="@drawable/blokish_title" 
+		android:layout_width="400px" android:layout_height="100px"
+		android:layout_marginBottom="20px"  
+		android:layout_gravity="center_horizontal|bottom"
+		/>
+</FrameLayout>

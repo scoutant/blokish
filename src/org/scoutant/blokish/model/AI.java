@@ -66,12 +66,14 @@ public class AI  {
 	public Move think(int color, int level) {
 		if (game.boards.get(color).pieces.isEmpty()) {
 			Log.d(tag, "no more pieces for player : " + color);
+			// no big deal, AI will continue for the other players. At the very end current player will be granted the winning message.
+			game.boards.get(color).over = true;
 			return null;
 		}
 		Log.d(tag, "--------------------------------------------------------------------------------");
 		level = Math.min(level, adaptedLevel);
-		// reinforce player 2 compared to player 1 and 3
-		if (level>1 && color!=2 ) level--;
+		// reinforce player 1 compared to player 2 and 3
+		if (level>1 && color!=1 ) level--;
 		Log.d(tag, "thinking for player : " + color + ", upto # moves : " + maxMoves[level]);
 		List<Move> moves = thinkUpToNMoves(color, level);
 		Log.d(tag, "# moves : " + moves.size());
@@ -145,9 +147,7 @@ public class AI  {
 									score += CHAINING_WEIGHT*chainingScore(color, move);
 								}
 								move.score = score;
-								Log.d(tag, ""+move);
-								// TODO OK?
-//								if (board.pieces.size()<= board.nbPieces-5 || piece.count>=5) {
+//								Log.d(tag, ""+move);
 								if (board.pieces.size()<= board.nbPieces-4 || piece.count>=5) {
 									moves.add(move);
 								}
@@ -237,8 +237,8 @@ public class AI  {
 	private void autoAdaptLevel(long startedAt) {
 		long duration = new Date().getTime()- startedAt;
 		Log.d(tag, "lasted : " + duration );
-		if (duration > 1500 && adaptedLevel>0) {
-			Log.i(tag, "Decreasing AI level!!----------------");
+		if (duration > 2500 && adaptedLevel>0) {
+			Log.i(tag, "Decreasing AI level! * * * * * * * * * * * * * * * * * * * *");
 			adaptedLevel --;
 		}
 	}
