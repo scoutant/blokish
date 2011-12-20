@@ -86,7 +86,11 @@ public class ButtonsView extends FrameLayout {
 	private OnClickListener doOk = new OnClickListener() {
 		public void onClick(View v) {
 			Log.d(tag, "ok...");
-			PieceUI piece = game.selected; 
+			PieceUI piece = game.selected;
+			if (piece==null) {
+				Log.e(tag, "cannot retrieve piece!");
+				return;
+			}
 			Move move = new Move(piece.piece, piece.i, piece.j);
 			boolean possible = game.game.valid( move);
 			if (possible) {

@@ -1,4 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">blokish</string>
+
+	<string name="yes">Yes</string>
+	<string name="no">No</string>
+
+	<string name="help">Help</string>
+	<string name="preferences">Settings</string>
+
+	<string name="back">Back</string>
+	<string name="cancel">Cancel</string>
+
+	<string name="newnew">New</string>
+	<string name="delete">Delete</string>
+	<string name="undo">Undo</string>
+
+	<!-- app -->
+	
+	<string name="flip">Flip piece</string>
+	
+	<string name="quit">Quit the game?</string>
+	
+	<string name="new_game">New Game</string>
+	<string name="red_ko">Red has no more moves</string>
+	<string name="congratulations">Congratulations, you win with score : </string>
+	<string name="try_next">Try next level...</string>
+	<string name="wins_with_score">wins with score</string>
+	
+	<string name="Red">Player Red</string>
+	<string name="Green">Player Green</string>
+	<string name="Blue">Player Blue</string>
+	<string name="Orange">Player Orange</string>
+	
+
+    <!-- rate form -->
+	<string name="if_you_enjoy">If you enjoy the game Blokish, please take a moment to rate it. Thanks for your support!</string>
+	<string name="rate">Rate Blokish</string>
+	<string name="remind_me">Remind me later</string>
+	<string name="no_thansk">No, thanks</string>
 </resources>

@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<CheckBoxPreference 
+		android:key="displaySeeds" android:title="Afficher les points d'encrage" android:summary="Afficher un point là ou vous pouvez positionnez une pièce" 
+		android:defaultValue="true" />
+	<CheckBoxPreference android:key="ai" android:title="Intelligence Artificielle" android:summary="La machine joue les Verts, les Bleus et les Oranges" android:defaultValue="true" />
+	<ListPreference 
+		android:key="aiLevel" android:title="Niveau" android:summary="Choisir le niveau de difficulté, parmi..."
+		android:entries="@array/aiLevelNames" android:entryValues="@array/aiLevelValues" 
+		android:dialogTitle="Choisir le niveau" android:defaultValue="0" 
+		android:persistent="true"
+		/>
+	<CheckBoxPreference android:key="popupOnExit" android:title="Avertissement avant la sortie" android:summary="La partie sera souvegardée de toutes façons" android:defaultValue="true" />
+</PreferenceScreen>

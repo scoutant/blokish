@@ -22,8 +22,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.crypto.NullCipher;
-
 import org.scoutant.blokish.model.Move;
 import org.scoutant.blokish.model.Piece;
 import org.scoutant.blokish.model.Square;
@@ -34,6 +32,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -59,16 +58,19 @@ public class UI extends Activity {
 	public GameView game;
 	public boolean devmode=false;
 	private SharedPreferences prefs;
-	private Vibrator vibrator; 
+	private Vibrator vibrator;
+	private Resources rs;  
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		rs = getResources();
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 		newgame();
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		source();
+		AppRater.app_launched( this);
 	}
 
 	private void newgame() {
@@ -80,12 +82,14 @@ public class UI extends Activity {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
 		if (game.selected!=null) {
-			menu.add(Menu.NONE, MENU_ITEM_FLIP, Menu.NONE, "Flip piece").setIcon(android.R.drawable.ic_menu_set_as);
+			menu.add(Menu.NONE, MENU_ITEM_FLIP, Menu.NONE, R.string.flip).setIcon(android.R.drawable.ic_menu_set_as);
 		}
-		menu.add(Menu.NONE, MENU_ITEM_BACK, Menu.NONE, "Undo").setIcon(android.R.drawable.ic_menu_revert);
-		menu.add(Menu.NONE, MENU_ITEM_NEW, Menu.NONE, "New game").setIcon(android.R.drawable.ic_menu_rotate);
-		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, "Preferences").setIcon(android.R.drawable.ic_menu_preferences);
-		menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, "Help").setIcon(android.R.drawable.ic_menu_help);
+		menu.add(Menu.NONE, MENU_ITEM_BACK, Menu.NONE, R.string.undo).setIcon( R.drawable.left_48);
+		menu.add(Menu.NONE, MENU_ITEM_NEW, Menu.NONE, R.string.new_game).setIcon( R.drawable.restart_48);
+
+		menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, R.string.help).setIcon( R.drawable.help_48);
+		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, R.string.preferences).setIcon( R.drawable.preferences_48);
+		
 		if (devmode) {
 			menu.add(Menu.NONE, MENU_ITEM_THINK, Menu.NONE, "AI").setIcon(android.R.drawable.ic_menu_manage);
 			menu.add(Menu.NONE, MENU_ITEM_HISTORY, Menu.NONE, "hist").setIcon(android.R.drawable.ic_menu_recent_history);
@@ -127,14 +131,14 @@ public class UI extends Activity {
 		}
 		if (item.getItemId() == MENU_ITEM_NEW) {
 			new AlertDialog.Builder(this)
-			.setMessage("New Game ?")
+			.setMessage( rs.getString( R.string.new_game) + "?")
 			.setCancelable(false)
-			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			.setPositiveButton( R.string.yes, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					newgame();
 					}
 				})
-			.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			.setNegativeButton( R.string.no, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
 						dialog.cancel();
 					}
@@ -222,11 +226,13 @@ public class UI extends Activity {
 			int score = game.game.boards.get(winner).score;
 			String message = "";
 			if (winner==0 && prefs.getBoolean("ai", true)) {
-				 message += "Congratulations, you win with score : " + score +".";
-//				 if (findLevel()<(4-1)) message += "\nTry next level...";
-				 if (findRequestedLevel()<(4-1)) message += "\nTry next level...";
+				 message += rs.getString( R.string.congratulations) + score +".";
+				 if (findRequestedLevel()<(4-1)) message += "\n" + rs.getString( R.string.try_next);
 			} else {
-				message += "Player " + game.game.colors[winner] + " wins with score : " + score;
+//				message += "Player " + game.game.colors[winner] + " wins with score : " + score;
+				message += rs.getString( game.game.colors[winner]);
+				message += " " + rs.getString( R.string.wins_with_score) + " : ";
+				message += score;
 			}
 			new AlertDialog.Builder(UI.this)
 			.setMessage(message)
@@ -251,7 +257,7 @@ public class UI extends Activity {
 				game.indicator.hide();
 				Log.d(tag, "red over!");
 				new AlertDialog.Builder(UI.this)
-				.setMessage("Red has no more moves...")
+				.setMessage( R.string.red_ko)
 				.setCancelable(false)
 				.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
@@ -279,14 +285,14 @@ public class UI extends Activity {
 				UI.this.finish();
 			} else {
 			new AlertDialog.Builder(this)
-			.setMessage("Quit game ?")
+			.setMessage( R.string.quit)
 			.setCancelable(false)
-			.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			.setPositiveButton( R.string.yes, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					UI.this.finish();
 					}
 				})
-			.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			.setNegativeButton( R.string.no, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int id) {
 					}
 				})
@@ -302,6 +308,7 @@ public class UI extends Activity {
 		FileOutputStream fos;
 		try {
 			fos = openFileOutput("moves.txt", Context.MODE_PRIVATE);
+			if (fos==null) return;
 			if (!game.game.over()) {
 				fos.write( game.game.toString().getBytes());
 			} // if gave is over we do not save it, so as to open a blank game next time
@@ -345,7 +352,6 @@ public class UI extends Activity {
 		}
 	}
 
-	// TODO should be enough onDestroy ?
 	@Override
 	protected void onStop() {
 		if (task!=null) {

@@ -16,13 +16,16 @@ package org.scoutant.blokish.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.scoutant.blokish.R;
+
 import android.util.Log;
 
 public class Game {
 	public static final String tag = "sc";
 	public List<Board> boards = new ArrayList<Board>();
 	public int size = 20;
-	public String[] colors = { "Red", "Green", "Blue", "Orange" };
+//	public String[] colors = { "Red", "Green", "Blue", "Orange" };
+	public int[] colors = { R.string.Red, R.string.Green, R.string.Blue, R.string.Orange };
 	public Game() {
 		reset();
 	}

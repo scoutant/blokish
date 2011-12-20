@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- FRANCAIS -->
+
+	<string name="yes">Oui</string>
+	<string name="no">Non</string>
+
+	<string name="help">Aide</string>
+	<string name="preferences">Paramètres</string>
+
+	<string name="back">Retour</string>
+	<string name="cancel">Annuler</string>
+
+	<string name="newnew">Nouveau</string>
+	<string name="delete">Supprimer</string>
+	<string name="undo">Annuler</string>
+
+	<!-- app -->
+	
+	<string name="flip">Retourner la piece</string>
+	
+	<string name="quit">Sortir du jeu?</string>
+	
+	<string name="new_game">Nouvelle partie</string>
+	<string name="red_ko">Les rouges n\'ont plus de coup</string>
+	<string name="congratulations">Félicitations, vous avez gagnié, avec un score de : </string>
+	<string name="try_next">Essayez le niveau suivant!</string>
+	<string name="wins_with_score">gagnent avec le score</string>
+	
+	<string name="Red">les Rouges</string>
+	<string name="Green">Les Verts</string>
+	<string name="Blue">Les Bleus</string>
+	<string name="Orange">Les Oranges</string>
+	
+    <!-- rate form -->
+	<string name="if_you_enjoy">Evaluer Blokish. Pour améliorer le jeu... en prenant un instant pour vote, voire un commentaire.</string>
+	<string name="rate">Evaluer Blokish?</string>
+	<string name="remind_me">Me rappeler plus tard</string>
+	<string name="no_thansk">Non merci!</string>
+
+</resources>
