@@ -17,6 +17,8 @@
 	<!-- app -->
 	
 	<string name="flip">Flip piece</string>
+	<string name="i_pass">I pass my turn</string>
+	
 	
 	<string name="quit">Quit the game?</string>
 	

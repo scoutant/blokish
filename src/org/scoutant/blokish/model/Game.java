@@ -45,6 +45,12 @@ public class Game {
 	public boolean over() {
 		return boards.get(0).over && boards.get(1).over && boards.get(2).over && boards.get(3).over; 
 	}
+	
+	// TODO adapt message when equal score?
+	/**
+	 * on equal score : winner is the last to play.
+	 * 
+	 */
 	public int winner() {
 		int highscore = 0;
 		for (int p=0; p<4; p++) highscore = Math.max(highscore, boards.get(p).score);

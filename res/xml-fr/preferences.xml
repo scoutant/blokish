@@ -1,6 +1,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<CheckBoxPreference 
-		android:key="displaySeeds" android:title="Afficher les points d'encrage" android:summary="Afficher un point là ou vous pouvez positionnez une pièce" 
+		android:key="displaySeeds" android:title="Afficher les points d'encrage" android:summary="Afficher un point là où une pièce peut être positionnée" 
 		android:defaultValue="true" />
 	<CheckBoxPreference android:key="ai" android:title="Intelligence Artificielle" android:summary="La machine joue les Verts, les Bleus et les Oranges" android:defaultValue="true" />
 	<ListPreference 
@@ -9,5 +9,5 @@
 		android:dialogTitle="Choisir le niveau" android:defaultValue="0" 
 		android:persistent="true"
 		/>
-	<CheckBoxPreference android:key="popupOnExit" android:title="Avertissement avant la sortie" android:summary="La partie sera souvegardée de toutes façons" android:defaultValue="true" />
+	<CheckBoxPreference android:key="popupOnExit" android:title="Avertissement avant de quiter la partie" android:summary="La partie sera souvegardée de toutes façons..." android:defaultValue="true" />
 </PreferenceScreen>

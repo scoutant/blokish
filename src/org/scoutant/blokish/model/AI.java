@@ -52,6 +52,7 @@ public class AI  {
 							int j = seed.j - s.j;
 							if ( !board.outside(s, i, j) && game.fits(piece, i, j)) {
 								Log.d(tag, "possible move : " + new Move(piece, i, j));
+								game.boards.get(color).over = false;
 								return true;
 							}
 						}

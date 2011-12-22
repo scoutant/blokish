@@ -68,7 +68,7 @@
 		<TextView android:text="http://scoutant.org" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 			
 		<TextView android:text="Blokish is an Free/Libre open-source app, licence GPL." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
-		<TextView android:text="Fell free to use the code you can get att http://github.com/scoutant. Release 1.4, 2011/08" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="Fell free to use the code you can get att http://github.com/scoutant." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="Stephane Coutant" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 			
 	</LinearLayout>

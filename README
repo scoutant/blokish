@@ -41,6 +41,10 @@ Stephane Coutant, http://scoutant.org
 
 Changelog :
 
+1.6, 2011/12 : 
+* Added locales FR, ES, SE
+* minor layout refactoring with density-independant pixels
+
 1.5, 2011/10 : UI feedbacks
 * Added wheel animation to illustrated AI in progress
 * Last piece for each player is displayed both enlarged and with higher contrasts 

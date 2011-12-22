@@ -95,7 +95,7 @@ public class UI extends Activity {
 			menu.add(Menu.NONE, MENU_ITEM_HISTORY, Menu.NONE, "hist").setIcon(android.R.drawable.ic_menu_recent_history);
 		}
 		if (!prefs.getBoolean("ai", true)) {
-			menu.add(Menu.NONE, MENU_ITEM_PASS_TURN, Menu.NONE, "I pass my turn").setIcon(android.R.drawable.ic_menu_slideshow);			
+			menu.add(Menu.NONE, MENU_ITEM_PASS_TURN, Menu.NONE, R.string.i_pass).setIcon( R.drawable.checkmark_48);			
 		}
 		return true;
 	}
