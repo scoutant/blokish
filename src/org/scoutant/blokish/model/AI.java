@@ -45,8 +45,9 @@ public class AI  {
 		for (Square seed : board.seeds()) {
 			for (int p=0; p<board.pieces.size(); p++) {
 				Piece piece = board.pieces.get(p);
-				for (int r=0; r<piece.rotations; r++, piece.rotate(1)) {
-					for( int f=0; f<piece.flips; f++, piece.flip()) {
+				// Fixing issue #3, changing order rotate/flip
+				for( int f=0; f<piece.flips; f++, piece.flip()) {
+					for (int r=0; r<piece.rotations; r++, piece.rotate(1)) {
 						for (Square s : piece.squares()) {
 							int i = seed.i - s.i;
 							int j = seed.j - s.j;
