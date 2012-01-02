@@ -41,9 +41,14 @@ Stephane Coutant, http://scoutant.org
 
 Changelog :
 
+1.7, 2012 :
+* migrated to Android 2.2 
+* Added locale SE
+
 1.6, 2011/12 : 
-* Added locales FR, ES, SE
-* minor layout refactoring with density-independant pixels
+* Added locales FR, ES
+* Fixed endgame issue #3 : https://github.com/scoutant/blokish/issues/3
+* minor layout refactoring with density-independent pixels
 
 1.5, 2011/10 : UI feedbacks
 * Added wheel animation to illustrated AI in progress

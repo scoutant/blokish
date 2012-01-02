@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.scoutant.blokish" 
-	android:versionCode="9" android:versionName="1.6"
+	android:versionCode="10" android:versionName="1.7"
 	>
 	<application android:icon="@drawable/blokish2" android:label="Blokish" android:debuggable="true" android:theme="@style/scoutant">
 		<activity android:name=".SplashScreen" android:screenOrientation="portrait">
@@ -23,5 +23,5 @@
 </manifest>
 
 <!-- TODO issue #4 : when same score : last player wins : adapt the message. -->
-<!-- TODO fix issue #3 -->
+<!--  TODO AppRater and upgrade ?, No AppRater for 1.7? -->
 

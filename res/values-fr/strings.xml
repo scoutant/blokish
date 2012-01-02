@@ -20,7 +20,7 @@
 	<string name="flip">Retourner la piece</string>
 	<string name="i_pass">Je passe mon tour</string>
 	
-	<string name="quit">Quiter le  jeu? Votre partie sera sauvegardée.</string>
+	<string name="quit">Quitter le  jeu? Votre partie sera sauvegardée.</string>
 	
 	<string name="new_game">Nouvelle partie</string>
 	<string name="red_ko">Les rouges n\'ont plus de coup</string>
