@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- SVENSKA -->
+	<string name="yes">Ja</string>
+	<string name="no">Nej</string>
+
+	<string name="help">Hälp</string>
+	<string name="preferences">Inställningar</string>
+
+	<string name="back">Tillbaka</string>
+	<string name="cancel">Avbryta</string>
+
+	<string name="newnew">Ny</string>
+	<string name="delete">Radera</string>
+	<string name="undo">ångra</string>
+		
+	<!-- app -->
+	
+	<string name="flip">Vänd</string>
+	<string name="i_pass">Pass</string>
+	
+	<string name="quit">Avsluta spelet?</string>
+	
+	<string name="social">Social</string>
+		
+	<string name="new_game">Nytt Spel</string>
+	<string name="red_ko">Röd kan inte flytta mer</string>
+	<string name="congratulations">Grattis, du van. Poäng : </string>
+	<string name="try_next">Testa nästa svårighetsgrad</string>
+	<string name="wins_with_score">vinner. Poäng : </string>
+	
+	<string name="Red">Röd</string>
+	<string name="Green">Grön</string>
+	<string name="Blue">Blå</string>
+	<string name="Orange">Orange</string>
+
+	<!-- rate form -->
+	<string name="if_you_enjoy">Tycker du om spelet? Några sekunder för en betyg på Android Market?</string>
+	
+	<string name="now">Ja</string>
+	<string name="later">Senare</string>
+	<string name="never">Nej</string>
+		
+</resources>

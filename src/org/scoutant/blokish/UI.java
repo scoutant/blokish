@@ -239,7 +239,7 @@ public class UI extends Activity {
 			String message = "";
 			boolean redWins = (winner==0 && prefs.getBoolean("ai", true));
 			if (redWins) {
-				 message += rs.getString( R.string.congratulations) + score +".";
+				 message += rs.getString( R.string.congratulations) + " " + score +".";
 				 if (findRequestedLevel()<(4-1)) message += "\n" + rs.getString( R.string.try_next);
 			} else {
 //				message += "Player " + game.game.colors[winner] + " wins with score : " + score;

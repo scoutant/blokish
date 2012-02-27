@@ -48,7 +48,8 @@ Stephane Coutant, http://scoutant.org
 
 ## v1.7, 2012/03
 * migrated to Android 2.2 
-* added social feature, powered by Heazap : you may checkin and if you win game you may post your score...  
+* added social feature, powered by Heyzap : you may checkin and if you win game you may post your score...  
+* added local SV_SE
 
 ## v1.6, 2011/12
 * Added locales FR, ES
