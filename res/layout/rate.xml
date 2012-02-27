@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:paddingLeft="20dp" 	android:paddingRight="20dp" android:paddingBottom="20dp" 		
+	android:gravity="center_horizontal"
+	>
+	<LinearLayout android:id="@+id/icons"
+		android:orientation="horizontal"
+		android:gravity="center_vertical"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		>
+		<ImageView
+			android:src="@drawable/blokish2"
+			android:layout_width="100dp" android:layout_height="100dp"
+			/>
+	</LinearLayout>
+	<TextView android:id="@+id/message"
+		android:layout_marginTop="20dp"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:textColor="#FFF"
+		android:textSize="18dp"
+		android:text="@string/if_you_enjoy"
+		android:gravity="center"
+    	/>
+	<LinearLayout
+		android:orientation="horizontal"
+		android:gravity="center_vertical"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_marginTop="20dp"
+		>
+		<Button
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:id="@+id/now"
+			android:text="@string/now"
+			android:textSize="18dp"
+			android:minWidth="60dp"
+			/>
+		<Button
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:id="@+id/later"
+			android:text="@string/later"
+			android:textSize="18dp"
+			/>
+		<Button
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:id="@+id/never"
+			android:text="@string/never"
+			android:textSize="18dp"
+			android:minWidth="60dp"
+			/>
+		</LinearLayout>
+</LinearLayout>

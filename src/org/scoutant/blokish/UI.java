@@ -75,7 +75,6 @@ public class UI extends Activity {
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		source();
 		AppRater.app_launched( this);
-//		HeyzapLib.load(this);
 		HeyzapLib.load(this, false);
 	}
 
@@ -248,16 +247,7 @@ public class UI extends Activity {
 				message += " " + rs.getString( R.string.wins_with_score) + " : ";
 				message += score;
 			}
-			new EndGameDialog(UI.this, redWins, message, findRequestedLevel(), score).show();
-//			new AlertDialog.Builder(UI.this)
-//			.setMessage(message)
-//			.setCancelable(false)
-//			.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-//				public void onClick(DialogInterface dialog, int which) {
-//					}
-//				})
-//			.create()
-//			.show();				
+			new EndGameDialog(UI.this, redWins, message, findRequestedLevel()+1, score).show();
 		}
 	}
 	

@@ -37,8 +37,9 @@
 	
 
     <!-- rate form -->
-	<string name="if_you_enjoy">If you enjoy the game Blokish, please take a moment to rate it. Thanks for your support!</string>
-	<string name="rate">Rate Blokish</string>
-	<string name="remind_me">Remind me later</string>
-	<string name="no_thansk">No, thanks</string>
+	<string name="if_you_enjoy">If you enjoy the game Blokish, shall you take a moment to rate the app?</string>
+	<string name="now">Ok</string>
+	<string name="later">Later</string>
+	<string name="never">No</string>
+
 </resources>

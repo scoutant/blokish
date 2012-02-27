@@ -20,7 +20,7 @@
 	<string name="flip">Retourner la piece</string>
 	<string name="i_pass">Je passe mon tour</string>
 	
-	<string name="quit">Quitter le  jeu? Votre partie sera sauvegardée.</string>
+	<string name="quit">Quitter le  jeu?</string>
 	<string name="social">Communauté</string>
 		
 	<string name="new_game">Nouvelle partie</string>
@@ -35,7 +35,12 @@
 	<string name="Orange">Les Oranges</string>
 	
     <!-- rate form -->
-	<string name="if_you_enjoy">Evaluer Blokish. Pour améliorer le jeu, en prenant un instant pour vote, voire un commentaire.</string>
+	<string name="if_you_enjoy">Pour améliorer le jeu, un instant pour vote, voire un commentaire, sur l\'Android Market?</string>
+	
+	<string name="now">Oui</string>
+	<string name="later">Plus tard</string>
+	<string name="never">Non</string>
+		
 	<string name="rate">Evaluer Blokish?</string>
 	<string name="remind_me">Me rappeler plus tard</string>
 	<string name="no_thansk">Non merci!</string>

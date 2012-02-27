@@ -34,10 +34,10 @@
 	<string name="Orange">Los Naranjos</string>
 
     <!-- rate form -->
-	<string name="if_you_enjoy">Evaluar Blokish, para emejorar el juego. Un voto y talvez un comentario. ¡Gracias por tu ayuda!</string>
-	<string name="rate">Evaluar Blokish</string>
-	<string name="remind_me">Recordamelo mas tarde</string>
-	<string name="no_thansk">No gracias</string>
-
+	<string name="if_you_enjoy">Para emejorar el juego. ¿Un voto y talvez un comentario en el Android Market?</string>
+	<string name="now">Si</string>
+	<string name="later">Más tarde</string>
+	<string name="never">No</string>
+	
 </resources>
 
