@@ -43,6 +43,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 
+import com.heyzap.sdk.HeyzapLib;
+
 public class UI extends Activity {
 	private static final int MENU_ITEM_HISTORY = 99;
 	private static final int MENU_ITEM_REPLAY = 101;
@@ -53,6 +55,8 @@ public class UI extends Activity {
 	private static final int MENU_ITEM_HELP = 9;
 	private static final int MENU_ITEM_PASS_TURN = 12;
 	private static final int MENU_ITEM_FLIP = 15;
+
+	private static final int MENU_HEYZAP = 200;
 	
 	private static String tag = "activity";
 	public GameView game;
@@ -71,6 +75,8 @@ public class UI extends Activity {
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		source();
 		AppRater.app_launched( this);
+//		HeyzapLib.load(this);
+		HeyzapLib.load(this, false);
 	}
 
 	private void newgame() {
@@ -89,6 +95,10 @@ public class UI extends Activity {
 
 		menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, R.string.help).setIcon( R.drawable.help_48);
 		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, R.string.preferences).setIcon( R.drawable.preferences_48);
+		
+		if (HeyzapLib.isSupported(this)) {
+			menu.add(Menu.NONE, MENU_HEYZAP, Menu.NONE, R.string.social).setIcon( R.drawable.heyzap_z);
+		}
 		
 		if (devmode) {
 			menu.add(Menu.NONE, MENU_ITEM_THINK, Menu.NONE, "AI").setIcon(android.R.drawable.ic_menu_manage);
@@ -158,6 +168,9 @@ public class UI extends Activity {
 			PieceUI piece = game.selected;
 			if (piece!=null) piece.flip();
 		}
+		if (item.getItemId() == MENU_HEYZAP) {
+			HeyzapLib.checkin(this);
+		}
 		return false;
 	}
 
@@ -225,7 +238,8 @@ public class UI extends Activity {
 			int winner = game.game.winner();
 			int score = game.game.boards.get(winner).score;
 			String message = "";
-			if (winner==0 && prefs.getBoolean("ai", true)) {
+			boolean redWins = (winner==0 && prefs.getBoolean("ai", true));
+			if (redWins) {
 				 message += rs.getString( R.string.congratulations) + score +".";
 				 if (findRequestedLevel()<(4-1)) message += "\n" + rs.getString( R.string.try_next);
 			} else {
@@ -234,15 +248,16 @@ public class UI extends Activity {
 				message += " " + rs.getString( R.string.wins_with_score) + " : ";
 				message += score;
 			}
-			new AlertDialog.Builder(UI.this)
-			.setMessage(message)
-			.setCancelable(false)
-			.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					}
-				})
-			.create()
-			.show();				
+			new EndGameDialog(UI.this, redWins, message, findRequestedLevel(), score).show();
+//			new AlertDialog.Builder(UI.this)
+//			.setMessage(message)
+//			.setCancelable(false)
+//			.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int which) {
+//					}
+//				})
+//			.create()
+//			.show();				
 		}
 	}
 	

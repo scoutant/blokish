@@ -19,7 +19,7 @@
 		<TextView android:text="- 4 players having each 21 pieces : 1 single-square, 1 domino, 2 triominos, 5 tetraminos and 12 pentaminos" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="- As player, I shall place on the board most of my pieces. " android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="- For first round, I must place a piece so that it touches one of the corners of the board." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
-		<TextView android:text="- Next, a piece must be placed so that it touches a corner of one of my own pieces. It may touch several corners, but never any side of my pieces!" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>
+		<TextView android:text="- Next, a piece must be placed so that it touches a corner of one of my own pieces. It may touch several corners, but never any edge of my pieces!" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>
 		<ImageView android:src="@drawable/blokish_2_pieces" 
 			android:layout_margin="10dp"  
 			android:layout_gravity="center_horizontal"
@@ -54,7 +54,7 @@
 			android:scaleType="centerInside"
 			/>
 		<TextView android:text="- You can flip the piece to its mirror position : with a long press on the piece." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>
-		<TextView android:text="Flip a piece can only be done using the menu, specially usefull for tablets." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>
+		<TextView android:text="Flip a piece can also be done using the menu, specially usefull for tablets." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>
 		<TextView android:text="- You can cancel with the red button. It will replace the piece in your store." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="- When the move is valid a green 'ok' button appears. You can commit the move by clicking it!" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<ImageView android:src="@drawable/blokish_21_1" 
@@ -62,13 +62,13 @@
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:scaleType="centerInside"
 			/>
-		<TextView android:text="- Att any time you can see you oponent remaining pieces : just select tab of corresponding color at the bottom." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="- At any time you can see you oponent remaining pieces : just select tab of corresponding color at the bottom." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="- When you win against the machine, you can select a harder level : Menu &gt; Preferences." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 
 		<TextView android:text="http://scoutant.org" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 			
 		<TextView android:text="Blokish is an Free/Libre open-source app, licence GPL." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
-		<TextView android:text="Fell free to use the code you can get att http://github.com/scoutant." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
+		<TextView android:text="Fell free to use the code you can get at http://github.com/scoutant." android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 		<TextView android:text="Stephane Coutant" android:layout_width="fill_parent" android:layout_height="wrap_content"	/>	 		
 			
 	</LinearLayout>

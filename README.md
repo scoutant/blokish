@@ -1,3 +1,8 @@
+
+![blokish](http://blokish.scoutant.org/blokish-21.png)
+
+#Blokish
+
 Open-source Android implementation of the popular board game Blokus. With very smooth Drag & Drop user interface.
 
 A family game involving four players and a board with 20 x 20 squares. Like chess or checkers, it's a game for which at any time you can see your opponent's pieces.
@@ -37,49 +42,49 @@ You may post issues at http://github.com/scoutant/blokish/issues
 
 Stephane Coutant, http://scoutant.org
 
------------
+---
 
-Changelog :
+# Changelog
 
-1.7, 2012 :
+## v1.7, 2012/03
 * migrated to Android 2.2 
-* Added locale SE
+* added social feature, powered by Heazap : you may checkin and if you win game you may post your score...  
 
-1.6, 2011/12 : 
+## v1.6, 2011/12
 * Added locales FR, ES
 * Fixed endgame issue #3 : https://github.com/scoutant/blokish/issues/3
 * minor layout refactoring with density-independent pixels
 
-1.5, 2011/10 : UI feedbacks
+## v1.5, 2011/10 : UI feedbacks
 * Added wheel animation to illustrated AI in progress
 * Last piece for each player is displayed both enlarged and with higher contrasts 
 * vibration feedback whenever AI plays a move
 Thanks to those feedbacks, AI thinking duration is set to be longer, resulting in a global higher level.  
 
-1.4, 2011/08 : 
+## v1.4, 2011/08
 * Advanced AI with multi-turn processing better mimicking human strategy.
 * Drag & Drop fix for large screens and new app icon.
 
-1.3, 2011/06 :
+## v1.3, 2011/06
 - Added feature : save game on exit and load it on next start. Splashscreen vanish more quickly when game loaded.
 - Added preference 'Exit popup'. Enabling/disable the popup confirmation when exiting.
 With those 2 features, you can have a one click close and a quick reload. Suitable in busy situations.
 - Minor bug fix : menu option 'back one move' now ok even for fresh new game.
 
-1.2, 2011/06 :
+## v1.2, 2011/06
 - Added capability to flip a piece to it's mirror position using the menu. As before, can also be done with a long-press gesture directly onto the piece.
 The menu alternative may be useful for large devices like tablets where long-press may conflict with DnD gesture... 
 
-1.1, 2011/05 :
+## v1.1, 2011/05
 - Added capability to disconnect AI, for human play only. AI can be enabled/disabled at any time during the game.
 - Added haptic feedback when dropping piece that is valid
 - Gracefully adapting AI level to CPU capabilities.
 - Refactored AI with initial seeds sort before looping around the best seeds. 
 
-1.0, 2011/05 : 
+## v1.0, 2011/05
 - Added additional AI level
 - Fix for small screens : gracefully adapting the bottom pieces stores to be single-line
 - Fix bug : I2 and I4 moves happened not to be displayed as valid at the very border (according to orientation). 
 
-0.5, 2011/05
+## v0.5, 2011/05
 First release

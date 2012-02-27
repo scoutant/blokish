@@ -21,10 +21,11 @@
 	<string name="i_pass">Je passe mon tour</string>
 	
 	<string name="quit">Quitter le  jeu? Votre partie sera sauvegardée.</string>
-	
+	<string name="social">Communauté</string>
+		
 	<string name="new_game">Nouvelle partie</string>
 	<string name="red_ko">Les rouges n\'ont plus de coup</string>
-	<string name="congratulations">Félicitations, vous avez gagnié, avec un score de : </string>
+	<string name="congratulations">Félicitations, vous avez gagné, avec un score de : </string>
 	<string name="try_next">Essayez le niveau suivant!</string>
 	<string name="wins_with_score">gagnent avec le score</string>
 	
@@ -34,7 +35,7 @@
 	<string name="Orange">Les Oranges</string>
 	
     <!-- rate form -->
-	<string name="if_you_enjoy">Evaluer Blokish. Pour améliorer le jeu... en prenant un instant pour vote, voire un commentaire.</string>
+	<string name="if_you_enjoy">Evaluer Blokish. Pour améliorer le jeu, en prenant un instant pour vote, voire un commentaire.</string>
 	<string name="rate">Evaluer Blokish?</string>
 	<string name="remind_me">Me rappeler plus tard</string>
 	<string name="no_thansk">Non merci!</string>

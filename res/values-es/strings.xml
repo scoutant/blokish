@@ -20,7 +20,8 @@
 	<string name="i_pass">Paso el turno</string>
 	
 	<string name="quit">¿Sarlir del juego?</string>
-	
+	<string name="social">Comunidad</string>
+		
 	<string name="new_game">Nueva partida</string>
 	<string name="red_ko">Los Rojos no pueden jugar más</string>
 	<string name="congratulations">Felicitaciones, has ganado, con numero de casillas : </string>

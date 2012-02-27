@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.scoutant.blokish" 
 	android:versionCode="10" android:versionName="1.7"
 	>
+	<uses-sdk android:minSdkVersion="8" />
+	<uses-permission android:name="android.permission.VIBRATE"/>	
+	<uses-feature android:name="android.hardware.screen.portrait" android:required="true"/> 
+	<uses-feature android:name="android.hardware.touchscreen" android:required="true"/>
+	 
+	<supports-screens android:smallScreens="false" android:normalScreens="true" android:largeScreens="true" />
+    
 	<application android:icon="@drawable/blokish2" android:label="Blokish" android:debuggable="true" android:theme="@style/scoutant">
 		<activity android:name=".SplashScreen" android:screenOrientation="portrait">
 			<intent-filter>
@@ -13,13 +20,6 @@
 		<activity android:name=".Settings" android:label="Blokish - Settings" android:screenOrientation="portrait"/>
 		<activity android:name=".Help" android:label="Blokish - Help" android:screenOrientation="portrait"/>
 	</application>
-	<uses-sdk android:minSdkVersion="7" />
-	<uses-permission android:name="android.permission.VIBRATE"/>	
-
-	<uses-feature android:name="android.hardware.screen.portrait" android:required="true"/> 
-	<uses-feature android:name="android.hardware.touchscreen" android:required="true"/>
-	 
-	<supports-screens android:smallScreens="false" android:normalScreens="true" android:largeScreens="true" />
 </manifest>
 
 <!-- TODO issue #4 : when same score : last player wins : adapt the message. -->

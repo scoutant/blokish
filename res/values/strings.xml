@@ -21,11 +21,13 @@
 	
 	
 	<string name="quit">Quit the game?</string>
+	<string name="social">Social</string>
 	
+		
 	<string name="new_game">New Game</string>
 	<string name="red_ko">Red has no more moves</string>
 	<string name="congratulations">Congratulations, you win with score : </string>
-	<string name="try_next">Try next level...</string>
+	<string name="try_next">Try next level.</string>
 	<string name="wins_with_score">wins with score</string>
 	
 	<string name="Red">Player Red</string>

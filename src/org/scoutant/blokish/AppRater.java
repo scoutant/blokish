@@ -18,7 +18,7 @@ public class AppRater {
     private final static String APP_PNAME = "org.scoutant.blokish";
     
     private final static int DAYS_UNTIL_PROMPT = 3;
-    private final static int LAUNCHES_UNTIL_PROMPT = 10;
+    private final static int LAUNCHES_UNTIL_PROMPT = 8;
 
     public static void app_launched(Context mContext) {
         SharedPreferences prefs = mContext.getSharedPreferences("apprater", 0);
