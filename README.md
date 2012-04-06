@@ -46,6 +46,11 @@ Stephane Coutant, http://scoutant.org
 
 # Changelog
 
+## v1.8, 2012/04
+* added a drop animation when a piece is moved, for user to better experience the lasts moves
+* removed dependency to heyzap, the social feature that did not meet great interest
+* added link to YouTube demo help page. http://www.youtube.com/watch?v=3Q7ow07uaMw
+
 ## v1.7, 2012/03
 * migrated to Android 2.2 
 * added social feature, powered by Heyzap : you may checkin and if you win game you may post your score...  

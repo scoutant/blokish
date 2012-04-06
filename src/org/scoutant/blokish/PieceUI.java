@@ -32,6 +32,8 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
 public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClickListener, Comparable<PieceUI> {
@@ -83,6 +85,8 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	private int oo;
 	private Context context;
 	private Vibrator vibrator; 
+
+	private Animation animation;
 	
 	public PieceUI(Context context, Piece piece) {
 		super(context);
@@ -104,6 +108,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 		paint.setColor(0x99999999);
 		resetLocalXY();
 		vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+		animation = AnimationUtils.loadAnimation(context, R.anim.wave_scale);
 	}
 
 	public PieceUI( Context context, Piece piece, int i, int j){
@@ -114,9 +119,16 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 		setVisibility(INVISIBLE);
 	}
 
-	public void place(int i, int j){
+	private void place(int i, int j){
 		move(i,j);
 		place();
+	}
+
+	public void place(int i, int j, boolean animate){
+		place(i, j);
+		if (animate) {
+			this.startAnimation(animation);
+		}
 	}
 
 	public void place(){
@@ -128,6 +140,8 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 		rotating=false;
 		move(i0,j0);
 	}
+	
+
 	public void move(int i, int j) {
 		this.i=i;
 		this.j=j;

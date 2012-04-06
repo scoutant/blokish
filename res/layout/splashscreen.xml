@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/blokish_21_1" 
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	>
-	<ImageView android:src="@drawable/blokish_21_1" 
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:scaleType="centerInside"
-		android:layout_gravity="center"
-		/>
+	android:scaleType="centerInside"
+	android:layout_gravity="center"
+	/>
+	<!-- 
 	<ImageView android:src="@drawable/blokish_title" 
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:scaleType="centerInside"
 		android:layout_marginBottom="20dp"  
 		android:layout_gravity="center_horizontal|bottom"
 		/>
-</FrameLayout>
+	 -->
+

@@ -1,13 +1,10 @@
 package org.scoutant.blokish;
 
-import com.heyzap.sdk.HeyzapLib;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class EndGameDialog extends Dialog {
@@ -22,12 +19,6 @@ public class EndGameDialog extends Dialog {
 		b.setOnClickListener( new android.view.View.OnClickListener(){
 			public void onClick(View v) {
 				EndGameDialog.this.dismiss();
-			}
-		});
-		ImageView iv = (ImageView) findViewById( R.id.checkin);
-		iv.setOnClickListener(new android.view.View.OnClickListener(){
-			public void onClick(View v) {
-				HeyzapLib.checkin(context, "I won game with score " + score + " at level " + level);
 			}
 		});
 		findViewById(R.id.icons).setVisibility( redwins ? View.VISIBLE : View.GONE);

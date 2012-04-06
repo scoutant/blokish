@@ -4,14 +4,22 @@
 	android:padding="2dp"
 	>
 	<LinearLayout 
-		android:layout_width="fill_parent" android:layout_height="fill_parent" 
+		android:layout_width="fill_parent" android:layout_height="wrap_content" 
 		android:orientation="vertical" 
 		>
-		<ImageView android:src="@drawable/blokish2" 
-			android:layout_width="96dp" android:layout_height="96dp"
+		<ImageView
+		    android:id="@+id/video" 
+		    android:src="@drawable/blokish_21_youtube_arrow" 
+			android:layout_width="180dp" android:layout_height="300dp"
 			android:layout_marginTop="16dp"  
 			android:layout_gravity="center_horizontal"
 			/>
+		<TextView android:text="Click above to watch demo on YouTube" android:layout_width="fill_parent" android:layout_height="wrap_content"
+		    android:gravity="center"
+		    android:textStyle="italic|bold"	/>	 		
+		<TextView android:text="You can enlarge video rotating phone in landscape mode" android:layout_width="fill_parent" android:layout_height="wrap_content"
+		    android:gravity="center"
+		    android:textStyle="italic"	/>	 		
 		<TextView android:text="Rules of the game Blokus Classic"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:layout_marginTop="20dp" style="@style/h1" />	 		

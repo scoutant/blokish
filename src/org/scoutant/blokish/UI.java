@@ -43,8 +43,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 
-import com.heyzap.sdk.HeyzapLib;
-
 public class UI extends Activity {
 	private static final int MENU_ITEM_HISTORY = 99;
 	private static final int MENU_ITEM_REPLAY = 101;
@@ -56,8 +54,6 @@ public class UI extends Activity {
 	private static final int MENU_ITEM_PASS_TURN = 12;
 	private static final int MENU_ITEM_FLIP = 15;
 
-	private static final int MENU_HEYZAP = 200;
-	
 	private static String tag = "activity";
 	public GameView game;
 	public boolean devmode=false;
@@ -75,7 +71,6 @@ public class UI extends Activity {
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		source();
 		AppRater.app_launched( this);
-		HeyzapLib.load(this, false);
 	}
 
 	private void newgame() {
@@ -94,10 +89,6 @@ public class UI extends Activity {
 
 		menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, R.string.help).setIcon( R.drawable.help_48);
 		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, R.string.preferences).setIcon( R.drawable.preferences_48);
-		
-		if (HeyzapLib.isSupported(this)) {
-			menu.add(Menu.NONE, MENU_HEYZAP, Menu.NONE, R.string.social).setIcon( R.drawable.heyzap_z);
-		}
 		
 		if (devmode) {
 			menu.add(Menu.NONE, MENU_ITEM_THINK, Menu.NONE, "AI").setIcon(android.R.drawable.ic_menu_manage);
@@ -167,9 +158,6 @@ public class UI extends Activity {
 			PieceUI piece = game.selected;
 			if (piece!=null) piece.flip();
 		}
-		if (item.getItemId() == MENU_HEYZAP) {
-			HeyzapLib.checkin(this);
-		}
 		return false;
 	}
 
@@ -211,7 +199,7 @@ public class UI extends Activity {
 				displayWinnerDialog();
 				return;
 			}
-			UI.this.game.play( move);
+			UI.this.game.play( move, true);
 			turn++;
 			if (turn<4) new AITask().execute(turn);
 			if (turn==4) game.indicator.hide();

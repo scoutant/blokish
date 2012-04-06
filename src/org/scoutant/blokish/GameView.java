@@ -165,13 +165,13 @@ public class GameView extends FrameLayout  {
 		return findPiece(piece.color, piece.type);
 	}
 	
-	public void play(Move move) {
+	public void play(Move move, boolean animate) {
 		if (move==null) return;
 		PieceUI ui = findPiece( move.piece);
 		boolean done = game.play(move);
 		if (done) {
 			lasts[ui.piece.color] = ui;
-			ui.place(move.i, move.j);
+			ui.place(move.i, move.j, animate);
 		}
 		tabs.putLabel(move.piece.color, ""+game.boards.get(move.piece.color).score);
 		mayReorderPieces();
@@ -252,7 +252,7 @@ public class GameView extends FrameLayout  {
 			Piece piece = move.piece;
 			PieceUI ui = findPiece(piece);
 			ui.piece.reset(piece);
-			play(move);
+			play(move, false);
 		}
 		return true;
 	}	
