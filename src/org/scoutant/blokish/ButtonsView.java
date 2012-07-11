@@ -44,9 +44,9 @@ public class ButtonsView extends FrameLayout {
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		int h = display.getHeight() - display.getWidth();
 		setLayoutParams( new FrameLayout.LayoutParams(LayoutParams.FILL_PARENT, h, Gravity.BOTTOM));
-		cancel = button(R.drawable.cancel_128, doCancel, 0);
+		cancel = button(R.drawable.cancel, doCancel, 0);
 		addView(cancel );
-		ok = button(R.drawable.checkmark_128, doOk, 1);
+		ok = button(R.drawable.checkmark, doOk, 1);
 		addView(ok);
 		setOkState( false);
 	}
@@ -54,17 +54,15 @@ public class ButtonsView extends FrameLayout {
 	
 	private ImageButton button(int src, OnClickListener l, int position) {
 		ImageButton btn = new ImageButton(context);
-		// TODO refactor with provided width and length
 		LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER_VERTICAL);
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-		int margin = (display.getWidth() - 3*128)/3;
+		int margin = Math.min( (display.getWidth() - 3*128)/3, 80);
 		params.leftMargin = margin;
 		params.rightMargin = margin;
 		if (position==0) params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
 		if (position==1) params.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
 		btn.setLayoutParams(params);
 		btn.setImageDrawable(context.getResources().getDrawable( src));
-		// TODO test :
 		btn.setScaleType(ScaleType.CENTER_INSIDE);
 		btn.setBackgroundColor(Color.TRANSPARENT);
 		btn.setOnClickListener(l);
@@ -121,7 +119,6 @@ public class ButtonsView extends FrameLayout {
 	private OnClickListener doCancel = new OnClickListener() {
 		public void onClick(View v) {
 			Log.d(tag, "cancel...");
-			// TODO refactor with replace()
 			game.selected.replace();
 			game.selected = null;
 			ButtonsView.this.setVisibility(INVISIBLE);
