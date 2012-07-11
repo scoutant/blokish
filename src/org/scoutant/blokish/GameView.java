@@ -34,10 +34,12 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 /**
  * For DnD approach, refer to http://blog.scoutant.org/index.php?post/2011/02/Approche-naturelle-de-Drag-and-Drop-en-Android
@@ -57,8 +59,11 @@ public class GameView extends FrameLayout  {
 	public Game game = new Game();
 	public AI ai = new AI(game);
 	public static int[] icons = { R.drawable.bol_rood, R.drawable.bol_groen, R.drawable.bol_blauw, R.drawable.bullet_ball_glass_yellow};
+	public static int[] labels = { R.id.red, R.id.green, R.id.blue, R.id.orange};
+	
 	private Drawable[] dots = new Drawable[4]; 
-	public TabsView tabs;
+	public TextView[] tabs = new TextView[4];
+	
 	public UI ui;
 	/** true if red has acknowlegde no more moves for her */
 	public boolean redOver=false;
@@ -90,13 +95,17 @@ public class GameView extends FrameLayout  {
 		}
 		buttons = new ButtonsView(context); 
 		addView( buttons);
-		tabs = new TabsView(context);
-		addView( tabs);
+		
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE);
+		inflater.inflate(R.layout.tabs, this);
+		
 		showPieces(0);
 		for (int color=0; color<4; color++) {
 			dots[color] = context.getResources().getDrawable(icons[color]);
 			dots[color].setAlpha(191);
+			tabs[color] = (TextView) findViewById( labels[color]);
 		}
+		
 		// progress indicator
 		View iView = new View(context);
 		iView.setLayoutParams(new FrameLayout.LayoutParams(150, 150, Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL));
@@ -173,7 +182,8 @@ public class GameView extends FrameLayout  {
 			lasts[ui.piece.color] = ui;
 			ui.place(move.i, move.j, animate);
 		}
-		tabs.putLabel(move.piece.color, ""+game.boards.get(move.piece.color).score);
+//		tabs.putLabel(move.piece.color, ""+game.boards.get(move.piece.color).score);
+		tabs[move.piece.color].setText( ""+game.boards.get(move.piece.color).score);
 		mayReorderPieces();
 		invalidate();
 	}

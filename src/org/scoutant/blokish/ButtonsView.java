@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView.ScaleType;
 
 public class ButtonsView extends FrameLayout {
 
@@ -53,6 +54,7 @@ public class ButtonsView extends FrameLayout {
 	
 	private ImageButton button(int src, OnClickListener l, int position) {
 		ImageButton btn = new ImageButton(context);
+		// TODO refactor with provided width and length
 		LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.CENTER_VERTICAL);
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		int margin = (display.getWidth() - 3*128)/3;
@@ -62,6 +64,8 @@ public class ButtonsView extends FrameLayout {
 		if (position==1) params.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
 		btn.setLayoutParams(params);
 		btn.setImageDrawable(context.getResources().getDrawable( src));
+		// TODO test :
+		btn.setScaleType(ScaleType.CENTER_INSIDE);
 		btn.setBackgroundColor(Color.TRANSPARENT);
 		btn.setOnClickListener(l);
 		return btn;
@@ -102,7 +106,7 @@ public class ButtonsView extends FrameLayout {
 				piece.invalidate();
 				ButtonsView.this.setVisibility(INVISIBLE);
 				ButtonsView.this.game.game.play( move);
-				((GameView)getParent()).tabs.putLabel(move.piece.color, ""+game.game.boards.get(move.piece.color).score);
+				((GameView)getParent()).tabs[move.piece.color].setText( ""+game.game.boards.get(move.piece.color).score);
 				game.selected = null;
 				game.ui.turn = (piece.piece.color+1)%4;
 				if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("ai", true)) {
