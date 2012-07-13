@@ -16,6 +16,7 @@ package org.scoutant.blokish;
 import org.scoutant.blokish.model.Piece;
 import org.scoutant.blokish.model.Square;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -25,6 +26,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -39,7 +41,6 @@ import android.widget.FrameLayout;
 public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClickListener, Comparable<PieceUI> {
 	
 	public static final int PADDING = 4;
-	@SuppressWarnings("unused")
 	private static final String tag = "activity";
 	
 	private Resources resources;
@@ -87,8 +88,10 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	private Vibrator vibrator; 
 
 	private Animation animation;
-	
-	public PieceUI(Context context, Piece piece) {
+	private int statusBarHeight=-1;
+	private Matrix m = new Matrix();
+
+	protected PieceUI(Context context) {
 		super(context);
 		this.context = context;
 		setWillNotDraw(false);
@@ -97,6 +100,13 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 		resources = context.getApplicationContext().getResources();
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay(); 
 		size = display.getWidth()/20;
+		vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+		animation = AnimationUtils.loadAnimation(context, R.anim.wave_scale);
+		paint.setColor(0x99999999);
+	}
+	
+	public PieceUI(Context context, Piece piece) {
+		this(context);
 		this.piece = piece;
 		footprint = piece.size;
 		df = Math.max(footprint, 3);
@@ -105,10 +115,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 		radius = PADDING*size + footprint*size/2;
 		square = resources.getDrawable( icons[piece.color]);
 		square_bold = resources.getDrawable( icons_bold[piece.color]);
-		paint.setColor(0x99999999);
 		resetLocalXY();
-		vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-		animation = AnimationUtils.loadAnimation(context, R.anim.wave_scale);
 	}
 
 	public PieceUI( Context context, Piece piece, int i, int j){
@@ -194,7 +201,6 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	@Override
 	protected void onDraw(Canvas canvas) {
 		if (rotating) {
-			Matrix m = new Matrix();
 			m.setRotate(angle, radius, radius);
 			canvas.concat(m);
 		} else {
@@ -247,6 +253,14 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	}
 	
 	public boolean onTouch(View v, MotionEvent event) {
+		// TODO possible to hook it in lifecycle? onAttachedToWindow() is to early...
+		if (statusBarHeight<0) {
+			Rect decor = new Rect();
+			((Activity) context).getWindow().getDecorView().getWindowVisibleDisplayFrame(decor);
+			statusBarHeight = decor.top;
+			Log.i(tag, "status bar height is : " +  statusBarHeight);
+		}
+		
 		GameView game = (GameView) getParent();
 		int action = event.getAction();
 		
@@ -263,8 +277,8 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 				game.doTouch(event);
 				return false;
 	    	}
-    		int dX = new Float(event.getRawX()-rawX).intValue();
-    		int dY = new Float(event.getRawY()-rawY).intValue();
+    		int dX = Float.valueOf( event.getRawX()-rawX).intValue();
+    		int dY = Float.valueOf( event.getRawY()-rawY).intValue();
     		if ( movable==false || -dY < Math.abs(dX) ) { 
     			game.doTouch(event);
     			return false;
@@ -285,31 +299,26 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     			rotating=false;
     		}
     		bringToFront();
-    		localY += 2*size;
-    		if (footprint==4) localX += size;
     	}
     	if (action==MotionEvent.ACTION_MOVE && game.selected==this) {
     		bringToFront();
     		if (rotating) {
             	double r = Math.toDegrees( Math.atan2(event.getX()-radius, radius-event.getY()));
-    			int a = new Float( r-rDown).intValue();
+    			int a = Double.valueOf( r-rDown).intValue();
     			if (a>180) a-= 360;
     			if (a<-180) a+= 360;
     			if (angle==a) return false;
     			angle = a;
     		} else {
-	    		int newi = ((int) event.getRawX() - localX  + radius )/size;
-	    		int newj = ((int) event.getRawY() - localY + radius )/size;
+    			int r = (footprint%2==0 ? radius-size/2 : radius);
+	    		int newi = ((int) event.getRawX() - localX  + r)/size;
+	    		int newj = ((int) event.getRawY() - statusBarHeight - localY + r)/size;
 	    		if (i==newi && j==newj) return false;
 	    		i=newi;
 	    		j=newj;
 	    		moving = true;
-	    		
-//	    		LayoutParams l = (LayoutParams) getLayoutParams();
-//	    		Log.d(tag, "DnD moving : " + i + ", " + j+ ". visible : " + this.getVisibility() + ", " + l.leftMargin );
-	    		
-	    		// v1.4 fix for large screens
-	    		doLayout();
+	    		// v1.4 fix for large screens, not needed since Drag fix at v1.9
+	    		// doLayout();
     		}
     	}
     	if (action==MotionEvent.ACTION_UP) {

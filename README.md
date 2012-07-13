@@ -46,7 +46,13 @@ Stephane Coutant, http://scoutant.org
 
 # Changelog
 
-## v1.8, 2012/04
+## v1.9, 2012/07 : fixed minor Drag and Long-press inconsistencies
+* fixed minor drag inconsistency
+* fixed minor long-press inconsistency on tablets. Used to flip a piece. Can still be done using the menu.
+* fixed bottom layout : on tablets the score was little bit off its control.
+* fixed code warnings revealed by ADT v20.
+
+## v1.8, 2012/04 : added animations
 * added a drop animation when a piece is moved, for user to better experience the lasts moves
 * removed dependency to heyzap, the social feature that did not meet great interest
 * added link to YouTube demo help page. http://www.youtube.com/watch?v=3Q7ow07uaMw

@@ -73,6 +73,7 @@ public class UI extends Activity {
 		AppRater.app_launched( this);
 	}
 
+	
 	private void newgame() {
 		game = new GameView(UI.this);
 		setContentView(game);
@@ -171,12 +172,12 @@ public class UI extends Activity {
 	
 	private int findRequestedLevel() {
 		String level = prefs.getString("aiLevel", "0");
-		return new Integer(level);
+		return Integer.valueOf(level);
 	}
 	
 	private int findLevel() {
 		String level = prefs.getString("aiLevel", "0");
-		int l = new Integer(level);
+		int l = Integer.valueOf(level);
 		if (l<0 || l>3) l = 1;
 		return Math.min(l, game.ai.adaptedLevel);
 	}
@@ -322,15 +323,15 @@ public class UI extends Activity {
 			reader.readLine(); // first line give the # of moves...
 			while ((line = reader.readLine()) != null)   {
 				String[] data = line.split(":");
-				int i = new Integer(data[0]);
-				int j = new Integer(data[1]);
-				int color = new Integer(data[2]);
+				int i = Integer.valueOf(data[0]);
+				int j = Integer.valueOf(data[1]);
+				int color = Integer.valueOf(data[2]);
 				Piece piece = game.game.boards.get(color).findPieceByType(data[3] );
 				piece.reset();
 				for (int q = 4; q<data.length; q++) {
 					String[] position = data[q].split(",");
-					int x = new Integer( position[0]);
-					int y = new Integer( position[1]);
+					int x = Integer.valueOf( position[0]);
+					int y = Integer.valueOf( position[1]);
 					piece.add( new Square(x, y ));
 				}
 				Move move = new Move(piece, i, j);

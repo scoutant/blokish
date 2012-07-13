@@ -45,8 +45,6 @@ import android.widget.TextView;
  * For DnD approach, refer to http://blog.scoutant.org/index.php?post/2011/02/Approche-naturelle-de-Drag-and-Drop-en-Android
  */
 public class GameView extends FrameLayout  {
-
-	
 	private static String tag = "activity";
 	private Paint paint = new Paint();
 	public int size; 
@@ -115,7 +113,7 @@ public class GameView extends FrameLayout  {
 	
 	public float downX;
 	public float downY;
-	
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (selected!=null) return false;
@@ -130,11 +128,10 @@ public class GameView extends FrameLayout  {
     		downY=event.getRawY();
     	}
     	if (action==MotionEvent.ACTION_MOVE ) {
-    		swipePieces( selectedColor, - (swipe+new Float(event.getRawX()-downX).intValue()));
+    		swipePieces( selectedColor, - (swipe + Float.valueOf( event.getRawX()-downX).intValue()));
     	}
     	if (action==MotionEvent.ACTION_UP ) {
-//    		Log.d(tag, " swipe x  " + (event.getRawX()-downX));
-    		swipe += new Float(event.getRawX()-downX).intValue();
+    		swipe += Float.valueOf( event.getRawX()-downX).intValue();
     		downX=0;
     		swipePieces( selectedColor, -swipe);
     	}
@@ -182,7 +179,6 @@ public class GameView extends FrameLayout  {
 			lasts[ui.piece.color] = ui;
 			ui.place(move.i, move.j, animate);
 		}
-//		tabs.putLabel(move.piece.color, ""+game.boards.get(move.piece.color).score);
 		tabs[move.piece.color].setText( ""+game.boards.get(move.piece.color).score);
 		mayReorderPieces();
 		invalidate();
