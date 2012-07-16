@@ -37,6 +37,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -44,7 +45,7 @@ import android.widget.TextView;
 /**
  * For DnD approach, refer to http://blog.scoutant.org/index.php?post/2011/02/Approche-naturelle-de-Drag-and-Drop-en-Android
  */
-public class GameView extends FrameLayout  {
+public class GameView extends FrameLayout {
 	private static String tag = "activity";
 	private Paint paint = new Paint();
 	public int size; 
@@ -102,6 +103,9 @@ public class GameView extends FrameLayout  {
 			dots[color] = context.getResources().getDrawable(icons[color]);
 			dots[color].setAlpha(191);
 			tabs[color] = (TextView) findViewById( labels[color]);
+			// let put the listener on the parent view group
+			ViewGroup tab  =  (ViewGroup) tabs[color].getParent();
+			if (tab!=null) tab.setOnClickListener(new ShowPiecesListener(color));
 		}
 		
 		// progress indicator
@@ -109,6 +113,17 @@ public class GameView extends FrameLayout  {
 		iView.setLayoutParams(new FrameLayout.LayoutParams(150, 150, Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL));
 		addView(iView);
 		indicator = new BusyIndicator(context, iView);
+	}
+	
+	private class ShowPiecesListener implements OnClickListener {
+		private int color;
+		protected ShowPiecesListener(int color) {
+			this.color = color;
+		}
+		public void onClick(View v) {
+			GameView.this.showPieces(color);
+			GameView.this.invalidate();
+		}
 	}
 	
 	public float downX;

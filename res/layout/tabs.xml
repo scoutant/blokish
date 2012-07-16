@@ -13,6 +13,7 @@
         android:layout_weight="1" 
         >
 		<ImageView 
+		    android:id="@+id/red_button"
 		    android:src="@drawable/red"
 		    android:contentDescription="red"
 		    android:layout_width="match_parent"
