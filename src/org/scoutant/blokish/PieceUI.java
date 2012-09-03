@@ -196,7 +196,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	
 
 	/** 
-	 * Caution : must invoke doLayout() before any invalidate() if i or j happend to be updated! As onDraw wont be called if piece is (was) out of  viewport. 
+	 * Caution : must invoke doLayout() before any invalidate() if i or j happened to be updated! As onDraw wont be called if piece is (was) out of  viewport. 
 	 */
 	@Override
 	protected void onDraw(Canvas canvas) {
@@ -317,8 +317,6 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	    		i=newi;
 	    		j=newj;
 	    		moving = true;
-	    		// v1.4 fix for large screens, not needed since Drag fix at v1.9
-	    		// doLayout();
     		}
     	}
     	if (action==MotionEvent.ACTION_UP) {

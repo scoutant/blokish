@@ -5,7 +5,9 @@
 
 Open-source Android implementation of the popular board game Blokus. With very smooth Drag & Drop user interface.
 
-A family game involving four players and a board with 20 x 20 squares. Like chess or checkers, it's a game for which at any time you can see your opponent's pieces.
+Live on Google Play : http://play.google.com/store/apps/details?id=org.scoutant.blokish. More than 50.000 downloads.
+
+Blokus is family game involving four players and a board with 20 x 20 squares. Like chess or checkers, it's a game for which at any time you can see your opponent's pieces.
 
 Each player starts with 21 pieces : 1 monomino, 1 domono, 2 triominos, 5 tetraminos and 12 pentaminos. It may recall you the Tetris polyominos...
 
