@@ -48,23 +48,27 @@ Stephane Coutant, http://scoutant.org
 
 # Changelog
 
-## v1.9, 2012/07 : fixed minor Drag and Long-press inconsistencies
+## v2.0, 2012/09 : German locale
+* added German locale, credits to Sascha Hlusiak
+* fix translation for screen "Level", in locales en, fr, es, sv
+
+## v1.9, 2012/07 : Drag and Long-press, tablets
 * fixed minor drag inconsistency
 * fixed minor long-press inconsistency on tablets. Used to flip a piece. Can still be done using the menu.
 * fixed bottom layout : on tablets the score was little bit off its control.
 * fixed code warnings revealed by ADT v20.
 
-## v1.8, 2012/04 : added animations
+## v1.8, 2012/04 : Animations
 * added a drop animation when a piece is moved, for user to better experience the lasts moves
 * removed dependency to heyzap, the social feature that did not meet great interest
 * added link to YouTube demo help page. http://www.youtube.com/watch?v=3Q7ow07uaMw
 
-## v1.7, 2012/03
+## v1.7, 2012/03 : Swedish locale
 * migrated to Android 2.2 
 * added social feature, powered by Heyzap : you may checkin and if you win game you may post your score...  
 * added local SV_SE
 
-## v1.6, 2011/12
+## v1.6, 2011/12 : Locales fr and es
 * Added locales FR, ES
 * Fixed endgame issue #3 : https://github.com/scoutant/blokish/issues/3
 * minor layout refactoring with density-independent pixels
@@ -75,7 +79,7 @@ Stephane Coutant, http://scoutant.org
 * vibration feedback whenever AI plays a move
 Thanks to those feedbacks, AI thinking duration is set to be longer, resulting in a global higher level.  
 
-## v1.4, 2011/08
+## v1.4, 2011/08 : AI with multi-turn processing
 * Advanced AI with multi-turn processing better mimicking human strategy.
 * Drag & Drop fix for large screens and new app icon.
 
