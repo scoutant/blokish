@@ -243,6 +243,8 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 	public boolean onLongClick(View v) {
 		if (!movable) return false;
 		GameView game = (GameView) v.getParent();
+		if (game.thinking==true || piece.color!=game.ui.turn)
+			return false;
 		if (game.selected == null) {
 			game.selected = this;
 			return true;
@@ -264,7 +266,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 		GameView game = (GameView) getParent();
 		int action = event.getAction();
 		
-		if (game.selected==null && !PreferenceManager.getDefaultSharedPreferences(context).getBoolean("ai", true) && piece.color!=game.ui.turn) {
+		if (game.thinking==true || piece.color!=game.ui.turn) {
 			game.doTouch(event);
 			return false;
 		}
