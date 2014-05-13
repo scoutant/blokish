@@ -35,14 +35,16 @@
 	<string name="Orange">Les Oranges</string>
 	
 	<!-- rate form -->
-	<string name="if_you_enjoy">Pour améliorer le jeu, un instant pour vote, voire un commentaire, sur l\'Android Market?</string>
+	<string name="if_you_enjoy">Pour améliorer le jeu, un instant pour vote, voire un commentaire, sur le PlayStore?</string>
 	
 	<string name="now">Oui</string>
 	<string name="later">Plus tard</string>
 	<string name="never">Non</string>
-		
+
+	<!-- 
 	<string name="rate">Evaluer Blokish?</string>
 	<string name="remind_me">Me rappeler plus tard</string>
 	<string name="no_thansk">Non merci!</string>
+	 -->		
 
 </resources>

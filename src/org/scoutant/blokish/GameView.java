@@ -29,6 +29,7 @@ import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -77,13 +78,18 @@ public class GameView extends FrameLayout {
 		prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		ui = (UI) context;
 		setWillNotDraw(false);
-		setLayoutParams( new FrameLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT, Gravity.TOP));
+		setLayoutParams( new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, Gravity.TOP));
 		paint.setStrokeWidth(1.3f);
 		paint.setColor(Color.WHITE);
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-		size = display.getWidth()/20;
+		Point pointSize = new Point();
+		display.getSize(pointSize);
+		int width = pointSize.x;
+		int height = pointSize.y;
+		
+		size = width/20;
 		Log.d(tag, "size " + size);
-		if ( display.getHeight()/32 < display.getWidth()/20) singleline = true; 
+		if ( height/32 < width/20) singleline = true;
 		for (Board board : game.boards) {
 			int i=2;
 			for (Piece piece : board.pieces) {	

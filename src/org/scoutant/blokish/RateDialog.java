@@ -17,7 +17,7 @@ public class RateDialog extends Dialog {
         editor = context.getSharedPreferences("apprater", 0).edit();		
 		setContentView( R.layout.rate);
 		// Cf layout issue http://groups.google.com/group/android-developers/browse_thread/thread/f0bb813f643604ec?pli=1
-		getWindow().setLayout( LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+		getWindow().setLayout( LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		Button now = (Button) findViewById(R.id.now);
 		now.setOnClickListener( new android.view.View.OnClickListener(){
 			public void onClick(View v) {

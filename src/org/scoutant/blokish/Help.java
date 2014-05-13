@@ -19,16 +19,10 @@ public class Help extends Activity {
 		v.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 //				startActivity( new Intent( Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=3Q7ow07uaMw")));
+				// TODO new url !
 				startActivity( new Intent( Intent.ACTION_VIEW, Uri.parse("vnd.youtube://3Q7ow07uaMw")));
 			}
 		});
 	}
 	
-	@Override
-	public void onBackPressed() {
-//		state.vibrate();
-		super.onBackPressed();
-	}
-	
-
 }
