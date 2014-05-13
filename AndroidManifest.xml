@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.scoutant.blokish" 
-	android:versionCode="13" android:versionName="2.0"
+	android:versionCode="14" android:versionName="2.1"
 	>
-	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="10"/>
-	<uses-permission android:name="android.permission.VIBRATE"/>	
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="19" />
+    
+	<uses-permission android:name="android.permission.VIBRATE"/>
+		
 	<uses-feature android:name="android.hardware.screen.portrait" android:required="true"/> 
 	<uses-feature android:name="android.hardware.touchscreen" android:required="true"/>
-	 
-	<supports-screens android:smallScreens="false" android:normalScreens="true" android:largeScreens="true" />
-    
-	<application android:icon="@drawable/blokish2" android:label="Blokish" android:theme="@style/scoutant">
-		<activity android:name=".SplashScreen" android:screenOrientation="portrait">
+
+	<supports-screens android:smallScreens="false" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" />	
+	
+	<application android:icon="@drawable/blokish2" android:label="Blokish" android:theme="@style/scoutant"
+	    android:allowBackup="true" >
+		<activity android:name=".UI" android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".UI" android:screenOrientation="portrait"/>
 		<activity android:name=".Settings" android:label="Blokish - Settings" android:screenOrientation="portrait"/>
 		<activity android:name=".Help" android:label="Blokish - Help" android:screenOrientation="portrait"/>
 	</application>
