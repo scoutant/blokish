@@ -12,6 +12,9 @@ public class Help extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.help);
+
+		getActionBar().setDisplayHomeAsUpEnabled(true);		
+		
 		View v = findViewById(R.id.video);
 		v.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -20,5 +23,12 @@ public class Help extends Activity {
 			}
 		});
 	}
+	
+	@Override
+	public void onBackPressed() {
+//		state.vibrate();
+		super.onBackPressed();
+	}
+	
 
 }

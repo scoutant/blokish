@@ -11,16 +11,28 @@
 
 	<supports-screens android:smallScreens="false" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" />	
 	
-	<application android:icon="@drawable/blokish2" android:label="Blokish" android:theme="@style/scoutant"
+	<application android:icon="@drawable/blokish2" android:label="Blokish" android:theme="@android:style/Theme.Holo"
 	    android:allowBackup="true" >
-		<activity android:name=".UI" android:screenOrientation="portrait">
+		<activity android:name=".UI" 
+		    android:theme="@style/scoutant" 
+		    android:screenOrientation="portrait" 
+		    >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".Settings" android:label="Blokish - Settings" android:screenOrientation="portrait"/>
-		<activity android:name=".Help" android:label="Blokish - Help" android:screenOrientation="portrait"/>
+		<activity android:name=".Settings" android:label="@string/preferences" 
+		    android:screenOrientation="portrait" 
+		    android:parentActivityName=".UI"
+		    />
+		<activity android:name=".Help" android:label="@string/help" 
+		    android:screenOrientation="portrait" 
+		    android:parentActivityName=".UI"
+		    />
 	</application>
 </manifest>
 <!-- TODO issue #4 : when same score : last player wins : adapt the message. -->
+<!-- TODO
+	dans Help, actiualiser le lien Youtube
+ -->

@@ -275,25 +275,27 @@ public class UI extends Activity {
 		}
 		
 		if ( keyCode == KeyEvent.KEYCODE_BACK) {
-			if (!prefs.getBoolean("popupOnExit", true)) {
-				UI.this.finish();
-			} else {
-			new AlertDialog.Builder(this)
-			.setMessage( R.string.quit)
-			.setCancelable(false)
-			.setPositiveButton( R.string.yes, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					UI.this.finish();
-					}
-				})
-			.setNegativeButton( R.string.no, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-					}
-				})
-			.create()
-			.show();
-			return true;
-			}
+			// TODO add double back button feature
+			UI.this.finish();
+//			if (!prefs.getBoolean("popupOnExit", true)) {
+//				UI.this.finish();
+//			} else {
+//			new AlertDialog.Builder(this)
+//			.setMessage( R.string.quit)
+//			.setCancelable(false)
+//			.setPositiveButton( R.string.yes, new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int which) {
+//					UI.this.finish();
+//					}
+//				})
+//			.setNegativeButton( R.string.no, new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int id) {
+//					}
+//				})
+//			.create()
+//			.show();
+//			return true;
+//			}
 		}
 		return super.onKeyDown(keyCode, event);
 	}

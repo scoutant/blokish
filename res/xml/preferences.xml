@@ -9,5 +9,7 @@
 		android:dialogTitle="Select level" android:defaultValue="0" 
 		android:persistent="true"
 		/>
+	<!-- 
 	<CheckBoxPreference android:key="popupOnExit" android:title="Exit popup" android:summary="Game will be saved anyway..." android:defaultValue="true" />
+	 -->
 </PreferenceScreen>

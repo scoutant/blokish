@@ -10,5 +10,7 @@
 		android:dialogTitle="Elija un nivel " android:defaultValue="0" 
 		android:persistent="true"
 		/>
+	<!-- 
 	<CheckBoxPreference android:key="popupOnExit" android:title="Confirmar antes de salir" android:summary="La partida se guardará de todos modos" android:defaultValue="true" />
+	 -->
 </PreferenceScreen>
