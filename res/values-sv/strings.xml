@@ -4,7 +4,7 @@
 	<string name="yes">Ja</string>
 	<string name="no">Nej</string>
 
-	<string name="help">Hälp</string>
+	<string name="help">Hjälp</string>
 	<string name="preferences">Inställningar</string>
 
 	<string name="back">Tillbaka</string>
@@ -35,7 +35,7 @@
 	<string name="Orange">Orange</string>
 
 	<!-- rate form -->
-	<string name="if_you_enjoy">Tycker du om spelet? Några sekunder för en betyg på Android Market?</string>
+	<string name="if_you_enjoy">Tycker du om spelet? Några sekunder för en betyg på PlayStore?</string>
 	
 	<string name="now">Ja</string>
 	<string name="later">Senare</string>

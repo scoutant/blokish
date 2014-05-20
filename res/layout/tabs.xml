@@ -8,8 +8,8 @@
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="24dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/margin_tab"
+        android:layout_marginRight="@dimen/margin_tab"
         android:layout_weight="1" 
         >
 		<ImageView 
@@ -35,8 +35,8 @@
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="24dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/margin_tab"
+        android:layout_marginRight="@dimen/margin_tab"
         android:layout_weight="1" 
         >
 		<ImageView 
@@ -61,8 +61,8 @@
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="24dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/margin_tab"
+        android:layout_marginRight="@dimen/margin_tab"
         android:layout_weight="1" 
         >
 		<ImageView 
@@ -87,8 +87,8 @@
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="24dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="@dimen/margin_tab"
+        android:layout_marginRight="@dimen/margin_tab"
         android:layout_weight="1" 
         >
 		<ImageView 
