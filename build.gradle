@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.12.+'
+        classpath 'com.android.tools.build:gradle:0.13.+'
     }
 }
 apply plugin: 'android'
@@ -26,8 +26,9 @@ android {
         }
     }
 
-//    lintOptions {
-//         abortOnError false
-//    }
+    lintOptions {
+//        checkReleaseBuilds false
+        abortOnError false
+    }
 
 }

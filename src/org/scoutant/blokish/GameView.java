@@ -27,6 +27,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -119,14 +120,26 @@ public class GameView extends FrameLayout {
 			ViewGroup tab  =  (ViewGroup) tabs[color].getParent();
 			if (tab!=null) tab.setOnClickListener(new ShowPiecesListener(color));
 		}
-		
+
+    View extraMenu = findViewById(R.id.extra_menu_button);
+    if (extraMenu!=null && !ViewConfiguration.get(context).hasPermanentMenuKey()) {
+      extraMenu.setVisibility(View.VISIBLE);
+      extraMenu.setOnClickListener( new OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            ui.openOptionsMenu();
+          }
+        }
+      );
+    }
+
 		// progress indicator
 		View iView = new View(context);
 		iView.setLayoutParams(new FrameLayout.LayoutParams(150, 150, Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL));
 		addView(iView);
 		indicator = new BusyIndicator(context, iView);
 	}
-	
+
 	private class ShowPiecesListener implements OnClickListener {
 		private int color;
 		protected ShowPiecesListener(int color) {

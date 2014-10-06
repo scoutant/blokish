@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.scoutant.blokish" 
-	android:versionCode="14" android:versionName="2.1"
+	android:versionCode="15" android:versionName="2.2"
 	>
     <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="19" />
     
@@ -33,6 +33,3 @@
 	</application>
 </manifest>
 <!-- TODO issue #4 : when same score : last player wins : adapt the message. -->
-<!-- TODO
-	dans Help, actiualiser le lien Youtube
- -->
