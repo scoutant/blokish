@@ -13,17 +13,6 @@
 
 package org.scoutant.blokish;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import org.scoutant.blokish.model.AI;
-import org.scoutant.blokish.model.Board;
-import org.scoutant.blokish.model.Game;
-import org.scoutant.blokish.model.Move;
-import org.scoutant.blokish.model.Piece;
-import org.scoutant.blokish.model.Square;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
@@ -42,6 +31,17 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import org.scoutant.blokish.model.AI;
+import org.scoutant.blokish.model.Board;
+import org.scoutant.blokish.model.Game;
+import org.scoutant.blokish.model.Move;
+import org.scoutant.blokish.model.Piece;
+import org.scoutant.blokish.model.Square;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * For DnD approach, refer to http://blog.scoutant.org/index.php?post/2011/02/Approche-naturelle-de-Drag-and-Drop-en-Android
@@ -70,6 +70,8 @@ public class GameView extends FrameLayout {
 	public SharedPreferences prefs;
 	public boolean thinking=false;
 	public boolean singleline=false;
+    int secondLineOffset = 0;
+    int singleLineOffset = 0;
 	public BusyIndicator indicator;
 	public PieceUI lasts[] = new PieceUI[4];
 	
@@ -88,8 +90,12 @@ public class GameView extends FrameLayout {
 		int height = pointSize.y;
 		
 		size = width/20;
-		Log.d(tag, "size " + size);
+		Log.d(tag, "size " + size + ", height/size : " + height/size);
+
 		if ( height/32 < width/20) singleline = true;
+        if (singleline==true && height >= size*29 ) singleLineOffset= 1;
+        if (height >= size*35) secondLineOffset = 1;
+
 		for (Board board : game.boards) {
 			int i=2;
 			for (Piece piece : board.pieces) {	
@@ -234,7 +240,8 @@ public class GameView extends FrameLayout {
 		for (int p=0; p<pieces.size(); p++) {
 			PieceUI piece = pieces.get(p);
 			if (singleline) {
-				piece.j0 = 22;
+//				piece.j0 = 22;
+				piece.j0 = 22 + singleLineOffset;
 				if (p<1) {
 					if (piece.piece.type.equals("I5")) piece.i0 = 1;
 					else piece.i0 = 2;
@@ -242,7 +249,9 @@ public class GameView extends FrameLayout {
 					piece.i0 = pieces.get(p-1).i0 + pieces.get(p-1).piece.size+1;
 				}
 			} else {
-				piece.j0 = 22 + ((p%2) > 0 ? 5 : 0 ) ;
+//				piece.j0 = 22 + ((p%2) > 0 ? 5 : 0 ) ;
+				piece.j0 = 22 + ((p%2) > 0 ? 5+secondLineOffset : 0 ) ;
+
 				if (p<2) {
 					if (piece.piece.type.equals("I5")) piece.i0 = 1;
 					else piece.i0 = 2;
