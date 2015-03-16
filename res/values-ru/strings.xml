@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+ 
+    <string name="help">Помощь</string>
+    <string name="preferences">Настройки</string>
+
+    <string name="back">Назад</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="newnew">Новая</string>
+    <string name="delete">Удалить</string>
+    <string name="undo">Отменить</string>
+
+  <!-- app -->
+
+    <string name="flip">Перевернуть фигуру</string>
+    <string name="i_pass">Я пропускаю ход</string>
+
+    <string name="quit">Выйти из игры?</string>
+    <string name="social">Social</string>
+
+    <string name="new_game">Новая игра</string>
+    <string name="red_ko">Красным больше некуда ходить</string>
+    <string name="congratulations">Поздравляем, ты выйграл со счетом : </string>
+    <string name="try_next">Попробуй следующий уровень.</string>
+    <string name="wins_with_score">выйграл со счетом</string>
+
+    <string name="Red">Красный игрок</string>
+    <string name="Green">Зеленый игрок</string>
+    <string name="Blue">Синий игрок</string>
+    <string name="Orange">Оранжевый игрок</string>
+
+  <!-- rate form -->
+
+    <string name="if_you_enjoy">Если вам понравилась игра Blokish, не могли бы вы проголосовать за нее?</string>
+    <string name="now">Да</string>
+    <string name="later">Позже</string>
+    <string name="never">Нет</string>
+
+</resources>
