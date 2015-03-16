@@ -5,8 +5,11 @@
 
 Open-source Android implementation of the popular board game Blokus. With very smooth Drag & Drop user interface.
 
-Live on Google Play : http://play.google.com/store/apps/details?id=org.scoutant.blokish. More than 50.000 downloads.
+#### Live on :
+* Google Play : http://play.google.com/store/apps/details?id=org.scoutant.blokish. More than 150.000 downloads.
+* F-Droid : https://f-droid.org/repository/browse/?fdfilter=blokish&fdid=org.scoutant.blokish.
 
+#### The rules
 Blokus is family game involving four players and a board with 20 x 20 squares. Like chess or checkers, it's a game for which at any time you can see your opponent's pieces.
 
 Each player starts with 21 pieces : 1 monomino, 1 domono, 2 triominos, 5 tetraminos and 12 pentaminos. It may recall you the Tetris polyominos...
@@ -36,6 +39,7 @@ You can disable AI for a human play only. Refer to Menu > Preferences.
 The software has no unobtrusive banner advertising.
 Once installed, you can play off-line.
 
+#### GPL v3 Licence
 The game is free. And even more : the code is open-source. 
 You can access it at http://github.com/scoutant.
 You can reuse and adapt it according to GPL v3 license.
@@ -47,6 +51,14 @@ Stephane Coutant, http://scoutant.org
 ---
 
 # Changelog
+
+## v2.3, 2015/03 : Russian translation
+* added Russian translation, credits to Boris Timofeev.
+* sdk Android 5.0
+
+## v2.2, 2014/10 : Added button to open menu for phone without menu button
+* build with Gradle v2
+* sdk Android 4.1
 
 ## v2.0, 2012/09 : German locale
 * added German locale, credits to Sascha Hlusiak
