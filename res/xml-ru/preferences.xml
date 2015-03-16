@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <CheckBoxPreference
+    android:key="displaySeeds" android:title="Рисовать точки" android:summary="Рисовать точку там, где можно разместить фигуру"
+    android:defaultValue="true" />
+  <CheckBoxPreference android:key="ai" android:title="Искусственный интеллект" android:summary="Компьютер играет за Зеленых, Синих и Желтых" android:defaultValue="true" />
+  <ListPreference
+    android:key="aiLevel" android:title="Уровень сложности" android:summary="Настройка уровня сложности в соответствии с вашим опытом игры"
+    android:entries="@array/aiLevelNames" android:entryValues="@array/aiLevelValues"
+    android:dialogTitle="Выберите уровень сложности" android:defaultValue="0"
+    android:persistent="true"
+  />
+  <CheckBoxPreference android:key="popupOnExit" android:title="Подтверждать выход" android:summary="Игра будет сохранена в любом случае..." android:defaultValue="true" />
+</PreferenceScreen>
