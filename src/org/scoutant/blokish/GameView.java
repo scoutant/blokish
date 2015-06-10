@@ -97,17 +97,19 @@ public class GameView extends FrameLayout {
         if (singleline==true && height >= size*29 ) singleLineOffset= 1;
         if (height >= size*35) secondLineOffset = 1;
 
+		buttons = new ButtonsView(context);
+		addView( buttons);
+
 		for (Board board : game.boards) {
 			int i=2;
 			for (Piece piece : board.pieces) {	
-				addView( new PieceUI(context, piece, i, 20+2) );
+//				addView( new PieceUI(context, piece, i, 20+2) );
+				addView( new PieceUI(context, piece, i, 20+2, buttons.ok) );
 				i += 4;
 			}
 			reorderPieces(board.color);
 		}
-		buttons = new ButtonsView(context); 
-		addView( buttons);
-		
+
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(R.layout.tabs, this);
 		

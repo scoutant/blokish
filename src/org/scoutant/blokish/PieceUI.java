@@ -22,6 +22,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -35,14 +36,18 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 
 import org.scoutant.blokish.model.Piece;
 import org.scoutant.blokish.model.Square;
+
+import java.util.Calendar;
 
 public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClickListener, Comparable<PieceUI> {
 
   public static final int PADDING = 4;
   private static final String tag = "activity";
+  private ImageButton ok;
 
   private Resources resources;
   private Drawable square;
@@ -98,6 +103,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     setWillNotDraw(false);
     setOnLongClickListener(this);
     setOnTouchListener(this);
+    setOnClickListener( new DoubleTapListener());
     resources = context.getApplicationContext().getResources();
     Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
     Point pointSize = new Point();
@@ -107,6 +113,24 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     animation = AnimationUtils.loadAnimation(context, R.anim.wave_scale);
     paint.setColor(0x99999999);
+  }
+
+  /**
+   * Double tap emulation listener
+   */
+  private class DoubleTapListener implements OnClickListener {
+    long time = SystemClock.currentThreadTimeMillis();
+    @Override
+    public void onClick(View v) {
+      long t = Calendar.getInstance().getTimeInMillis();
+      long elapse = t-time;
+//        Log.d("click", "elapse : " + elapse);
+      if (elapse<250) {
+        Log.d("click", "TAP");
+        if (ok!=null) ok.callOnClick();
+      }
+      time = t;
+    }
   }
 
   public PieceUI(Context context, Piece piece) {
@@ -130,7 +154,12 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     setVisibility(INVISIBLE);
   }
 
-  private void place(int i, int j){
+  public PieceUI( Context context, Piece piece, int i, int j, ImageButton ok){
+    this(context, piece, i, j);
+    this.ok = ok;
+  }
+
+    private void place(int i, int j){
     move(i,j);
     place();
   }

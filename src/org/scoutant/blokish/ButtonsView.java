@@ -13,8 +13,6 @@
 
 package org.scoutant.blokish;
 
-import org.scoutant.blokish.model.Move;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -28,13 +26,15 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView.ScaleType;
 
+import org.scoutant.blokish.model.Move;
+
 public class ButtonsView extends FrameLayout {
 
 	protected static final String tag = "ui";
 	
 	private Context context;
 	private ImageButton cancel;
-	private ImageButton ok;
+	public ImageButton ok;
 
 	private GameView game;
 
