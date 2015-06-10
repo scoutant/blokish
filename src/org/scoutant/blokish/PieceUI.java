@@ -96,6 +96,10 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
   private Animation animation;
   private int statusBarHeight=-1;
   private Matrix m = new Matrix();
+  private boolean isOk=false;
+
+  private static int grey = 0x99999999;
+  private static int green = 0x5533aa33;
 
   protected PieceUI(Context context) {
     super(context);
@@ -112,7 +116,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     size = width/20;
     vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     animation = AnimationUtils.loadAnimation(context, R.anim.wave_scale);
-    paint.setColor(0x99999999);
+    paint.setColor(grey);
   }
 
   /**
@@ -160,7 +164,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
   }
 
     private void place(int i, int j){
-    move(i,j);
+    move(i, j);
     place();
   }
 
@@ -178,7 +182,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 
   public void replace(){
     rotating=false;
-    move(i0,j0);
+    move(i0, j0);
   }
 
 
@@ -224,7 +228,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
         layout.topMargin  = (j-PADDING-2)*size;
       }
     }
-    setLayoutParams( layout);
+    setLayoutParams(layout);
   }
 
 
@@ -241,6 +245,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     }
     gotCanvas(canvas);
     if (movable && j<20) {
+      paint.setColor( isOk ? green : grey);
       canvas.drawCircle(radius, radius, radius, paint);
       canvas.drawCircle(radius, size, size, paint);
       canvas.drawCircle(radius, 2*radius-size, size, paint);
@@ -335,6 +340,8 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     }
     if (action==MotionEvent.ACTION_MOVE && game.selected==this) {
       bringToFront();
+
+
       if (rotating) {
         double r = Math.toDegrees( Math.atan2(event.getX()-radius, radius-event.getY()));
         int a = Double.valueOf( r-rDown).intValue();
@@ -342,6 +349,8 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
         if (a<-180) a+= 360;
         if (angle==a) return false;
         angle = a;
+        game.buttons.setOkState( false);
+        setOkState( false);
       } else {
         int r = (footprint%2==0 ? radius-size/2 : radius);
         int newi = ((int) event.getRawX() - localX  + r)/size;
@@ -350,6 +359,11 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
         i=newi;
         j=newj;
         moving = true;
+
+        boolean okState = game.game.valid(piece, i, j) && !game.thinking;
+        game.buttons.setOkState( okState);
+        setOkState( okState);
+
       }
     }
     if (action==MotionEvent.ACTION_UP) {
@@ -367,11 +381,16 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
         game.buttons.bringToFront();
         boolean okState = game.game.valid(piece, i, j) && !game.thinking;
         game.buttons.setOkState( okState);
+        setOkState( okState);
         if (okState && vibrator!=null) vibrator.vibrate(20);
       }
     }
     invalidate();
     return false;
+  }
+
+  private void setOkState( boolean value) {
+    this.isOk = value;
   }
 
   private void rotateAgainstGrid(){
