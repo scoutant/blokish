@@ -16,6 +16,7 @@ package org.scoutant.blokish;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Display;
@@ -31,7 +32,8 @@ import org.scoutant.blokish.model.Move;
 public class ButtonsView extends FrameLayout {
 
 	protected static final String tag = "ui";
-	
+	private final Vibrator vibrator;
+
 	private Context context;
 	private ImageButton cancel;
 	public ImageButton ok;
@@ -43,6 +45,7 @@ public class ButtonsView extends FrameLayout {
 	public ButtonsView(Context context) {
 		super(context);
 		this.context = context;
+		vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
 		setVisibility(INVISIBLE);
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		Point pointSize = new Point();
@@ -68,7 +71,7 @@ public class ButtonsView extends FrameLayout {
 		if (position==0) params.gravity = Gravity.LEFT | Gravity.CENTER_VERTICAL;
 		if (position==1) params.gravity = Gravity.RIGHT | Gravity.CENTER_VERTICAL;
 		btn.setLayoutParams(params);
-		btn.setImageDrawable(context.getResources().getDrawable( src));
+		btn.setImageDrawable(context.getResources().getDrawable(src));
 		btn.setScaleType(ScaleType.CENTER_INSIDE);
 		btn.setBackgroundColor(Color.TRANSPARENT);
 		btn.setOnClickListener(l);
@@ -103,6 +106,7 @@ public class ButtonsView extends FrameLayout {
 			Move move = new Move(piece.piece, piece.i, piece.j);
 			boolean possible = game.game.valid( move);
 			if (possible) {
+				if (vibrator!=null) vibrator.vibrate(20);
 				// TODO refactor with place()
 				piece.movable=false;
 				piece.setLongClickable(false);
@@ -125,6 +129,7 @@ public class ButtonsView extends FrameLayout {
 	};
 	private OnClickListener doCancel = new OnClickListener() {
 		public void onClick(View v) {
+			if (vibrator!=null) vibrator.vibrate(20);
 			Log.d(tag, "cancel...");
 			game.selected.replace();
 			game.selected = null;

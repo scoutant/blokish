@@ -47,6 +47,8 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 
   public static final int PADDING = 4;
   private static final String tag = "activity";
+  private Drawable disc;
+  private Drawable disc_ok;
   private ImageButton ok;
 
   private Resources resources;
@@ -99,7 +101,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
   private boolean isOk=false;
 
   private static int grey = 0x99999999;
-  private static int green = 0x5533aa33;
+  private static int green = 0x3333ee33;
 
   protected PieceUI(Context context) {
     super(context);
@@ -129,9 +131,10 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
       long t = Calendar.getInstance().getTimeInMillis();
       long elapse = t-time;
 //        Log.d("click", "elapse : " + elapse);
-      if (elapse<250) {
+      if (elapse<300) {
         Log.d("click", "TAP");
         if (ok!=null) ok.callOnClick();
+        if (vibrator!=null) vibrator.vibrate(20);
       }
       time = t;
     }
@@ -148,6 +151,9 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     square = resources.getDrawable( icons[piece.color]);
     square_bold = resources.getDrawable( icons_bold[piece.color]);
     resetLocalXY();
+
+    disc = context.getResources().getDrawable( R.drawable.disc);
+    disc_ok = context.getResources().getDrawable( R.drawable.disc_ok);
   }
 
   public PieceUI( Context context, Piece piece, int i, int j){
@@ -246,11 +252,16 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     gotCanvas(canvas);
     if (movable && j<20) {
       paint.setColor( isOk ? green : grey);
-      canvas.drawCircle(radius, radius, radius, paint);
+//      canvas.drawCircle(radius, radius, radius, paint);
+      Drawable d = isOk ? disc_ok : disc;
+      d.setBounds(0, 0, getWidth(), getHeight());
+      d.draw(canvas);
+
+      // below, the 4 handles
       canvas.drawCircle(radius, size, size, paint);
-      canvas.drawCircle(radius, 2*radius-size, size, paint);
+      canvas.drawCircle(radius, 2 * radius - size, size, paint);
       canvas.drawCircle(size, radius, size, paint);
-      canvas.drawCircle(2*radius-size, radius, size, paint);
+      canvas.drawCircle(2 * radius - size, radius, size, paint);
     }
     if (j>20 && footprint==1) {
       for (Square s : piece.squares()) add( s.i+1, s.j+1);
@@ -363,7 +374,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
         boolean okState = game.game.valid(piece, i, j) && !game.thinking;
         game.buttons.setOkState( okState);
         setOkState( okState);
-
+        if (okState && vibrator!=null) vibrator.vibrate(20);
       }
     }
     if (action==MotionEvent.ACTION_UP) {
@@ -382,7 +393,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
         boolean okState = game.game.valid(piece, i, j) && !game.thinking;
         game.buttons.setOkState( okState);
         setOkState( okState);
-        if (okState && vibrator!=null) vibrator.vibrate(20);
+//        if (okState && vibrator!=null) vibrator.vibrate(20);
       }
     }
     invalidate();
