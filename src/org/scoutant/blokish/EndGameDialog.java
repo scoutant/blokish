@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class EndGameDialog extends Dialog {
@@ -15,7 +14,7 @@ public class EndGameDialog extends Dialog {
 		getWindow().setLayout( LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		TextView tv = (TextView) findViewById(R.id.message);
 		tv.setText( message);
-		Button b = (Button) findViewById(R.id.ok);
+		View b = findViewById(R.id.ok);
 		b.setOnClickListener( new android.view.View.OnClickListener(){
 			public void onClick(View v) {
 				EndGameDialog.this.dismiss();

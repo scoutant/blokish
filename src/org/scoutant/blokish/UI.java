@@ -20,15 +20,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.scoutant.blokish.model.Move;
@@ -107,7 +108,7 @@ public class UI extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		super.onOptionsItemSelected(item);
 		if (item.getItemId() == MENU_ITEM_HELP) {
-			startActivity( new Intent(this, Help.class));			
+			startActivity(new Intent(this, Help.class));
 		}
 		if (item.getItemId() == MENU_ITEM_PREFERENCES) {
 			startActivity( new Intent(this, Settings.class));
@@ -133,21 +134,29 @@ public class UI extends Activity {
 			game.replay( moves);			
 		}
 		if (item.getItemId() == MENU_ITEM_NEW) {
+			final AlertDialog dialog =
 			new AlertDialog.Builder(this)
-			.setMessage( rs.getString( R.string.new_game) + "?")
+			.setMessage(rs.getString(R.string.new_game) + "?")
 			.setCancelable(false)
-			.setPositiveButton( R.string.yes, new DialogInterface.OnClickListener() {
+			.setPositiveButton(" ", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					newgame();
-					}
-				})
-			.setNegativeButton( R.string.no, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
-					}
+				}
 			})
-			.create()
-			.show();		
+			.setNegativeButton(" ", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id) {
+					dialog.cancel();
+				}
+			})
+			.create();
+			dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+				@Override
+				public void onShow(DialogInterface dialogInterface) {
+					setButtonImage( dialog, AlertDialog.BUTTON_POSITIVE, R.drawable.checkmark);
+					setButtonImage( dialog, AlertDialog.BUTTON_NEGATIVE, R.drawable.cancel);
+				}
+			});
+			dialog.show();
 			}
 		if (item.getItemId() == MENU_ITEM_THINK) {
 			think(0);
@@ -162,6 +171,13 @@ public class UI extends Activity {
 			if (piece!=null) piece.flip();
 		}
 		return false;
+	}
+
+	private void setButtonImage( AlertDialog dialog, int buttonId, int id ) {
+		Button button = dialog.getButton( buttonId);
+		Drawable drawable = getResources().getDrawable( id);
+		drawable.setBounds(drawable.getIntrinsicWidth()/4, 0, drawable.getIntrinsicWidth()*3/4, drawable.getIntrinsicHeight()/2);
+		button.setCompoundDrawables(drawable, null, null, null);
 	}
 
 	/**
@@ -252,10 +268,11 @@ public class UI extends Activity {
 			if (finished) {
 				game.indicator.hide();
 				Log.d(tag, "red over!");
+				final AlertDialog dialog =
 				new AlertDialog.Builder(UI.this)
 				.setMessage( R.string.red_ko)
 				.setCancelable(false)
-				.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+				.setPositiveButton(" ", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						game.redOver = true;
 						game.game.boards.get(0).over = true;
@@ -263,13 +280,17 @@ public class UI extends Activity {
 						think(1);
 						}
 					})
-				.create()
-				.show();						
+				.create();
+				dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+					@Override
+					public void onShow(DialogInterface dialogInterface) {
+						setButtonImage( dialog, AlertDialog.BUTTON_POSITIVE, R.drawable.checkmark);
+					}
+				});
+				dialog.show();
 			}
 		}
 	}
-
-
 
 	private Toast toast;
 	/** Press twice to exit */
@@ -285,21 +306,6 @@ public class UI extends Activity {
 		back_pressed = true;
 	}
 
-
-
-//	@Override
-//	public boolean onKeyDown(int keyCode, KeyEvent event) {
-//		if ( keyCode == KeyEvent.KEYCODE_SEARCH) {
-//			devmode = !devmode;
-//			return true;
-//		}
-//
-//		if ( keyCode == KeyEvent.KEYCODE_BACK) {
-//			UI.this.finish();
-//		}
-//		return super.onKeyDown(keyCode, event);
-//	}
-	
 	private void save(){
 		FileOutputStream fos;
 		try {

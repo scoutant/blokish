@@ -18,14 +18,15 @@
 		android:layout_marginTop="20dp"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:textColor="#FFF"
-		android:textSize="18dp"
+		android:textSize="22dp"
+		android:gravity="center"
     	/>
-	<Button
+	<ImageButton
 		android:layout_marginTop="20dp"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:id="@+id/ok"
-		android:text="ok"
+		android:src="@drawable/checkmark"
 		android:minWidth="120dp"
-		android:textSize="18dp"
+		android:background="@android:drawable/screen_background_dark_transparent"
 		/>
 </LinearLayout>
