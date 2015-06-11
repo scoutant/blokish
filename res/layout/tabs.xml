@@ -5,16 +5,6 @@
     android:baselineAligned="false"
     android:layout_gravity="bottom"
     >
-    <ImageView
-        android:layout_width="32dp"
-        android:layout_height="24dp"
-        android:layout_marginLeft="@dimen/margin_tab"
-        android:layout_marginRight="@dimen/margin_tab"
-        android:id="@+id/extra_menu_button"
-        android:src="@android:drawable/ic_menu_more"
-        android:scaleType="centerCrop"
-        android:visibility="gone"
-        />
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="24dp"
@@ -120,4 +110,14 @@
 		    android:gravity="center" 
 		    />
     </FrameLayout>
+	<ImageView
+		android:layout_width="32dp"
+		android:layout_height="24dp"
+		android:layout_marginLeft="@dimen/margin_tab"
+		android:layout_marginRight="@dimen/margin_tab"
+		android:id="@+id/extra_menu_button"
+		android:src="@android:drawable/stat_sys_upload_done"
+		android:scaleType="centerInside"
+		android:visibility="gone"
+		/>
 </LinearLayout>

@@ -25,6 +25,7 @@
 		<activity android:name=".Settings" android:label="@string/preferences" 
 		    android:screenOrientation="portrait" 
 		    android:parentActivityName=".UI"
+				  android:theme="@style/Theme.Holo.Calendar"
 		    />
 		<activity android:name=".Help" android:label="Help" 
 		    android:screenOrientation="portrait" 
