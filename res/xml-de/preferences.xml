@@ -6,12 +6,10 @@
 		android:defaultValue="true" />
 	<CheckBoxPreference android:key="ai" android:title="Computergegner" android:summary="Computer übernimmt Grün, Blau und Gelb" android:defaultValue="true" />
 	<ListPreference 
-		android:key="aiLevel" android:title="Spielstärke" android:summary="Spielstärke der Computergegner anpassen"
+		android:key="aiLevel" android:title="Spielstärke"
+		android:summary="%s"
 		android:entries="@array/aiLevelNames" android:entryValues="@array/aiLevelValues" 
 		android:dialogTitle="Spielstärke auswählen" android:defaultValue="0" 
 		android:persistent="true"
 		/>
-	<!-- 
-	<CheckBoxPreference android:key="popupOnExit" android:title="Popup bei Verlassen" android:summary="Spiel wird immer gespeichert..." android:defaultValue="true" />
-	 -->
 </PreferenceScreen>

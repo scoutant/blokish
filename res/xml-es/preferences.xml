@@ -5,12 +5,10 @@
 		android:defaultValue="true" />
 	<CheckBoxPreference android:key="ai" android:title="Inteligencia artificial" android:summary="La machina juega para los Verdes, Azules y Naranjos" android:defaultValue="true" />
 	<ListPreference 
-		android:key="aiLevel" android:title="Nivél de juego" android:summary="Eleja entre..."
+		android:key="aiLevel" android:title="Nivél de juego"
+		android:summary="%s"
 		android:entries="@array/aiLevelNames" android:entryValues="@array/aiLevelValues" 
 		android:dialogTitle="Elija un nivel " android:defaultValue="0" 
 		android:persistent="true"
 		/>
-	<!-- 
-	<CheckBoxPreference android:key="popupOnExit" android:title="Confirmar antes de salir" android:summary="La partida se guardará de todos modos" android:defaultValue="true" />
-	 -->
 </PreferenceScreen>
