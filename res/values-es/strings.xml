@@ -14,7 +14,8 @@
 	<string name="newnew">Nuevo</string>
 	<string name="delete">Borrar</string>
 	<string name="undo">Anular</string>
-	
+
+	<string name="twice_to_exit">De nuevo para salir</string>
 	<!-- app -->
 	
 	<string name="flip">Dar la vuelta a la pieza</string>

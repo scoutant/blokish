@@ -15,6 +15,7 @@
 	<string name="delete">Supprimer</string>
 	<string name="undo">Annuler</string>
 
+	<string name="twice_to_exit">2 fois pour quitter</string>
 	<!-- app -->
 	
 	<string name="flip">Retourner la piece</string>

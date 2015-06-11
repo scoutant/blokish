@@ -14,6 +14,8 @@
 	<string name="delete">Delete</string>
 	<string name="undo">Undo</string>
 
+	<string name="twice_to_exit">Press twice to exit</string>
+
 	<!-- app -->
 	
 	<string name="flip">Flip piece</string>

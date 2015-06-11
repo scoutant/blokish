@@ -13,19 +13,6 @@
 
 package org.scoutant.blokish;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.scoutant.blokish.model.Move;
-import org.scoutant.blokish.model.Piece;
-import org.scoutant.blokish.model.Square;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -42,6 +29,20 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.Toast;
+
+import org.scoutant.blokish.model.Move;
+import org.scoutant.blokish.model.Piece;
+import org.scoutant.blokish.model.Square;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UI extends Activity {
 	private static final int MENU_ITEM_HISTORY = 99;
@@ -59,8 +60,9 @@ public class UI extends Activity {
 	public boolean devmode=false;
 	private SharedPreferences prefs;
 	private Vibrator vibrator;
-	private Resources rs;  
-	
+	private Resources rs;
+	private boolean back_pressed;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -266,39 +268,37 @@ public class UI extends Activity {
 			}
 		}
 	}
-	
+
+
+
+	private Toast toast;
+	/** Press twice to exit */
 	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if ( keyCode == KeyEvent.KEYCODE_SEARCH) {
-			devmode = !devmode;
-			return true;
+	public void onBackPressed() {
+		if (back_pressed==true) {
+			if (toast!=null) toast.cancel();
+			super.onBackPressed();
+			return;
 		}
-		
-		if ( keyCode == KeyEvent.KEYCODE_BACK) {
-			// TODO add double back button feature
-			UI.this.finish();
-//			if (!prefs.getBoolean("popupOnExit", true)) {
-//				UI.this.finish();
-//			} else {
-//			new AlertDialog.Builder(this)
-//			.setMessage( R.string.quit)
-//			.setCancelable(false)
-//			.setPositiveButton( R.string.yes, new DialogInterface.OnClickListener() {
-//				public void onClick(DialogInterface dialog, int which) {
-//					UI.this.finish();
-//					}
-//				})
-//			.setNegativeButton( R.string.no, new DialogInterface.OnClickListener() {
-//				public void onClick(DialogInterface dialog, int id) {
-//					}
-//				})
-//			.create()
-//			.show();
-//			return true;
-//			}
-		}
-		return super.onKeyDown(keyCode, event);
+		toast = Toast.makeText( this, R.string.twice_to_exit, Toast.LENGTH_SHORT);
+		toast.show();
+		back_pressed = true;
 	}
+
+
+
+//	@Override
+//	public boolean onKeyDown(int keyCode, KeyEvent event) {
+//		if ( keyCode == KeyEvent.KEYCODE_SEARCH) {
+//			devmode = !devmode;
+//			return true;
+//		}
+//
+//		if ( keyCode == KeyEvent.KEYCODE_BACK) {
+//			UI.this.finish();
+//		}
+//		return super.onKeyDown(keyCode, event);
+//	}
 	
 	private void save(){
 		FileOutputStream fos;
