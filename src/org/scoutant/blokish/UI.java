@@ -178,6 +178,7 @@ public class UI extends Activity {
 		Drawable drawable = getResources().getDrawable( id);
 		drawable.setBounds(drawable.getIntrinsicWidth()/4, 0, drawable.getIntrinsicWidth()*3/4, drawable.getIntrinsicHeight()/2);
 		button.setCompoundDrawables(drawable, null, null, null);
+//		button.setBackgroundColor(Color.TRANSPARENT);
 	}
 
 	/**

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- M -->
+    <style name="TextAppearance.Small.M" parent="@android:style/TextAppearance.Small">
+        <item name="android:textSize">@dimen/size_m_small</item>
+    </style>
+    <style name="TextAppearance.M" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/size_m</item>
+    </style>
+    <style name="TextAppearance.Large.M" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">@dimen/size_m_large</item>
+    </style>
+    
+    <!-- L -->
+    <style name="TextAppearance.Small.L" parent="@android:style/TextAppearance.Small">
+        <item name="android:textSize">@dimen/size_l_small</item>
+        <item name="android:textColor">@android:color/holo_blue_light</item>
+    </style>
+    <style name="TextAppearance.L" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/size_l</item>
+    </style>
+    <style name="TextAppearance.Large.L" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">@dimen/size_l_large</item>
+    </style>
+    
+    <!-- XL -->
+    <style name="TextAppearance.Small.XL" parent="@android:style/TextAppearance.Small">
+        <item name="android:textSize">@dimen/size_xl_small</item>
+    </style>
+    <style name="TextAppearance.XL" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/size_xl</item>
+    </style>
+    <style name="TextAppearance.Large.XL" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">@dimen/size_xl_large</item>
+    </style>
+    
+    <!-- XXL -->
+    <style name="TextAppearance.Small.XXL" parent="@android:style/TextAppearance.Small">
+        <item name="android:textSize">@dimen/size_xxl_small</item>
+    </style>
+    <style name="TextAppearance.XXL" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/size_xxl</item>
+    </style>
+    <style name="TextAppearance.Large.XXL" parent="@android:style/TextAppearance.Large">
+        <item name="android:textSize">@dimen/size_xxl_large</item>
+    </style>
+    
+    
+    <!-- M Inverse -->
+    <style name="TextAppearance.Small.Inverse.M" parent="@android:style/TextAppearance.Small.Inverse">
+        <item name="android:textSize">@dimen/size_m_small</item>
+    </style>
+    <style name="TextAppearance.Inverse.M" parent="@android:style/TextAppearance.Inverse">
+        <item name="android:textSize">@dimen/size_m</item>
+    </style>
+    <style name="TextAppearance.Large.Inverse.M" parent="@android:style/TextAppearance.Large.Inverse">
+        <item name="android:textSize">@dimen/size_m_large</item>
+    </style>
+    
+    <!-- L Inverse -->
+    <style name="TextAppearance.Small.Inverse.L" parent="@android:style/TextAppearance.Small.Inverse">
+        <item name="android:textSize">@dimen/size_l_small</item>
+    </style>
+    <style name="TextAppearance.Inverse.L" parent="@android:style/TextAppearance.Inverse">
+        <item name="android:textSize">@dimen/size_l</item>
+    </style>
+    <style name="TextAppearance.Large.Inverse.L" parent="@android:style/TextAppearance.Large.Inverse">
+        <item name="android:textSize">@dimen/size_l_large</item>
+    </style>
+    
+    <!-- XL Inverse -->
+    <style name="TextAppearance.Small.Inverse.XL" parent="@android:style/TextAppearance.Small.Inverse">
+        <item name="android:textSize">@dimen/size_xl_small</item>
+    </style>
+    <style name="TextAppearance.Inverse.XL" parent="@android:style/TextAppearance.Inverse">
+        <item name="android:textSize">@dimen/size_xl</item>
+    </style>
+    <style name="TextAppearance.Large.Inverse.XL" parent="@android:style/TextAppearance.Large.Inverse">
+        <item name="android:textSize">@dimen/size_xl_large</item>
+    </style>
+    
+    <!-- XXL Inverse -->
+    <style name="TextAppearance.Small.Inverse.XXL" parent="@android:style/TextAppearance.Small.Inverse">
+        <item name="android:textSize">@dimen/size_xxl_small</item>
+    </style>
+    <style name="TextAppearance.Inverse.XXL" parent="@android:style/TextAppearance.Inverse">
+        <item name="android:textSize">@dimen/size_xxl</item>
+    </style>
+    <style name="TextAppearance.Large.Inverse.XXL" parent="@android:style/TextAppearance.Large.Inverse">
+        <item name="android:textSize">@dimen/size_xxl_large</item>
+    </style>
+    
+    
+</resources>

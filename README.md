@@ -1,5 +1,5 @@
 
-![blokish](http://blokish.scoutant.org/blokish-21.png)
+![blokish](http://blokish.scoutant.org/blokish_nexus_6)
 
 #Blokish
 
@@ -51,6 +51,11 @@ Stephane Coutant, http://scoutant.org
 ---
 
 # Changelog
+
+## v2.4, 2015/06 : Move validation possible directly on piece.
+* Smarter move validation : vibration and green color as soon move is valid
+* Validation by double tap on piece
+* sdk Android 5.1
 
 ## v2.3, 2015/03 : Russian translation
 * added Russian translation, credits to Boris Timofeev.

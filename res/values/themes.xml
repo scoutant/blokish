@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="Theme.Holo.Calendar" parent="@android:style/Theme.Holo">
+        <item name="android:textAppearance">@style/TextAppearance.L</item>
+        <item name="android:textAppearanceInverse">@style/TextAppearance.Inverse.L</item>
+        <item name="android:textAppearanceLarge">@style/TextAppearance.Large.L</item>
+        <item name="android:textAppearanceLargeInverse">@style/TextAppearance.Large.Inverse.L</item>
+        <item name="android:textAppearanceSmall">@style/TextAppearance.Small.L</item>
+        <item name="android:textAppearanceSmallInverse">@style/TextAppearance.Small.Inverse.L</item>
+        </style>
+
+    <!-- Holo.Light -->
+    <style name="Theme.Holo.Light.Calendar" parent="@android:style/Theme.Holo.Light">
+        <item name="android:textAppearance">@style/TextAppearance.L</item>
+        <item name="android:textAppearanceInverse">@style/TextAppearance.Inverse.L</item>
+        <item name="android:textAppearanceLarge">@style/TextAppearance.Large.L</item>
+        <item name="android:textAppearanceLargeInverse">@style/TextAppearance.Large.Inverse.L</item>
+    </style>
+
+    
+</resources>
