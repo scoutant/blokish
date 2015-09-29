@@ -120,7 +120,9 @@ public class GameView extends FrameLayout {
 			tabs[color] = (TextView) findViewById( labels[color]);
 			// let put the listener on the parent view group
 			ViewGroup tab  =  (ViewGroup) tabs[color].getParent();
-			if (tab!=null) tab.setOnClickListener(new ShowPiecesListener(color));
+			if (tab!=null && !ui.inPlayHubMode) {
+				tab.setOnClickListener(new ShowPiecesListener(color));
+			}
 		}
 
     View extraMenu = findViewById(R.id.extra_menu_button);

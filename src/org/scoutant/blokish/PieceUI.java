@@ -303,6 +303,12 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
 
   public boolean onTouch(View v, MotionEvent event) {
     // TODO possible to hook it in lifecycle? onAttachedToWindow() is to early...
+    UI ui = (UI) context;
+    if (ui.inPlayHubMode) {
+      if (ui.gameInfoFromPlayHub.isGameAlreadyFinished || ui.gameInfoFromPlayHub.currentTurnUserIndex != ui.gameInfoFromPlayHub.viewingUserIndex) {
+        return false; // If the user can't play, don't let him
+      }
+    }
     if (statusBarHeight<0) {
       Rect decor = new Rect();
       ((Activity) context).getWindow().getDecorView().getWindowVisibleDisplayFrame(decor);

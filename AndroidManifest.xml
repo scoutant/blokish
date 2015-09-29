@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.scoutant.blokish" 
-	android:versionCode="17" android:versionName="2.4"
+	android:versionCode="19" android:versionName="2.6"
 	>
     <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="22" />
     
 	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 		
 	<uses-feature android:name="android.hardware.screen.portrait" android:required="true"/> 
 	<uses-feature android:name="android.hardware.touchscreen" android:required="true"/>
@@ -14,9 +15,19 @@
 	<application android:icon="@drawable/blokish2" android:label="Blokish" android:theme="@android:style/Theme.Holo"
 	    android:allowBackup="true" >
 		<activity android:name=".UI" 
-		    android:theme="@style/scoutant" 
+		    android:theme="@style/scoutant"
+		    android:exported="true"
 		    android:screenOrientation="portrait" 
 		    >
+			<intent-filter>
+				<action android:name="playhub.game" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="playhub.intent.play" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			<meta-data android:name="com.playhub.maxPlayers" android:value="4" />
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
