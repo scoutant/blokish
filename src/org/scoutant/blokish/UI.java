@@ -414,6 +414,17 @@ public class UI extends Activity {
 		game.showPieces(turn);
 		game.invalidate();
 
+		if (gameInfoFromPlayHub.isGameAlreadyFinished) {
+			tellUserGameEnded();
+		}
+	}
+
+	private void tellUserGameEnded() {
+		int winnerIndex = game.game.winner();
+		boolean isTheViewerTheWinner = gameInfoFromPlayHub.viewingUserIndex == winnerIndex;
+		String winnerDisplayName = isTheViewerTheWinner ? "You" : gameInfoFromPlayHub.users[winnerIndex].nickname;
+		String message = winnerDisplayName + " won!";
+		new EndGameDialog(UI.this, isTheViewerTheWinner, message, 0, 0).show(); // we currently give 0 in the level and the score, as they are not used
 	}
 
 	private void sourceFromMovesFile() {
