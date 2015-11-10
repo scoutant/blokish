@@ -2,7 +2,6 @@
 .settings
 .classpath
 bin
-libs
 gen
 *.cfg
 local.properties

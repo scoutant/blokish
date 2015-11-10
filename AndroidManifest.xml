@@ -13,10 +13,20 @@
 	
 	<application android:icon="@drawable/blokish2" android:label="Blokish" android:theme="@android:style/Theme.Holo"
 	    android:allowBackup="true" >
-		<activity android:name=".UI" 
-		    android:theme="@style/scoutant" 
+		<activity android:name=".UI"
+			android:theme="@style/scoutant"
+			android:exported="true"
 		    android:screenOrientation="portrait" 
 		    >
+			<intent-filter>
+				<action android:name="playhub.game" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="playhub.intent.play" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			<meta-data android:name="com.playhub.maxPlayers" android:value="4" />
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />

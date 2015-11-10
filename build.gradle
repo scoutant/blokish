@@ -9,6 +9,7 @@ buildscript {
 apply plugin: 'android'
 
 dependencies {
+    compile files('libs/play-hub-support.jar')
 }
 
 android {
