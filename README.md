@@ -52,6 +52,11 @@ Stephane Coutant, http://scoutant.org
 
 # Changelog
 
+## v3.0, 2015/11 : Network multi-player support with PlayHub
+ * Network multi-player framework PlayHub. https://bitbucket.org/playhub/playhublibrary, licence GPL v3. Live on https://play.google.com/store/apps/details?id=com.playhub.
+ * build with Sdk Android 6.0
+
+
 ## v2.4, 2015/06 : Move validation possible directly on piece.
 * Smarter move validation : vibration and green color as soon move is valid
 * Validation by double tap on piece

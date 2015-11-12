@@ -1,0 +1,102 @@
+
+Blokish
+
+Blokus board game : an open-source Android implementation of the popular game.
+
+Smooth Drag & Drop user interface.
+Blokus is a family game involving four players and a board with 20 x 20 squares. Like chess or checkers, it's a game for which at any time you can see your opponent's pieces.
+
+No ads at all.
+
+Each player starts with 21 pieces : 1 monomino, 1 domono, 2 triominos, 5 tetraminos and 12 pentaminos. It may recall you the Tetris polyominos...
+
+"For first round, I must place a piece so that it touches one of the corners of the board"
+
+"Next, a piece must be placed so that it touches a corner of one of my own pieces.
+It may touch several corners, but never any side/edge of my pieces!" Look at screenshots or at the video.
+
+The game has a nice and natural User Interface : just Drag & Drop the piece with the finger. Rotate a piece likewise.
+
+You can flip a piece to its mirror position with a long-press gesture.
+
+"If a cannot place any more piece I pass my turn."
+
+You can see opponent's remaining pieces, by pressing corresponding tab.
+
+The end of the game is reached when every player passes.
+"My score is : addition of the squares of the pieces I placed".
+
+Refer to 'Menu > Help' inside the app. With several screenshots.
+
+You can safely quit at any time : your current game will be restored on next startup.
+
+You play against the machine. You can configure the level of corresponding Artificial Intelligence : 4 levels. Refer to Menu > Preferences
+
+To play against a friend, you can disable AI. Go to Menu > Preferences. Later use the 4 tabs at the bottom to select next player.
+
+This software is open-source, available at https://github.com/scoutant/blokish. You may reuse the code, conforming to GPLv3 licence.
+
+
+FR
+Implémentation open-source du jeu de plateau Blokus.
+
+Il s'agit d'un jeu familial sur un plateau de 20 x 20 cases.
+Chaque joueur commence avec ses 21 pièces, des polyominos qui font penser au jeu de Tetris. Le but est de placer le plus de pièces possible.
+
+Lorsque je pose une pièce, elle doit toucher au moins un des coins de mes autres pièces ; et seulement des coins. Voir les screenshots ou la vidéo.
+
+Une fois que j'ai déplacé une pièce sur le plateau, je peux:
+- tourner la pièce : rotation via les points d'encrage,
+- <b>retourner</b> la pièce avec un geste long-press.
+
+Le but est de se débarrasser du plus de pièce possible.
+Voir aussi Menu>Aide.
+
+
+ES
+
+Blokish es una implementación open source del juego Blokus.
+
+Blokus es un juego de mesa : un tablero de 20x20 casillas cuadradas. Los jugadores reciben un mismo grupo de 21 piezas de diferentes formas y tamaños formadas por pequeños cuadrados, un poco como los de Tetris.
+
+Los jugadores van colocando por turnos sus piezas en los espacios vacíos del tablero con la única regla que cada pieza que coloquen debe tocar por alguna esquina a alguna de sus piezas ya colocadas.
+
+Es un juego estratégico, gana el que se queda con el minimo de piezas.
+
+
+SV
+Blokish är en open-source app för att spela Blokus.
+
+Blokus är ett spännande strategispel : spelplanen består av en platta med 20x20 rutor. Spelpjäserna är 21 brickor som liknar någott Tetris.
+
+Brickorna varierar i storlek från 1 ruta till 5 rutor och har alla olika form. 4 olika färger
+
+Spelet går ut på att man ska placera ut så många av sina brickor som möjligt.
+
+
+DE
+Blokish: eine Open Source Android Umsetzung des beliebten Brettspiels, Blokus.
+
+Blokus ist ein Familienspiel mit vier Spielern auf einem Brett der Größe 20 x 20. Zu jeder Zeit sind alle Steine jeden Spielers sichtbar.
+
+Die Software ist werbefrei und kann ohne Internetverbindung gespielt werden.
+
+Jeder Spieler startet mit 21, Tetris-ähnlichen Spielsteinen: 1 Einer, 1 Zweier, 2 Dreier, 5 Vierer und 12 Fünfer.
+
+In der ersten Runde muss der Spieler einen Stein in seiner eigenen Ecke des Spielfelds anlegen.
+
+Danach muss der Spieler einen Stein so anlegen, dass er die Ecke eines bereits gelegten Steins von sich berührt. Er darf mehrere Ecken berühren oder auch Kanten von anderen Steinen, aber niemals die Kante eines eigenen Spielsteins. Siehe Screenshots und das Video.
+
+Das Spiel hat eine natürliche Benutzeroberfläche. Einfach die Steine per Drag & Drop auf das Spielfeld ziehen oder drehen. Ein Stein kann über einen langen Druck gespiegelt werden.
+
+Ist ein Zug nicht möglich, kann der Spieler an den nächsten übergeben.
+
+Die Steine der Gegenspieler können gesehen werden, indem der entsprechende Tab gewählt wird.
+
+Das Spiel ist vorbei, wenn kein Spieler mehr einen Stein legen kann. Die Punkte werden aus der Summe aller gelegten Quadrate gebildet.
+
+Bei Verlassen des Spiels wird der aktuelle Spielstand gespeichert; das Spiel kann so beim nächsten Start fortgesetzt werden.
+
+Normalerweise steuert der Computer die drei Gegenspieler. In den Einstellungen kann die Spielstärke festgelegt, oder der Computer auch deaktiviert werden, um gegen einen Freund spielen zu können.
+
+Credits to Sascha Hlusiak for present German translation.
