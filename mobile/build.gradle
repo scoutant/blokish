@@ -10,12 +10,17 @@ android {
     }
 
     dependencies {
+        testCompile 'junit:junit:4.12'
         compile files('libs/play-hub-support.jar')
     }
 
     lintOptions {
 //        checkReleaseBuilds false
         abortOnError false
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 
 }

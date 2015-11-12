@@ -53,7 +53,7 @@ public class Board {
 	public int nbPieces;
 	public int score;
 	public boolean over=false;
-	
+
 	public Board(int color) {
 		this.color = color;
 		if (color==0) ij[0][0]=1;
