@@ -19,8 +19,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -61,6 +63,7 @@ public class UI extends Activity {
 	private static final int MENU_ITEM_THINK=10;
 	private static final int MENU_ITEM_PREFERENCES=-1;
 	private static final int MENU_ITEM_HELP = 9;
+	private static final int MENU_ITEM_ONLINE = 16;
 	private static final int MENU_ITEM_PASS_TURN = 12;
 	private static final int MENU_ITEM_FLIP = 15;
 
@@ -135,6 +138,8 @@ public class UI extends Activity {
 
 		menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, R.string.help).setIcon( R.drawable.help_48);
 		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, R.string.preferences).setIcon( R.drawable.preferences_48);
+
+		menu.add(Menu.NONE, MENU_ITEM_ONLINE, Menu.NONE, R.string.online).setIcon( R.drawable.playhub_48);
 		
 		if (devmode) {
 			menu.add(Menu.NONE, MENU_ITEM_THINK, Menu.NONE, "AI").setIcon(android.R.drawable.ic_menu_manage);
@@ -153,16 +158,16 @@ public class UI extends Activity {
 			startActivity(new Intent(this, Help.class));
 		}
 		if (item.getItemId() == MENU_ITEM_PREFERENCES) {
-			startActivity( new Intent(this, Settings.class));
+			startActivity(new Intent(this, Settings.class));
 		}
 		if (item.getItemId() == MENU_ITEM_HISTORY) {
-			Log.d(tag, ""+game.game);
+			Log.d(tag, "" + game.game);
 		}
 		if (item.getItemId() == MENU_ITEM_REPLAY) {
 			GameView old = game;
 			newgame();
 			Log.d(tag, "replay # moves : " + old.game.moves.size());
-			game.replay( old.game.moves);
+			game.replay(old.game.moves);
 		}
 		if (item.getItemId() == MENU_ITEM_BACK) {
 			List<Move> moves = game.game.moves;
@@ -194,8 +199,8 @@ public class UI extends Activity {
 			dialog.setOnShowListener(new DialogInterface.OnShowListener() {
 				@Override
 				public void onShow(DialogInterface dialogInterface) {
-					setButtonImage( dialog, AlertDialog.BUTTON_POSITIVE, R.drawable.checkmark);
-					setButtonImage( dialog, AlertDialog.BUTTON_NEGATIVE, R.drawable.cancel);
+					setButtonImage(dialog, AlertDialog.BUTTON_POSITIVE, R.drawable.checkmark);
+					setButtonImage(dialog, AlertDialog.BUTTON_NEGATIVE, R.drawable.cancel);
 				}
 			});
 			dialog.show();
@@ -216,7 +221,34 @@ public class UI extends Activity {
 			PieceUI piece = game.selected;
 			if (piece!=null) piece.flip();
 		}
+		if (item.getItemId() == MENU_ITEM_ONLINE) {
+			String playHubPackageName = "com.playhub";
+			if (isAppInstalled(playHubPackageName)) {
+				Intent i = getPackageManager().getLaunchIntentForPackage(playHubPackageName);
+				i.putExtra("gameEngine", getPackageName());
+				startActivity(i);
+			} else {
+				try {
+					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + playHubPackageName)));
+				} catch (android.content.ActivityNotFoundException activityNotFoundException) {
+					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + playHubPackageName)));
+				}
+			}
+		}
 		return false;
+	}
+
+	private boolean isAppInstalled(String uri) {
+		PackageManager pm = getPackageManager();
+		boolean app_installed;
+		try {
+			pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+			app_installed = true;
+		}
+		catch (PackageManager.NameNotFoundException e) {
+			app_installed = false;
+		}
+		return app_installed;
 	}
 
 	private void setButtonImage( AlertDialog dialog, int buttonId, int id ) {
