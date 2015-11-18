@@ -56,6 +56,8 @@ Stephane Coutant, http://scoutant.org
  * Network multi-player framework PlayHub. https://bitbucket.org/playhub/playhublibrary, licence GPL v3. Live on https://play.google.com/store/apps/details?id=com.playhub.
  * build with Sdk Android 6.0
 
+![blokish](http://scoutant.org/blokish/blokish-playhub-menu.png)
+
 
 ## v2.4, 2015/06 : Move validation possible directly on piece.
 * Smarter move validation : vibration and green color as soon move is valid
