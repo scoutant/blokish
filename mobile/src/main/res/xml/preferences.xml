@@ -1,13 +1,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<CheckBoxPreference 
-		android:key="displaySeeds" android:title="Seeds display" android:summary="Display a dot where you may place a piece" 
+		android:key="displaySeeds" android:title="@string/displaySeeds_title" android:summary="@string/displaySeeds_description"
 		android:defaultValue="true" />
-	<CheckBoxPreference android:key="ai" android:title="Artificial Intelligence" android:summary="Computer plays Green, Blue and Yellow" android:defaultValue="true" />
+	<CheckBoxPreference android:key="ai" android:title="@string/ai_title" android:summary="@string/ai_description" android:defaultValue="true" />
 	<ListPreference 
-		android:key="aiLevel" android:title="Level"
+		android:key="aiLevel" android:title="@string/aiLevel_title"
 		android:summary="%s"
 		android:entries="@array/aiLevelNames" android:entryValues="@array/aiLevelValues"
-		android:dialogTitle="Select level" android:defaultValue="0" 
+		android:dialogTitle="@string/aiLevel_dialog" android:defaultValue="0"
 		android:persistent="true"
 		/>
 </PreferenceScreen>

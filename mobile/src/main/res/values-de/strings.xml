@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <!-- DE, by Sascha Hlusiak -->
 
@@ -43,5 +43,53 @@
 	<string name="now">Ja</string>
 	<string name="later">Später</string>
 	<string name="never">Nein</string>
+
+
+	<!-- preferences -->
+	<string name="displaySeeds_title">Anlegepunkte zeigen</string>
+	<string name="displaySeeds_description">Felder markieren, an denen Anlegen möglich ist.</string>
+
+	<string name="ai_title">Computergegner</string>
+	<string name="ai_description">Computer übernimmt Grün, Blau und Gelb</string>
+
+	<string name="aiLevel_title">Spielstärke</string>
+	<string name="aiLevel_dialog">Spielstärke auswählen</string>
+
+
+	<!-- help -->
+	<string name="video_description_1">Drücke auf das Bild um ein Demo-Video auf YouTube abzuspielen</string>
+	<string name="video_description_2">Du kannst das Video vergrößern, indem du das Handy quer hältst</string>
+
+	<string name="rules_title">Regeln des Spiels Blokus Classic</string>
+	<string name="rules_text_1">
+		- Ein Spielbrett mit 20 * 20 Kästchen.
+		\n- 4 Spieler, die jeweils 21 Teile haben : 1 einzelnes Viereck, 1 Domino, 2 Triominos, 5 Tetraminos und 12 Pentaminos
+		\n- Jeder Spieler muss so viele Teile wie möglich auf das Spielbrett legen.
+		\n- Das erste Teil muss so gelegt werden, dass es eine der Ecken des Spielbretts berührt.
+		\n- Die darauf folgenden Teile müssen so gelegt werden, dass sie eine Ecke der eigenen Teile berühren. Sie dürfen mehrere Ecken auf einmal, aber keine Kante eines Teils berühren!
+	</string>
+	<string name="rules_text_2">
+		- Wenn man kein Teil mehr legen kann, muss man seinen Zug überspringen.
+		\n- Das Spiel endet, wenn kein Spieler mehr Teile legen kann.
+		\n- Die Punktzahl eines Spielers ist gleich der Anzahl von Vierecken der eigenen Teile, die auf dem Spielbrett liegen.
+	</string>
+
+	<string name="howToPlay_title">Kurzanleitung für die Blokish Android App</string>
+	<string name="howToPlay_text_1">
+		Benutze Drag&amp;Drop und Wisch-Gesten, um Teile zu platzieren:
+		\n- Navigiere durch deine verbleibenden Teile mit Wischen.
+	</string>
+	<string name="howToPlay_text_2">- Wähle und ziehe ein Teil auf das Spielbrett. Jetzt kannst du es umherziehen, indem du den großen grauen Kreis berührst.</string>
+	<string name="howToPlay_text_3">- Drehe das Teil, indem du einen der Griffe benutzt.</string>
+	<string name="howToPlay_text_4">
+		- Du kannst ein Teil spiegeln, indem du es lange berührst.
+		\nDu kannst auch über das Menü ein Teil spiegeln, das ist besonders bei Tablets nützlich.
+		\n- Mit dem roten Knopf kannst du einen Zug abbrechen. Er setzt das Teil zurück in deinen Bestand.
+		\n- Wenn der Zug gültig ist, erscheint ein grüner \'ok\' Knopf. Du kannst den Zug ausführen, indem du darauf drückst!
+	</string>
+	<string name="howToPlay_text_5">
+		- Du kannst jederzeit die verbleibenden Teile deiner Gegner sehen : wähle einfach unten den Reiter der entsprechenden Farbe aus.
+		\n- Wenn du gegen den Computer gewinnst, kannst du eine höhere Spielstärke auswählen : Menü &gt; Einstellungen.
+	</string>
 
 </resources>
