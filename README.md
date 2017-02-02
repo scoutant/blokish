@@ -52,6 +52,9 @@ Stephane Coutant, http://scoutant.org
 
 # Changelog
 
+## v3.1, 2017/01 : removed network multi-player support with PlayHub
+ * build with Sdk Android 7.0
+
 ## v3.0, 2015/11 : Network multi-player support with PlayHub
  * Network multi-player framework PlayHub. https://bitbucket.org/playhub/playhublibrary, licence GPL v3. Live on https://play.google.com/store/apps/details?id=com.playhub.
  * build with Sdk Android 6.0
