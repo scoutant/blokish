@@ -19,10 +19,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -34,17 +32,11 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.playhub.GameInfoFromPlayHub;
-import com.playhub.Consts;
-import com.playhub.GameInfoToReturnToPlayHub;
-
 import org.scoutant.blokish.model.Move;
 import org.scoutant.blokish.model.Piece;
 import org.scoutant.blokish.model.Square;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -63,7 +55,6 @@ public class UI extends Activity {
 	private static final int MENU_ITEM_THINK=10;
 	private static final int MENU_ITEM_PREFERENCES=-1;
 	private static final int MENU_ITEM_HELP = 9;
-	private static final int MENU_ITEM_ONLINE = 16;
 	private static final int MENU_ITEM_PASS_TURN = 12;
 	private static final int MENU_ITEM_FLIP = 15;
 
@@ -75,10 +66,6 @@ public class UI extends Activity {
 	private Resources rs;
 	private boolean back_pressed;
 
-
-	public GameInfoFromPlayHub gameInfoFromPlayHub;
-	public boolean inPlayHubMode;
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -86,30 +73,10 @@ public class UI extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 
-		Bundle extras = getIntent().getExtras();
-		if ((extras != null) && (extras.containsKey(Consts.GAME_INFO_FROM_PLAYHUB_KEY))){
-			gameInfoFromPlayHub = (GameInfoFromPlayHub) extras.getSerializable(Consts.GAME_INFO_FROM_PLAYHUB_KEY);
-			inPlayHubMode = true;
-
-			if (gameInfoFromPlayHub.users.length != 4) {
-				boolean isOnePlayer = gameInfoFromPlayHub.users.length == 1;
-				Toast.makeText(
-						this,
-						"The game must be played by 4 players. There " + (isOnePlayer ? "is currently " : "are currently ") + gameInfoFromPlayHub.users.length,
-						Toast.LENGTH_LONG).show();
-				finish();
-				return;
-			}
-		}
-
 		newgame();
 		prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-		if (inPlayHubMode) {
-			sourceFromPlayhub();
-		} else {
-			sourceFromMovesFile();
-		}
+		sourceFromMovesFile();
 
 		AppRater.app_launched( this);
 	}
@@ -123,13 +90,6 @@ public class UI extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
-		if (inPlayHubMode) {
-			menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, R.string.help).setIcon( R.drawable.help_48);
-			if (!gameInfoFromPlayHub.isGameAlreadyFinished && gameInfoFromPlayHub.currentTurnUserIndex == gameInfoFromPlayHub.viewingUserIndex) {
-				menu.add(Menu.NONE, MENU_ITEM_PASS_TURN, Menu.NONE, R.string.i_pass).setIcon(R.drawable.checkmark_48);
-			}
-			return true;
-		}
 		if (game.selected!=null) {
 			menu.add(Menu.NONE, MENU_ITEM_FLIP, Menu.NONE, R.string.flip).setIcon(android.R.drawable.ic_menu_set_as);
 		}
@@ -139,8 +99,6 @@ public class UI extends Activity {
 		menu.add(Menu.NONE, MENU_ITEM_HELP, Menu.NONE, R.string.help).setIcon( R.drawable.help_48);
 		menu.add(Menu.NONE, MENU_ITEM_PREFERENCES, Menu.NONE, R.string.preferences).setIcon( R.drawable.preferences_48);
 
-		menu.add(Menu.NONE, MENU_ITEM_ONLINE, Menu.NONE, R.string.online).setIcon( R.drawable.playhub_48);
-		
 		if (devmode) {
 			menu.add(Menu.NONE, MENU_ITEM_THINK, Menu.NONE, "AI").setIcon(android.R.drawable.ic_menu_manage);
 			menu.add(Menu.NONE, MENU_ITEM_HISTORY, Menu.NONE, "hist").setIcon(android.R.drawable.ic_menu_recent_history);
@@ -209,46 +167,15 @@ public class UI extends Activity {
 			think(0);
 		}
 		if (item.getItemId() == MENU_ITEM_PASS_TURN) {
-			if (inPlayHubMode) {
-				returnToPlayHub();
-			} else {
 				turn = (turn + 1) % 4;
 				game.showPieces(turn);
 				game.invalidate();
-			}
 		}
 		if (item.getItemId() == MENU_ITEM_FLIP) {
 			PieceUI piece = game.selected;
 			if (piece!=null) piece.flip();
 		}
-		if (item.getItemId() == MENU_ITEM_ONLINE) {
-			String playHubPackageName = "com.playhub";
-			if (isAppInstalled(playHubPackageName)) {
-				Intent i = getPackageManager().getLaunchIntentForPackage(playHubPackageName);
-				i.putExtra("gameEngine", getPackageName());
-				startActivity(i);
-			} else {
-				try {
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + playHubPackageName)));
-				} catch (android.content.ActivityNotFoundException activityNotFoundException) {
-					startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + playHubPackageName)));
-				}
-			}
-		}
 		return false;
-	}
-
-	private boolean isAppInstalled(String uri) {
-		PackageManager pm = getPackageManager();
-		boolean app_installed;
-		try {
-			pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-			app_installed = true;
-		}
-		catch (PackageManager.NameNotFoundException e) {
-			app_installed = false;
-		}
-		return app_installed;
 	}
 
 	private void setButtonImage( AlertDialog dialog, int buttonId, int id ) {
@@ -385,34 +312,6 @@ public class UI extends Activity {
 		back_pressed = true;
 	}
 
-	public void returnToPlayHub() {
-
-		GameInfoToReturnToPlayHub gameInfoToReturnToPlayHub = new GameInfoToReturnToPlayHub();
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		save(baos);
-		gameInfoToReturnToPlayHub.innerGameState = baos.toByteArray();
-
-		gameInfoToReturnToPlayHub.currentTurnPlayerUserIndex = (gameInfoFromPlayHub.currentTurnUserIndex + 1) % 4;
-
-		int numOfTries = 0;
-		while (numOfTries < 4 && !game.ai.hasMove(gameInfoToReturnToPlayHub.currentTurnPlayerUserIndex)) {// the suggested player can't plat
-			gameInfoToReturnToPlayHub.currentTurnPlayerUserIndex = (gameInfoToReturnToPlayHub.currentTurnPlayerUserIndex + 1) % 4;
-			numOfTries ++;
-		}
-
-		if (numOfTries == 4) { // we completed a full iteration, meaning no one can play now
-			gameInfoToReturnToPlayHub.gameState = GameInfoToReturnToPlayHub.GameStateToReturnToPlayhub.FINISHED;
-			gameInfoToReturnToPlayHub.winnerUserIndex = game.game.winner();
-		} else {
-			gameInfoToReturnToPlayHub.gameState = GameInfoToReturnToPlayHub.GameStateToReturnToPlayhub.RUNNING;
-		}
-
-		Intent output = new Intent();
-		output.putExtra(Consts.GAME_INFO_TO_RETURN_TO_PLAYHUB_KEY, gameInfoToReturnToPlayHub);
-		setResult(RESULT_OK, output);
-		finish();
-	}
-
 	private void saveToMovesFile() {
 		try {
 			FileOutputStream fos = openFileOutput("moves.txt", Context.MODE_PRIVATE);
@@ -436,28 +335,6 @@ public class UI extends Activity {
 		}
 	}
 
-
-	private void sourceFromPlayhub() {
-		if (gameInfoFromPlayHub.innerGameState != null) {
-			ByteArrayInputStream bais = new ByteArrayInputStream(gameInfoFromPlayHub.innerGameState);
-			source(bais);
-		}
-		turn = gameInfoFromPlayHub.currentTurnUserIndex;
-		game.showPieces(turn);
-		game.invalidate();
-
-		if (gameInfoFromPlayHub.isGameAlreadyFinished) {
-			tellUserGameEnded();
-		}
-	}
-
-	private void tellUserGameEnded() {
-		int winnerIndex = game.game.winner();
-		boolean isTheViewerTheWinner = gameInfoFromPlayHub.viewingUserIndex == winnerIndex;
-		String winnerDisplayName = isTheViewerTheWinner ? "You" : gameInfoFromPlayHub.users[winnerIndex].nickname;
-		String message = winnerDisplayName + " won!";
-		new EndGameDialog(UI.this, isTheViewerTheWinner, message, 0, 0).show(); // we currently give 0 in the level and the score, as they are not used
-	}
 
 	private void sourceFromMovesFile() {
 		try {
@@ -508,9 +385,7 @@ public class UI extends Activity {
 			task.cancel(true);
 			Log.d(tag, "leaving AI, as activity is brough to background");
 		}
-		if (!inPlayHubMode) {
 			saveToMovesFile();
-		}
 		super.onStop();
 	}
 	

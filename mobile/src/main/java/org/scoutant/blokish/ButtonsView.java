@@ -118,15 +118,11 @@ public class ButtonsView extends FrameLayout {
 				((GameView)getParent()).tabs[move.piece.color].setText( ""+game.game.boards.get(move.piece.color).score);
 				game.selected = null;
 				game.ui.turn = (piece.piece.color+1)%4;
-				if (!game.ui.inPlayHubMode && PreferenceManager.getDefaultSharedPreferences(context).getBoolean("ai", true)) {
+				if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean("ai", true)) {
 					game.ui.think(game.ui.turn);
 				} else {
-					if (game.ui.inPlayHubMode) {
-						game.ui.returnToPlayHub();
-					} else {
 						game.showPieces(game.ui.turn);
 						game.invalidate();
-					}
 				}
 			}
 		}
