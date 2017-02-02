@@ -41,5 +41,16 @@
 	<string name="now">Ja</string>
 	<string name="later">Senare</string>
 	<string name="never">Nej</string>
+
+
+	<!-- preferences -->
+	<string name="displaySeeds_title">Seeds display</string>
+	<string name="displaySeeds_description">Display a dot where you may place a piece</string>
+
+	<string name="ai_title">Artificial Intelligence</string>
+	<string name="ai_description">Computer plays Green, Blue and Yellow</string>
+
+	<string name="aiLevel_title">Level</string>
+	<string name="aiLevel_dialog">Select level</string>
 		
 </resources>

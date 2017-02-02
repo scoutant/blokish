@@ -47,6 +47,17 @@
 	<string name="rate">Evaluer Blokish?</string>
 	<string name="remind_me">Me rappeler plus tard</string>
 	<string name="no_thansk">Non merci!</string>
-	 -->		
+	 -->
+
+
+	<!-- preferences -->
+	<string name="displaySeeds_title">Afficher les points d\'encrage</string>
+	<string name="displaySeeds_description">Afficher un point là où une pièce peut être positionnée</string>
+
+	<string name="ai_title">Intelligence Artificielle</string>
+	<string name="ai_description">La machine joue les Verts, les Bleus et les Oranges</string>
+
+	<string name="aiLevel_title">Niveau</string>
+	<string name="aiLevel_dialog">Choisir le niveau</string>
 
 </resources>
