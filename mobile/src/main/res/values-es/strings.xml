@@ -41,6 +41,17 @@
 	<string name="now">Si</string>
 	<string name="later">Más tarde</string>
 	<string name="never">No</string>
+
+
+	<!-- preferences -->
+	<string name="displaySeeds_title">Mostrar puntos claves</string>
+	<string name="displaySeeds_description">Mostar un punto donde puedo colocar una pieza</string>
+
+	<string name="ai_title">Inteligencia artificial</string>
+	<string name="ai_description">La machina juega para los Verdes, Azules y Naranjos</string>
+
+	<string name="aiLevel_title">Nivél de juego</string>
+	<string name="aiLevel_dialog">Elija un nivel</string>
 	
 </resources>
 

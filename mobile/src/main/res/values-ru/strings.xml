@@ -41,4 +41,15 @@
     <string name="later">Позже</string>
     <string name="never">Нет</string>
 
+
+    <!-- preferences -->
+    <string name="displaySeeds_title">Рисовать точки</string>
+    <string name="displaySeeds_description">Рисовать точку там, где можно разместить фигуру</string>
+
+    <string name="ai_title">Искусственный интеллект</string>
+    <string name="ai_description">Компьютер играет за Зеленых, Синих и Желтых</string>
+
+    <string name="aiLevel_title">Уровень сложности</string>
+    <string name="aiLevel_dialog">Выберите уровень сложности</string>
+
 </resources>
