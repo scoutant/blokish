@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<!--  do not forget 'parent' property, so as to avoid java.lang.RuntimeException: Binary XML file line #25: You must supply a layout_height -->
-	<!--
-	Le pb c'est qu'alors ya plus les icones pour le menu... 
-	<style name="scoutant" parent="android:Theme.Holo">
-	 -->
-	<style name="scoutant" parent="android:Theme">
+	<style name="scoutant" parent="Theme.AppCompat.Light.NoActionBar">
    		<item name="android:textSize">22sp</item>
 		<item name="android:textColor">@color/grey</item>
 		<item name="android:paddingBottom">2dp</item>
 	</style>
 
-	<style name="padding" parent="@scoutant">
+	<style name="padding" parent="scoutant">
 		<item name="android:paddingTop">2dp</item>
 		<item name="android:paddingBottom">2dp</item>
 		<item name="android:paddingLeft">5dp</item>
 		<item name="android:paddingRight">5dp</item>
 	</style>
 
-	<style name="h1" parent="@scoutant">
+	<style name="h1" parent="scoutant">
 		<item name="android:textSize">20sp</item>
 		<item name="android:textColor">@color/orange</item>
 		<item name="android:textStyle">bold</item>
 	</style>
 
+<!--
+	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+	</style>
+-->
 </resources>

@@ -11,10 +11,11 @@
 
 	<supports-screens android:smallScreens="false" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" />	
 	
-	<application android:icon="@drawable/blokish2" android:label="Blokish" android:theme="@android:style/Theme.Holo"
+	<application android:icon="@drawable/blokish2" android:label="Blokish"
+				 android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 	    android:allowBackup="true" >
 		<activity android:name=".UI"
-			android:theme="@style/scoutant"
+			android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 			android:exported="true"
 		    android:screenOrientation="portrait" 
 		    >

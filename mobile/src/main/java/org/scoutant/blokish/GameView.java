@@ -89,7 +89,9 @@ public class GameView extends FrameLayout {
 		display.getSize(pointSize);
 		int width = pointSize.x;
 		int height = pointSize.y;
-		
+
+		setBackgroundColor( Color.BLACK);
+
 		size = width/20;
 		Log.d(tag, "size " + size + ", height/size : " + height/size);
 

@@ -13,7 +13,6 @@
 
 package org.scoutant.blokish;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,11 +24,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import org.scoutant.blokish.model.Move;
@@ -47,7 +51,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UI extends Activity {
+public class UI extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 	private static final int MENU_ITEM_HISTORY = 99;
 	private static final int MENU_ITEM_REPLAY = 101;
 	private static final int MENU_ITEM_BACK = 102;
@@ -81,12 +85,24 @@ public class UI extends Activity {
 		AppRater.app_launched( this);
 	}
 
-	
 	private void newgame() {
 		game = new GameView(UI.this);
-		setContentView(game);
+//		setContentView(game);
+		setContentView( R.layout.activity_main);
+		FrameLayout container = (FrameLayout) findViewById(R.id.container);
+		container.addView( game);
 	}
-	
+
+	@Override
+	public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+		return false;
+	}
+
+	@Override
+	public void onRefresh() {
+
+	}
+
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
@@ -208,7 +224,7 @@ public class UI extends Activity {
 	
 	public int turn = 0;
 	private AITask task = null;
-	
+
 	private class AITask extends AsyncTask<Integer, Void, Move> {
 		@Override
 		protected Move doInBackground(Integer... params) {
@@ -347,7 +363,7 @@ public class UI extends Activity {
 
 
 
-	/** sources a list of representions like this sample : 18|16|2|I3|0,-1|0,0|0,1 */
+	/** sources a list of representations like this sample : 18|16|2|I3|0,-1|0,0|0,1 */
 	private void source(InputStream is) {
 		List<Move> list = new ArrayList<Move>();
 		try {
