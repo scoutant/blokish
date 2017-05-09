@@ -15,12 +15,14 @@ package org.scoutant.blokish;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -49,6 +51,7 @@ import java.util.List;
  */
 public class GameView extends FrameLayout {
 	private static String tag = "activity";
+	private final Resources rs;
 	private Paint paint = new Paint();
 	public int size; 
 	public ButtonsView buttons;
@@ -66,7 +69,7 @@ public class GameView extends FrameLayout {
 	public TextView[] tabs = new TextView[4];
 	
 	public UI ui;
-	/** true if red has acknowlegde no more moves for her */
+	/** true if red has acknowledged no more moves for her */
 	public boolean redOver=false;
 	public SharedPreferences prefs;
 	public boolean thinking=false;
@@ -78,12 +81,14 @@ public class GameView extends FrameLayout {
 	
 	public GameView(Context context) {
 		super(context);
+		rs = context.getResources();
 		prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		ui = (UI) context;
 		setWillNotDraw(false);
 		setLayoutParams( new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, Gravity.TOP));
 		paint.setStrokeWidth(1.3f);
-		paint.setColor(Color.WHITE);
+		paint.setColor( getColor( R.color.white));
+
 		Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 		Point pointSize = new Point();
 		display.getSize(pointSize);
@@ -117,7 +122,7 @@ public class GameView extends FrameLayout {
 		
 		showPieces(0);
 		for (int color=0; color<4; color++) {
-			dots[color] = context.getResources().getDrawable(icons[color]);
+			dots[color] = getDrawable(icons[color]);
 			dots[color].setAlpha(191);
 			tabs[color] = (TextView) findViewById( labels[color]);
 			// let put the listener on the parent view group
@@ -146,7 +151,15 @@ public class GameView extends FrameLayout {
 		indicator = new BusyIndicator(context, iView);
 	}
 
-	private class ShowPiecesListener implements OnClickListener {
+	protected int getColor( int id) {
+		return ContextCompat.getColor( getContext(), id);
+	}
+	protected Drawable getDrawable( int id) {
+		return ContextCompat.getDrawable( getContext(), id);
+	}
+
+
+		private class ShowPiecesListener implements OnClickListener {
 		private int color;
 		protected ShowPiecesListener(int color) {
 			this.color = color;

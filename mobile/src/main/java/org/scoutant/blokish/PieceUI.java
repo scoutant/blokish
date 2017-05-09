@@ -25,6 +25,7 @@ import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -148,13 +149,21 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     oo = ( footprint>2? 1 : 0);
     if (footprint==5) oo = 2;
     radius = PADDING*size + footprint*size/2;
-    square = resources.getDrawable( icons[piece.color]);
-    square_bold = resources.getDrawable( icons_bold[piece.color]);
+    square = getDrawable( icons[piece.color]);
+    square_bold = getDrawable( icons_bold[piece.color]);
     resetLocalXY();
 
-    disc = context.getResources().getDrawable( R.drawable.disc);
-    disc_ok = context.getResources().getDrawable( R.drawable.disc_ok);
+    disc = getDrawable( R.drawable.disc);
+    disc_ok = getDrawable( R.drawable.disc_ok);
   }
+
+  protected int getColor( int id) {
+    return ContextCompat.getColor( getContext(), id);
+  }
+  protected Drawable getDrawable( int id) {
+    return ContextCompat.getDrawable( getContext(), id);
+  }
+
 
   public PieceUI( Context context, Piece piece, int i, int j){
     this(context, piece);
@@ -195,7 +204,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
   public void move(int i, int j) {
     this.i=i;
     this.j=j;
-    // Caution : Must invoque doLayout every time i and j is modified! invalidate() and onDraw() will operate only if "piece is in viewport". Which will be reevaluated with doLayout()!
+    // Caution : Must invoke doLayout every time i and j is modified! invalidate() and onDraw() will operate only if "piece is in viewport". Which will be reevaluated with doLayout()!
     doLayout();
     invalidate();
   }
@@ -251,13 +260,12 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     }
     gotCanvas(canvas);
     if (movable && j<20) {
-      paint.setColor( isOk ? green : grey);
-//      canvas.drawCircle(radius, radius, radius, paint);
       Drawable d = isOk ? disc_ok : disc;
       d.setBounds(0, 0, getWidth(), getHeight());
       d.draw(canvas);
 
       // below, the 4 handles
+      paint.setColor( isOk ? green : grey);
       canvas.drawCircle(radius, size, size, paint);
       canvas.drawCircle(radius, 2 * radius - size, size, paint);
       canvas.drawCircle(size, radius, size, paint);

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '25.0.3'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -12,9 +12,9 @@ android {
     dependencies {
         testCompile 'junit:junit:4.12'
 
-        compile 'com.android.support:appcompat-v7:25.0.0'
-        compile 'com.android.support:support-v4:25.0.0'
-        compile 'com.android.support:design:25.0.0'
+        compile 'com.android.support:appcompat-v7:25.3.1'
+        compile 'com.android.support:support-v4:25.3.1'
+        compile 'com.android.support:design:25.3.1'
 
     }
 
