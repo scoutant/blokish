@@ -22,15 +22,19 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -69,6 +73,7 @@ public class UI extends AppCompatActivity implements NavigationView.OnNavigation
 	private Vibrator vibrator;
 	private Resources rs;
 	private boolean back_pressed;
+	private DrawerLayout drawer;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -91,11 +96,22 @@ public class UI extends AppCompatActivity implements NavigationView.OnNavigation
 		setContentView( R.layout.activity_main);
 		FrameLayout container = (FrameLayout) findViewById(R.id.container);
 		container.addView( game);
-	}
+		drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+		final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+		navigationView.setNavigationItemSelectedListener(this);
+		drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
+			@Override
+			public void onDrawerSlide(View drawerView, float slideOffset) {}
+			@Override
+			public void onDrawerOpened(View drawerView) {
+				navigationView.getMenu().findItem(R.id.item_flip).setVisible( game.selected!=null);
+			}
+			@Override
+			public void onDrawerClosed(View drawerView) {}
+			@Override
+			public void onDrawerStateChanged(int newState) {}
+		});
 
-	@Override
-	public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-		return false;
 	}
 
 	@Override
@@ -103,6 +119,7 @@ public class UI extends AppCompatActivity implements NavigationView.OnNavigation
 
 	}
 
+	// menu in not show since 3.1, refactored to drawing menu
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		menu.clear();
@@ -193,6 +210,69 @@ public class UI extends AppCompatActivity implements NavigationView.OnNavigation
 		}
 		return false;
 	}
+
+	@Override
+	public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+		Log.d("menu", "menu item is : " + item);
+		int id = item.getItemId();
+		if (id==R.id.item_help) startActivity(new Intent(this, Help.class));
+		if (id==R.id.item_preferences) startActivity(new Intent(this, Settings.class));
+		if (id==R.id.item_back) {
+			List<Move> moves = game.game.moves;
+			int length = moves.size();
+			if (length>=4) {
+				length -= 4;
+			}
+			moves = moves.subList(0, length);
+			newgame();
+			Log.i(tag, "replay # moves : " + length);
+			game.replay( moves);
+		}
+		if (id==R.id.item_new) {
+			final AlertDialog dialog =
+				new AlertDialog.Builder(this)
+					.setMessage(rs.getString(R.string.new_game) + "?")
+					.setCancelable(false)
+					.setPositiveButton(" ", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							newgame();
+						}
+					})
+					.setNegativeButton(" ", new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int id) {
+							dialog.cancel();
+						}
+					})
+					.create();
+			dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+				@Override
+				public void onShow(DialogInterface dialogInterface) {
+					setButtonImage(dialog, AlertDialog.BUTTON_POSITIVE, R.drawable.checkmark);
+					setButtonImage(dialog, AlertDialog.BUTTON_NEGATIVE, R.drawable.cancel);
+				}
+			});
+			dialog.show();
+		}
+		if (id==R.id.item_flip) {
+			new Handler().postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					PieceUI piece = game.selected;
+					if (piece!=null) piece.flip();
+				}
+			}, 500);
+
+		}
+
+		// TODO review
+//		if (id==R.id.review) startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=org.scoutant.blokish")));
+
+		drawer.closeDrawer(GravityCompat.START);
+		return true;
+	}
+
+
 
 	private void setButtonImage( AlertDialog dialog, int buttonId, int id ) {
 		Button button = dialog.getButton( buttonId);
@@ -318,6 +398,11 @@ public class UI extends AppCompatActivity implements NavigationView.OnNavigation
 	/** Press twice to exit */
 	@Override
 	public void onBackPressed() {
+		if (drawer.isDrawerOpen(GravityCompat.START)) {
+			drawer.closeDrawer(GravityCompat.START);
+			return;
+		}
+
 		if (back_pressed==true) {
 			if (toast!=null) toast.cancel();
 			super.onBackPressed();

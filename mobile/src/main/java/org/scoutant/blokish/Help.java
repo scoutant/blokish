@@ -13,7 +13,7 @@ public class Help extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.help);
 
-		getActionBar().setDisplayHomeAsUpEnabled(true);		
+//		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		View v = findViewById(R.id.video);
 		v.setOnClickListener(new OnClickListener() {

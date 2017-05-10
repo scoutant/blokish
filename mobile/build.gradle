@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.3'
+    project.archivesBaseName = "blokish-3.1"; // TODO sync with Manifest
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -21,6 +22,21 @@ android {
     lintOptions {
 //        checkReleaseBuilds false
         abortOnError false
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../scoutant.keystore")
+            storePassword System.getenv("KEYSTORE")
+            keyAlias "scoutant"
+            keyPassword System.getenv("KEYSTORE")
+        }
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+        }
     }
 
     testOptions {
