@@ -219,15 +219,20 @@ public class UI extends AppCompatActivity implements NavigationView.OnNavigation
 		if (id==R.id.item_help) startActivity(new Intent(this, Help.class));
 		if (id==R.id.item_preferences) startActivity(new Intent(this, Settings.class));
 		if (id==R.id.item_back) {
-			List<Move> moves = game.game.moves;
-			int length = moves.size();
-			if (length>=4) {
-				length -= 4;
-			}
-			moves = moves.subList(0, length);
-			newgame();
-			Log.i(tag, "replay # moves : " + length);
-			game.replay( moves);
+			new Handler().postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					List<Move> moves = game.game.moves;
+					int length = moves.size();
+					if (length>=4) {
+						length -= 4;
+					}
+					moves = moves.subList(0, length);
+					newgame();
+					Log.i(tag, "replay # moves : " + length);
+					game.replay( moves);
+				}
+			}, 500);
 		}
 		if (id==R.id.item_new) {
 			final AlertDialog dialog =
