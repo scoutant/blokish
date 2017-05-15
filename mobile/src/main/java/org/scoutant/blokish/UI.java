@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -235,43 +236,40 @@ public class UI extends AppCompatActivity implements NavigationView.OnNavigation
 			}, 500);
 		}
 		if (id==R.id.item_new) {
-			final AlertDialog dialog =
-				new AlertDialog.Builder(this)
-					.setMessage(rs.getString(R.string.new_game) + "?")
-					.setCancelable(false)
-					.setPositiveButton(" ", new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int which) {
-							newgame();
-						}
-					})
-					.setNegativeButton(" ", new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int id) {
-							dialog.cancel();
-						}
-					})
-					.create();
-			dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+
+			final IconDialog dialog = new IconDialog(this, R.string.new_game);
+			dialog.setListener(new IconDialog.OnClick() {
 				@Override
-				public void onShow(DialogInterface dialogInterface) {
-					setButtonImage(dialog, AlertDialog.BUTTON_POSITIVE, R.drawable.checkmark);
-					setButtonImage(dialog, AlertDialog.BUTTON_NEGATIVE, R.drawable.cancel);
+				public void onClick() {
+					newgame();
 				}
 			});
 			dialog.show();
+
 		}
 		if (id==R.id.item_flip) {
+
 			new Handler().postDelayed(new Runnable() {
 				@Override
 				public void run() {
-					PieceUI piece = game.selected;
-					if (piece!=null) piece.flip();
+					final PieceUI piece = game.selected;
+					if (piece!=null) {
+						runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								piece.flip();
+								boolean okState = game.game.valid(piece.piece, piece.i, piece.j);
+								piece.setOkState( okState);
+								game.buttons.setOkState( okState);
+								game.invalidate();
+							}
+						});
+					}
 				}
 			}, 500);
-
 		}
 
-		// TODO review
-//		if (id==R.id.review) startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=org.scoutant.blokish")));
+		if (id==R.id.more_apps) startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:scoutant.org")));
 
 		drawer.closeDrawer(GravityCompat.START);
 		return true;

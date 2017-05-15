@@ -52,8 +52,11 @@ Stephane Coutant, http://scoutant.org
 
 # Changelog
 
-## v3.1, 2017/01 : removed network multi-player support with PlayHub
+## v3.1, 2017/05 : menu now with drawer, removed multi-player network support with PlayHub
  * build with Sdk Android 7.0
+ * refactored menu : now using drawer
+ * removed PlayHub dependency
+ * better german translation
 
 ## v3.0, 2015/11 : Network multi-player support with PlayHub
  * Network multi-player framework PlayHub. https://bitbucket.org/playhub/playhublibrary, licence GPL v3. Live on https://play.google.com/store/apps/details?id=com.playhub.

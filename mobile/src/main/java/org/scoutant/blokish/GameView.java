@@ -29,7 +29,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
@@ -132,17 +131,17 @@ public class GameView extends FrameLayout {
 			}
 		}
 
-    View extraMenu = findViewById(R.id.extra_menu_button);
-    if (extraMenu!=null && !ViewConfiguration.get(context).hasPermanentMenuKey()) {
-      extraMenu.setVisibility(View.VISIBLE);
-      extraMenu.setOnClickListener( new OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            ui.openOptionsMenu();
-          }
-        }
-      );
-    }
+//    View extraMenu = findViewById(R.id.extra_menu_button);
+//    if (extraMenu!=null && !ViewConfiguration.get(context).hasPermanentMenuKey()) {
+//      extraMenu.setVisibility(View.VISIBLE);
+//      extraMenu.setOnClickListener( new OnClickListener() {
+//          @Override
+//          public void onClick(View v) {
+//            ui.openOptionsMenu();
+//          }
+//        }
+//      );
+//    }
 
 		// progress indicator
 		View iView = new View(context);

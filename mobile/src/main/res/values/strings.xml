@@ -56,6 +56,8 @@
 	<string name="aiLevel_title">Level</string>
 	<string name="aiLevel_dialog">Select level</string>
 
+	<string name="review">Review</string>
+
 
 	<!-- help -->
 	<string name="video_description_1">Click above to watch demo on YouTube</string>

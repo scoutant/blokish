@@ -1,3 +1,7 @@
 <resources>
     <dimen name="margin_tab">3dp</dimen>
+    <dimen name="alert_dialog_title_height">64dp</dimen>
+    <dimen name="alert_dialog_button_bar_height">64dp</dimen>
+
+
 </resources>

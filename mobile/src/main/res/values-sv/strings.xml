@@ -52,5 +52,8 @@
 
 	<string name="aiLevel_title">Level</string>
 	<string name="aiLevel_dialog">Select level</string>
-		
+
+	<string name="review">Mon avis</string>
+
+
 </resources>

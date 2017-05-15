@@ -19,7 +19,7 @@
 	<string name="twice_to_exit">2 fois pour quitter</string>
 	<!-- app -->
 	
-	<string name="flip">Retourner la piece</string>
+	<string name="flip">Retourner piece</string>
 	<string name="i_pass">Je passe mon tour</string>
 	
 	<string name="quit">Quitter le  jeu?</string>
@@ -59,5 +59,8 @@
 
 	<string name="aiLevel_title">Niveau</string>
 	<string name="aiLevel_dialog">Choisir le niveau</string>
+
+	<string name="review">Mon avis</string>
+
 
 </resources>

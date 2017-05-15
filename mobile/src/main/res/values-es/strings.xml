@@ -19,7 +19,7 @@
 	<string name="twice_to_exit">De nuevo para salir</string>
 	<!-- app -->
 	
-	<string name="flip">Dar la vuelta a la pieza</string>
+	<string name="flip">Dar la vuelta</string>
 	<string name="i_pass">Paso el turno</string>
 	
 	<string name="quit">¿Sarlir del juego?</string>

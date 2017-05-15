@@ -408,7 +408,7 @@ public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClick
     return false;
   }
 
-  private void setOkState( boolean value) {
+  public void setOkState( boolean value) {
     this.isOk = value;
   }
 
