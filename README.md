@@ -1,13 +1,13 @@
-
+Blokish
+=======
 ![blokish](http://blokish.scoutant.org/blokish_nexus_6)
-
-#Blokish
 
 Open-source Android implementation of the popular board game Blokus. With very smooth Drag & Drop user interface.
 
-#### Live on :
-* Google Play : http://play.google.com/store/apps/details?id=org.scoutant.blokish. More than 150.000 downloads.
-* F-Droid : https://f-droid.org/repository/browse/?fdfilter=blokish&fdid=org.scoutant.blokish.
+<a href="https://f-droid.org/packages/org.scoutant.blokish" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="100"/></a>
+<a href="https://play.google.com/store/apps/details?id=org.scoutant.blokish" target="_blank">
+<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="100"/></a>
 
 #### The rules
 Blokus is family game involving four players and a board with 20 x 20 squares. Like chess or checkers, it's a game for which at any time you can see your opponent's pieces.
