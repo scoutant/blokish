@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="yes">Sim</string>
+	<string name="no">Não</string>
+
+	<string name="help">Ajuda</string>
+	<string name="preferences">Configurações</string>
+	<string name="online">Jogar online</string>
+
+	<string name="back">Voltar</string>
+	<string name="cancel">Cancelar</string>
+
+	<string name="newnew">Novo</string>
+	<string name="delete">Excluir</string>
+	<string name="undo">Desfazer</string>
+
+	<string name="twice_to_exit">Toque duas vezes para sair</string>
+
+	<!-- app -->
+	
+	<string name="flip">Preça flip</string>
+	<string name="i_pass">Eu passo meu turno</string>
+	
+	
+	<string name="quit">Sair do jogo?</string>
+	<string name="social">Social</string>
+	
+		
+	<string name="new_game">Novo Jogo</string>
+	<string name="red_ko">O Vermelho não tem mais movimentos</string>
+	<string name="congratulations">Parabéns, você ganhou com a pontuação : </string>
+	<string name="try_next">Tentar próximo nível.</string>
+	<string name="wins_with_score">ganha com a pomtuação</string>
+	
+	<string name="Red">Jogador Vermelho</string>
+	<string name="Green">Jogador Verde</string>
+	<string name="Blue">Jogador Azul</string>
+	<string name="Orange">Jogador Laranja</string>
+
+
+    <!-- rate form -->
+	<string name="if_you_enjoy">Se você gosta do jogo Blokish, poderia tomar um instante para avaliar o app?</string>
+	<string name="now">OK</string>
+	<string name="later">Mais tarde</string>
+	<string name="never">Não</string>
+
+
+	<!-- preferences -->
+	<string name="displaySeeds_title">Seeds display</string>
+	<string name="displaySeeds_description">Mostra um ponto onde você deve posicionar uma peça</string>
+
+	<string name="ai_title">Inteligência Artificial</string>
+	<string name="ai_description">O Computador joca com Verde, Azul e Amarelo</string>
+
+	<string name="aiLevel_title">Nível</string>
+	<string name="aiLevel_dialog">Selecionar nível</string>
+
+	<string name="review">Revisar</string>
+
+
+	<!-- help -->
+	<string name="video_description_1">Toque aciam para assistir o demo no YouTube</string>
+	<string name="video_description_2">Você pode aumentar o vídeo girando o celular para o modo paisagem</string>
+
+	<string name="rules_title">Regras do jogo Blokus Classic</string>
+	<string name="rules_text_1">
+		- Um tabuleiro com 20 * 20 quadrados.
+		\n- 4 jogadores possuem 21 peças cada : 1 quadrado, 1 dominó, 2 triominos, 5 tetraminos e 12 pentaminos
+		\n- Como jogador, devo botar a maioria das minhas peças no quadro.
+		\n- Para a primeira rodada eu devo botar uma peça de forma que ela toque um dos cantos do tabuleiro.
+		\n- A seguir, uma peça deve ser colocada de forma a tocar um canto de uma de minhas próprias peças. Pode tocar vários cantos, mas nunca uma lateral das minhas peças!
+	</string>
+	<string name="rules_text_2">
+		- Seu eu não puder mais colocar peças, eu passo meu turno.
+		\n- O fim do jogo chega quando todos os jogadores passam.
+		\n- Minha pontuação é : a soma de todoas os quadrados das partes que eu coloquei.
+	</string>
+
+	<string name="howToPlay_title">Como jogar Blokish com o app Android</string>
+	<string name="howToPlay_text_1">
+		Note o Arrastar&amp;Soltar e gestos de deslize para posicionar as peças :
+		\n- Role entre suas peças sobrando com o eu dedo da esquerda para a direita.
+	</string>
+	<string name="howToPlay_text_2">- Selecione e arraste uma peça para o tabuleiro. Agora você pode arrastá-la para qualquer lugar facilmente botando o dedo no grande círculo cinza</string>
+	<string name="howToPlay_text_3">- Rotacione a peça usando um dos direcionadores</string>
+	<string name="howToPlay_text_4">
+		- Você pode virar a peça para uma posição espelhada : com um longo toque na peça.
+		\nVirar uma peça também pode ser feiro usando o menu, especialmente útil para tablets.
+		\n- Você pode cancelar com o botão vermelho. Ele irá substituir a peça na sua mão.
+		\n- Quando o movimento é válido um botão \'ok\' verde aparece. Você pode submeter o movimento tocando nele!
+	</string>
+	<string name="howToPlay_text_5">
+		- A qualquer momento você pode ver as peças restantes  do seu oponente : basta selecionar a aba de cor correspondente na parte de baixo.
+		\n- Quando você ganha da máquina, você pode escolher um nível mais difícil : Menu &gt; Preferências.
+	</string>
+
+	<string name="about" translatable="false">
+		http://scoutant.org
+		\nO Blokish é um app Free/Libre open-source, licença GPL.
+		\nSinta-se livre para usar o código que você pode obter em http://github.com/scoutant.
+		\nStephane Coutant
+	</string>
+
+</resources>
