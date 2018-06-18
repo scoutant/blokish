@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="yes">Ja</string>
+	<string name="no">Nee</string>
+
+	<string name="help">Hulp</string>
+	<string name="preferences">Instellingen</string>
+	<string name="online">Online spelen</string>
+
+	<string name="back">Terug</string>
+	<string name="cancel">Annuleren</string>
+
+	<string name="newnew">Nieuw</string>
+	<string name="delete">Verwijderen</string>
+	<string name="undo">Ongedaan maken</string>
+
+	<string name="twice_to_exit">Druk twee keer om af te sluiten</string>
+
+	<!-- app -->
+	
+	<string name="flip">Stuk omdraaien</string>
+	<string name="i_pass">Beurt overslaan</string>
+	
+	
+	<string name="quit">Wil je het spel afsluiten?</string>
+	<string name="social">Sociaal</string>
+	
+		
+	<string name="new_game">Nieuw spel</string>
+	<string name="red_ko">Rood kan geen zetten meer doen</string>
+	<string name="congratulations">Gefeliciteerd! Je hebt het spel gewonnen met de volgende score: </string>
+	<string name="try_next">Probeer het volgende niveau</string>
+	<string name="wins_with_score">wint met de volgende score</string>
+	
+	<string name="Red">Speler rood</string>
+	<string name="Green">Speler groen</string>
+	<string name="Blue">Speler blauw</string>
+	<string name="Orange">Speler oranje</string>
+
+
+    <!-- rate form -->
+	<string name="if_you_enjoy">Als je het spel leuk vindt, wil je dan een goede waardering achterlaten?</string>
+	<string name="now">Oké</string>
+	<string name="later">Later</string>
+	<string name="never">Nee</string>
+
+
+	<!-- preferences -->
+	<string name="displaySeeds_title">Stippen tonen</string>
+	<string name="displaySeeds_description">Stippen tonen op de plekken waar je een stuk kunt plaatsen.</string>
+
+	<string name="ai_title">Kunstmatige intelligentie</string>
+	<string name="ai_description">De computer speelt zowel speler groen, blauw als geel.</string>
+
+	<string name="aiLevel_title">Niveau</string>
+	<string name="aiLevel_dialog">Niveau selecteren</string>
+
+	<string name="review">Recensie schrijven</string>
+
+
+	<!-- help -->
+	<string name="video_description_1">Klik hierboven om een demo te bekijken op YouTube.</string>
+	<string name="video_description_2">Je kunt de video vergroten door je telefoon horizontaal te draaien.</string>
+
+	<string name="rules_title">Regels van het spel Blokus Klassiek</string>
+	<string name="rules_text_1">
+		- Een bord met 20 * 20 vierkanten.
+		\n- 4 spelers met elk 21 stukken : 1 vierkant, 1 domino, 2 triominos, 5 tetraminos en 12 pentaminos.
+		\n- Als speler moet je de meeste van je stukken op het bord plaatsen.
+		\n- In de eerste ronde moet je een stuk plaatsen die één van de hoeken van het bord raakt.
+		\n- Daarna moet een stuk zó worden geplaatst dat het een hoek van je eigen stukken raakt. Er mogen meerdere hoeken tegelijk geraakt worden, maar nooit de randen!
+	</string>
+	<string name="rules_text_2">
+		- Als je geen stuk meer kunt plaatsen, dan moet je de beurt overslaan.
+		\n- Het einde van het spel wordt bereikt zodra elke speler klaar is.
+		\n- Je score wordt bepaald door het optellen van alle vierkanten van de stukken die je geplaatst hebt.
+	</string>
+
+	<string name="howToPlay_title">Hoe werkt de Blokish Android-app?</string>
+	<string name="howToPlay_text_1">
+		Let op de de vloeiende slepen-en-neerzetten en veeggebaren om de stukken te plaatsen:
+		\n- Scroll door je resterende stukken door van links naar rechts te vegen.
+	</string>
+	<string name="howToPlay_text_2">- Selecteer een stuk en versleep dit naar het bord. Je kunt het makkelijk verslepen door je  vinger te plaatsen op de grote, grijze cirkel.</string>
+	<string name="howToPlay_text_3">- Draai het stuk d.m.v. één van de grepen.</string>
+	<string name="howToPlay_text_4">
+		- Je kunt het stuk spiegelen door het lang ingedrukt te houden.
+		\nOf spiegel het stuk via het menu (vooral handig op tablets!).
+		\n- Annuleren kan door te drukken op de rode knop. Het stuk in je voorraad wordt vervangen.
+		\n- Als de zet geldig is, dan verschijnt er een \'oké\'-knop; je kunt de zet vastleggen door er op te drukken!
+	</string>
+	<string name="howToPlay_text_5">
+		- Je kunt ten allen tijde zien welke stukken je tegenstander nog heeft door onderaan op de kleur van de speler te drukken.
+		\n- Als je de computer verslagen hebt, dan kun je een hoger niveau selecteren via Menu &gt; Instellingen.
+	</string>
+
+	<string name="about" translatable="false">
+		http://scoutant.org
+		\nBlokish is an Free/Libre open-source app, licence GPL.
+		\nFell free to use the code you can get at http://github.com/scoutant.
+		\nStephane Coutant
+	</string>
+
+</resources>
