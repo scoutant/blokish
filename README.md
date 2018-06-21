@@ -4,7 +4,6 @@
 
 # Blokish
 
-=======
 Open-source Android implementation of the popular board game Blokus. With very smooth Drag & Drop user interface.
 
 <a href="https://f-droid.org/packages/org.scoutant.blokish" target="_blank">
@@ -54,6 +53,10 @@ Stephane Coutant, http://scoutant.org
 ---
 
 # Changelog
+
+## v3.3, 2018/06 : locale nl, Android 8.1
+ * locale nl, credits to Vistaus
+ * now targetting Android 8.1
 
 ## v3.2, 2018/01 : Added locale pt-rBR, thanks @afmachado
 

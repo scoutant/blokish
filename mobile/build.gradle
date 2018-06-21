@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27 // Api 8.1
     buildToolsVersion "27.0.3"
-    project.archivesBaseName = "blokish-3.2" // TODO sync with Manifest
+    project.archivesBaseName = "blokish-3.3" // TODO sync with Manifest
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -13,9 +13,9 @@ android {
     dependencies {
         testImplementation 'junit:junit:4.12'
 
-        implementation 'com.android.support:appcompat-v7:27.0.2'
-        implementation 'com.android.support:support-v4:27.0.2'
-        implementation 'com.android.support:design:27.0.2'
+        implementation 'com.android.support:appcompat-v7:27.1.1'
+        implementation 'com.android.support:support-v4:27.1.1'
+        implementation 'com.android.support:design:27.1.1'
 
     }
 
