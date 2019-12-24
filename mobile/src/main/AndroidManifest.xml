@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.scoutant.blokish" 
 	android:versionCode="21" android:versionName="3.3"
 	>
-    <uses-sdk android:minSdkVersion="18" android:targetSdkVersion="27" />
+    <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="27" />
     
 	<uses-permission android:name="android.permission.VIBRATE"/>
 		
