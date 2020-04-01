@@ -25,7 +25,6 @@ import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -43,6 +42,8 @@ import org.scoutant.blokish.model.Piece;
 import org.scoutant.blokish.model.Square;
 
 import java.util.Calendar;
+
+import androidx.core.content.ContextCompat;
 
 public class PieceUI extends FrameLayout implements OnTouchListener, OnLongClickListener, Comparable<PieceUI> {
 

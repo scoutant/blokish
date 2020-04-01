@@ -22,7 +22,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
@@ -44,6 +43,8 @@ import org.scoutant.blokish.model.Square;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import androidx.core.content.ContextCompat;
 
 /**
  * For DnD approach, refer to http://blog.scoutant.org/index.php?post/2011/02/Approche-naturelle-de-Drag-and-Drop-en-Android
@@ -130,18 +131,6 @@ public class GameView extends FrameLayout {
 				tab.setOnClickListener(new ShowPiecesListener(color));
 			}
 		}
-
-//    View extraMenu = findViewById(R.id.extra_menu_button);
-//    if (extraMenu!=null && !ViewConfiguration.get(context).hasPermanentMenuKey()) {
-//      extraMenu.setVisibility(View.VISIBLE);
-//      extraMenu.setOnClickListener( new OnClickListener() {
-//          @Override
-//          public void onClick(View v) {
-//            ui.openOptionsMenu();
-//          }
-//        }
-//      );
-//    }
 
 		// progress indicator
 		View iView = new View(context);

@@ -8,8 +8,6 @@ Open-source Android implementation of the popular board game Blokus. With very s
 
 <a href="https://f-droid.org/packages/org.scoutant.blokish" target="_blank">
 <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="100"/></a>
-<a href="https://play.google.com/store/apps/details?id=org.scoutant.blokish" target="_blank">
-<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="100"/></a>
 
 #### The rules
 Blokus is family game involving four players and a board with 20 x 20 squares. Like chess or checkers, it's a game for which at any time you can see your opponent's pieces.
@@ -54,6 +52,11 @@ Stephane Coutant, http://scoutant.org
 
 # Changelog
 
+## v3.4, 2020/04 : Android 10 and AndroidX Jetpack libraries refactoring
+ * build with Android 10, from nom on : available on Android 7+
+ * refactored Manifest and source dir
+ * Github-CI build with tests
+
 ## v3.3, 2018/06 : locale nl, Android 8.1
  * locale nl, credits to Vistaus
  * now targetting Android 8.1
@@ -67,11 +70,8 @@ Stephane Coutant, http://scoutant.org
  * better german translation
 
 ## v3.0, 2015/11 : Network multi-player support with PlayHub
- * Network multi-player framework PlayHub. https://bitbucket.org/playhub/playhublibrary, licence GPL v3. Live on https://play.google.com/store/apps/details?id=com.playhub.
+ * Network multi-player framework PlayHub.
  * build with Sdk Android 6.0
-
-![blokish](http://scoutant.org/blokish/blokish-playhub-menu.png)
-
 
 ## v2.4, 2015/06 : Move validation possible directly on piece.
 * Smarter move validation : vibration and green color as soon move is valid
