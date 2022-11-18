@@ -24,7 +24,7 @@
         android:layout_above="@+id/textView"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@android:color/white"
-        android:textSize="70sp"
+        android:textSize="60sp"
     />
 
 </FrameLayout>

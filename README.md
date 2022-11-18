@@ -36,8 +36,13 @@ You play against the machine. You can configure the level of corresponding Artif
 
 You can disable AI for a human play only. Refer to Menu > Preferences.
 
-The software has no unobtrusive banner advertising.
 Once installed, you can play off-line.
+
+#### Menu
+There is a drawer menu. Drag it from left side. With menu items :
+* settings
+* undo
+* new game
 
 #### GPL v3 Licence
 The game is free. And even more : the code is open-source. 
@@ -52,6 +57,11 @@ Stephane Coutant, http://scoutant.org
 
 # Changelog
 
+## v3.5, 2022/11 : Android 12.1
+ * targetting Android 12.1
+ * built with Android 13 sdk and Gradle 7.5
+ * from nom on : available on Android 9+
+ 
 ## v3.4, 2020/04 : Android 10 and AndroidX Jetpack libraries refactoring
  * build with Android 10, from nom on : available on Android 7+
  * refactored Manifest and source dir

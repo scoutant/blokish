@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-    project.archivesBaseName = "blokish-3.4" // sync with Manifest
+    compileSdkVersion 33 // 13.0
+    buildToolsVersion "33.0.0"
+    project.archivesBaseName = "blokish-3.5" // sync with Manifest
 
     defaultConfig {
         applicationId "org.scoutant.blokish"
-        minSdkVersion 24 // Android 7
-        targetSdkVersion 29 // Android 10
-        versionCode 22
-        versionName "3.4"
+        minSdkVersion 28 // Android 9
+        targetSdkVersion 32  // Android 12.1
+        versionCode 23
+        versionName "3.5"
         project.ext.set("archivesBaseName", "blokish-" + defaultConfig.versionName)
     }
 
@@ -20,19 +20,16 @@ android {
     }
 
     dependencies {
-        testImplementation 'junit:junit:4.13'
+        testImplementation 'junit:junit:4.13.2'
 
-        implementation 'com.google.android.material:material:1.1.0'
-        implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
-        implementation 'androidx.appcompat:appcompat:1.1.0'
+        implementation 'com.google.android.material:material:1.7.0'
+        implementation "androidx.coordinatorlayout:coordinatorlayout:1.2.0"
+        implementation 'androidx.appcompat:appcompat:1.5.1'
         implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 //        implementation 'androidx.preference:preference:1.1.0' // TODO migrate preferences
 
     }
 
-    lintOptions {
-        abortOnError false
-    }
 
     signingConfigs {
         release {
@@ -52,5 +49,9 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+    lint {
+        abortOnError false
+    }
+    namespace 'org.scoutant.blokish'
 
 }

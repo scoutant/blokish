@@ -90,7 +90,6 @@ public class UI extends AppCompatActivity implements NavigationView.OnNavigation
 
 		sourceFromMovesFile();
 
-		AppRater.app_launched( this);
 	}
 
 	private void newgame() {
@@ -270,8 +269,6 @@ public class UI extends AppCompatActivity implements NavigationView.OnNavigation
 				}
 			}, 500);
 		}
-
-		if (id==R.id.more_apps) startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:scoutant.org")));
 
 		drawer.closeDrawer(GravityCompat.START);
 		return true;
