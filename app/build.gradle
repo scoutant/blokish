@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdk 34 // 13.0
-    buildToolsVersion "33.0.0"
     project.archivesBaseName = "blokish-3.5" // sync with Manifest
 
     defaultConfig {
