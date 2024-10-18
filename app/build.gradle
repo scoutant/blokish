@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 34 // 13.0
-    project.archivesBaseName = "blokish-3.5" // sync with Manifest
+    compileSdk 35
+    project.archivesBaseName = "blokish-3.6" // sync with Manifest
 
     defaultConfig {
         applicationId "org.scoutant.blokish"
         minSdkVersion 28 // Android 9
-        targetSdkVersion 34  // Android 14
-        versionCode 23
-        versionName "3.5"
+        targetSdkVersion 35  // Android 15
+        versionCode 24
+        versionName "3.6"
         project.ext.set("archivesBaseName", "blokish-" + defaultConfig.versionName)
     }
 

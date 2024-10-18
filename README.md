@@ -1,4 +1,4 @@
-﻿Blokish
+Blokish
 =======
 ![blokish](http://blokish.scoutant.org/blokish_nexus_6)
 
@@ -56,6 +56,11 @@ Stephane Coutant, http://scoutant.org
 ---
 
 # Changelog
+
+## v3.6, 2024/10 : Android 15
+ * targetting Android 15
+  * built with Android 15 sdk and Gradle 8.10
+  * update by RobbieNesmith as part of Hacktoberfest
 
 ## v3.5, 2022/11 : Android 12.1
  * targetting Android 12.1
